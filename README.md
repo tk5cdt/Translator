@@ -18,8 +18,11 @@
 Ứng dụng phiên dịch là một công cụ hữu ích cho việc dịch từ vựng, văn bản giữa các ngôn ngữ khác nhau. Người dùng có thể nhập văn bản hoặc tải tệp văn bản lên ứng dụng, và ứng dụng sẽ tự động dò tìm ngôn ngữ và cung cấp phiên bản dịch tương ứng. Ngoài ra, ứng dụng còn hỗ trợ lưu trữ lịch sử dịch và đánh dấu các phiên dịch quan trọng.
 
 **Yêu cầu:**
+
 AI: tự động nhận diện ngôn ngữ, chuyển văn bản thành giọng nói và ngược lại.
+
 Ngôn ngữ: Javascript, Java, C#
+
 Framework: Android studio, .NET Framework, ExpressJS
 
 **Nghiệp vụ:**
