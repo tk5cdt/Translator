@@ -3,6 +3,8 @@ import session from 'express-session'
 import initApiRoutes from './route/api'
 import bodyParser from 'body-parser'
 
+
+
 require('dotenv').config();
 let port = process.env.PORT || 8080;
 
@@ -13,6 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.text({ type: '/' }));
 app.use(express.json());
 
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//   extended: true
+// }));
+
 
 //config session
 app.set('trust proxy', 1) // trust first proxy
@@ -22,6 +29,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
+
 
 initApiRoutes(app)
 
