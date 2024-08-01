@@ -6,40 +6,24 @@ const signup = async (req, res) => {
     let { username, email, password, confirmPassword } = req.body;
     const pool = await connectDB();
     const result = await pool.request().query(`Select * from ACCOUNT where email = '${email}'`);
-    // if (result.rowsAffected[0] > 0) {
-    //   return res.status(400).json({ message: "Error" });
-    // }
-    // else{
-    //     if(password !== confirmPassword){
-    //         return res.status(400).json({ message: "Password is not match" });
-    //     }   
-    //     else
-    //     {
-    //         try {
-    //             const salt = await bcrypt.genSalt(10);
-    //             const hashedPassword = await bcrypt.hash(password, salt);
-    //             const result = await pool.request().query(`Exec AddAccount '${username}', '${email}', '${hashedPassword}'`);
-    //             return res.status(200).json({ message: "Success" });
-    //         }
-    //         catch (err) {
-    //             console.log(err);
-    //         }
-    //     }
-    // }
-    if(password !== confirmPassword){
-        return res.status(400).json({ message: "Password is not match" });
-    }   
-    else
-    {
-        try {
-            const salt = await bcrypt.genSalt(10);
-            const hashedPassword = await bcrypt.hash(password, salt);
-
-            const result = await pool.request().query(`insert into ACCOUNT(username, email, pass) values ('${username}', '${email}', '${password}')`)
-            return res.status(200).json({ message: "Success" });
-        }
-        catch (err) {
-            console.log(err);
+    if (result.rowsAffected[0] > 0) {
+      return res.status(400).json({ message: "Error" });
+    }
+    else{
+        if(password !== confirmPassword){
+            return res.status(400).json({ message: "Password is not match" });
+        }   
+        else
+        {
+            try {
+                const salt = await bcrypt.genSalt(10);
+                const hashedPassword = await bcrypt.hash(password, salt);
+                const result = await pool.request().query(`Exec AddAccount '${username}', '${email}', '${hashedPassword}'`);
+                return res.status(200).json({ message: "Success" });
+            }
+            catch (err) {
+                console.log(err);
+            }
         }
     }
   } catch (err) {
