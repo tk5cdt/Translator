@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BLL">
-      <HintPath>..\BLL\bin\Debug\BLL.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -78,6 +75,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{9999b135-ff32-4b9c-b299-3ba993da3333}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TranslatorLibrary\TranslatorLibrary.csproj">
+      <Project>{0c9bb05f-9832-4666-ae86-606f4fff17e6}</Project>
+      <Name>TranslatorLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserControls\UserControls.csproj">
+      <Project>{90c2cd58-9753-4194-921f-ff7e4aa3c3b9}</Project>
+      <Name>UserControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

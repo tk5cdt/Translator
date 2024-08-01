@@ -17,7 +17,6 @@ let newAccount = async (req, res) => {
     const pool = await connectDB();
     // const result = await pool.request().query(`Exec AddAccount '${username}', '${email}', '${password}'`);
     const result = await pool.request().query(`insert into ACCOUNT(username, email, pass) values ('${username}', '${email}', '${password}')`)
-
     return res.status(200).json(result.recordset);
 }
 
