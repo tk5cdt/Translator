@@ -65,6 +65,8 @@ END
 GO
 
 --------------INSERT------------
+SET DATEFORMAT DMY
+
 EXEC AddAccount @Username = 'thanhtruc', @Email = 'thanhtruc@gmail.com', @Password = 'truc0307';
 EXEC AddAccount @Username = 'ductruong', @Email = 'ductruong@gmail.com', @Password = 'truong0807';
 EXEC AddAccount @Username = 'baongan', @Email = 'baongan@gmail.com', @Password = 'ngan0402';
