@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace BLL
 {
@@ -15,20 +16,29 @@ namespace BLL
         public TranslatePostResponse sendTranslateContent(string q, string source = "auto", string target = "en", string format = "text", int alternatives = 2)
         {
             TranslatePostContent content = new TranslatePostContent();
-            content.Q = q;
-            content.Source = source;
-            content.Target = target;
-            content.Format = format;
-            content.Alternatives = alternatives;
-            var client = new HttpClient();
-            client.BaseAddress = new Uri("http://127.0.0.1:8080/translate");
+            content.q = q;
+            content.source = source;
+            content.target = target;
+            content.format = format;
+            content.alternatives = alternatives;
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                UseDefaultCredentials = true
+            };
+            var client = new HttpClient(handler);
+            client.BaseAddress = new Uri("http://localhost:5000/translate");
 
             var json = JsonSerializer.Serialize(content);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = client.PostAsync(client.BaseAddress, data).Result;
             var responseString = response.Content.ReadAsStringAsync().Result;
-            TranslatePostResponse result = JsonSerializer.Deserialize<TranslatePostResponse>(responseString);
+            var options = new JsonSerializerOptions()
+            {
+                NumberHandling = JsonNumberHandling.AllowReadingFromString |
+                JsonNumberHandling.WriteAsString
+            };
+            TranslatePostResponse result = JsonSerializer.Deserialize<TranslatePostResponse>(responseString, options);
             return result;
         }
     }
