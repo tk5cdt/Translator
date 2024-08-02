@@ -7,14 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Krypton.Toolkit;
 
 namespace TranslatorApp
 {
-    public partial class frmTranslate : Form
+    public partial class frmTranslate : KryptonForm
     {
         public frmTranslate()
         {
             InitializeComponent();
+        }
+
+        private void rtbFrom_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmTranslate_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
