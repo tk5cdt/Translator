@@ -11,16 +11,21 @@ using Krypton.Toolkit;
 
 namespace TranslatorApp
 {
-    public partial class frmTranslate : KryptonForm
+    public partial class frmLogin : KryptonForm
     {
-        public frmTranslate()
+        public frmLogin()
         {
             InitializeComponent();
         }
 
-        private void frmTranslate_Load(object sender, EventArgs e)
+        private void uC_Login1_Load(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
