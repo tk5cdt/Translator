@@ -64,6 +64,7 @@
             this.kryptonRichTextBox1.StateCommon.Content.Font = new System.Drawing.Font("Book Antiqua", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRichTextBox1.TabIndex = 0;
             this.kryptonRichTextBox1.Text = "";
+            this.kryptonRichTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.kryptonRichTextBox1_KeyPress);
             // 
             // kryptonRichTextBox2
             // 

@@ -8,7 +8,7 @@ namespace BLL
 {
     public class DetectedLanguage
     {
-        public int confidence { get; set; }
+        public double confidence { get; set; }
         public string language { get; set; }
     }
 }
