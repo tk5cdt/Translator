@@ -1,5 +1,5 @@
 import e from 'express';
-import { connectDB } from '../configs/connectDB';
+import { connectDB, sql } from '../configs/connectDB';
 
 let getHistory = async (req, res) => {
     try{
@@ -12,11 +12,19 @@ let getHistory = async (req, res) => {
     }
 }
 
-let saveHistory = async (req, res) => {
+const  saveHistory = async (req, res) => {
     try{
         let {originalword, translatedword, fromlanguage, tolanguage,timesave, uid} = req.body;
+
         let pool = await connectDB();
-        let result = await pool.request().query(`INSERT INTO HISTORY(ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, UID) VALUES('${originalword}', '${translatedword}', '${fromlanguage}', '${tolanguage}', '${timesave}', ${uid})`);
+        let result = await pool.request()
+            .input('originalword', sql.NVarChar, originalword)
+            .input('translatedword', sql.NVarChar, translatedword)
+            .input('fromlanguage', sql.NVarChar, fromlanguage)
+            .input('tolanguage', sql.NVarChar, tolanguage)
+            .input('timesave', sql.DateTime, timesave)
+            .input('uid', sql.Int, uid)
+            .query('INSERT INTO HISTORY(ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, UID) VALUES(@originalword, @translatedword, @fromlanguage, @tolanguage, @timesave, @uid)');
         res.status(200).json(result.recordset);
     }catch (err) {
         console.log(err);

@@ -86,11 +86,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DetectedLanguage.cs" />
+    <Compile Include="LoginPostReponse.cs" />
     <Compile Include="TranslateAPI.cs" />
     <Compile Include="TranslatePostContent.cs" />
     <Compile Include="TranslatePostResponse.cs" />
+    <Compile Include="UserAPI.cs" />
     <Compile Include="UserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LoginPostContent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

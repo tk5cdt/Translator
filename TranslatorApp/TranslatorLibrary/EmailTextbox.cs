@@ -13,9 +13,10 @@ namespace TranslatorLibrary
     {
         public EmailTextbox()
         {
+            this.Leave += EmailTextbox_Leave;
         }
 
-        private void Check_Email(object sender, EventArgs e)
+        private void EmailTextbox_Leave(object sender, EventArgs e)
         {
             Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             String mail = Text;

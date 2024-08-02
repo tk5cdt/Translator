@@ -28,32 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnLogin = new Krypton.Toolkit.KryptonButton();
             this.label1 = new System.Windows.Forms.Label();
             this.kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
             this.uC_Login1 = new UserControls.UC_Login();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnLogin
-            // 
-            this.btnLogin.Location = new System.Drawing.Point(226, 698);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(184, 63);
-            this.btnLogin.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnLogin.StateCommon.Border.Rounding = 10F;
-            this.btnLogin.TabIndex = 1;
-            this.btnLogin.Values.Text = "Login";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(249, 368);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(166, 239);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 26);
             this.label1.TabIndex = 2;
@@ -62,10 +47,9 @@
             // kryptonPictureBox1
             // 
             this.kryptonPictureBox1.Image = global::TranslatorApp.Properties.Resources.loginImg;
-            this.kryptonPictureBox1.Location = new System.Drawing.Point(18, 5);
-            this.kryptonPictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.kryptonPictureBox1.Location = new System.Drawing.Point(12, 3);
             this.kryptonPictureBox1.Name = "kryptonPictureBox1";
-            this.kryptonPictureBox1.Size = new System.Drawing.Size(608, 340);
+            this.kryptonPictureBox1.Size = new System.Drawing.Size(405, 221);
             this.kryptonPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.kryptonPictureBox1.TabIndex = 3;
             this.kryptonPictureBox1.TabStop = false;
@@ -73,23 +57,20 @@
             // uC_Login1
             // 
             this.uC_Login1.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uC_Login1.Location = new System.Drawing.Point(44, 452);
-            this.uC_Login1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.uC_Login1.Location = new System.Drawing.Point(29, 294);
+            this.uC_Login1.Margin = new System.Windows.Forms.Padding(4);
             this.uC_Login1.Name = "uC_Login1";
-            this.uC_Login1.Size = new System.Drawing.Size(564, 246);
+            this.uC_Login1.Size = new System.Drawing.Size(376, 190);
             this.uC_Login1.TabIndex = 0;
-            this.uC_Login1.Load += new System.EventHandler(this.uC_Login1_Load);
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(663, 815);
+            this.ClientSize = new System.Drawing.Size(442, 530);
             this.Controls.Add(this.kryptonPictureBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.uC_Login1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmLogin";
             this.Text = "frmLogin";
             this.Load += new System.EventHandler(this.frmLogin_Load);
@@ -102,7 +83,6 @@
         #endregion
 
         private UserControls.UC_Login uC_Login1;
-        private Krypton.Toolkit.KryptonButton btnLogin;
         private System.Windows.Forms.Label label1;
         private Krypton.Toolkit.KryptonPictureBox kryptonPictureBox1;
     }
