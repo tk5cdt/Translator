@@ -1,3 +1,9 @@
+use master 
+go
+alter database DB_TRANSLATE set single_user with rollback immediate
+
+drop database DB_TRANSLATE
+go
 CREATE DATABASE DB_TRANSLATE
 GO
 USE DB_TRANSLATE
