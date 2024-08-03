@@ -58,6 +58,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="item_history.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="item_history.Designer.cs">
+      <DependentUpon>item_history.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UC_Login.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -71,6 +82,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="item_history.resx">
+      <DependentUpon>item_history.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_Login.resx">
       <DependentUpon>UC_Login.cs</DependentUpon>
     </EmbeddedResource>

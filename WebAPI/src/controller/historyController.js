@@ -3,14 +3,16 @@ import { connectDB, sql } from '../configs/connectDB';
 
 let getHistory = async (req, res) => {
     try{
-        let {uid} = req.body;
+        let {uid} = req.query;
         let pool = await connectDB();
         let result = await pool.request().query(`SELECT WORDID, ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE FROM HISTORY WHERE UID = ${uid}`);
         res.status(200).json(result.recordset);
     }catch (err) {
         console.log(err);
+        console.log("error" + err);
     }
 }
+
 
 const  saveHistory = async (req, res) => {
     try{

@@ -58,9 +58,10 @@
             this.kryptonRichTextBox1.CueHint.CueHintText = "Enter text here ....";
             this.kryptonRichTextBox1.CueHint.Font = new System.Drawing.Font("Book Antiqua", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRichTextBox1.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonRichTextBox1.Location = new System.Drawing.Point(12, 87);
+            this.kryptonRichTextBox1.Location = new System.Drawing.Point(16, 107);
+            this.kryptonRichTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.kryptonRichTextBox1.Name = "kryptonRichTextBox1";
-            this.kryptonRichTextBox1.Size = new System.Drawing.Size(383, 213);
+            this.kryptonRichTextBox1.Size = new System.Drawing.Size(511, 262);
             this.kryptonRichTextBox1.StateCommon.Content.Font = new System.Drawing.Font("Book Antiqua", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRichTextBox1.TabIndex = 0;
             this.kryptonRichTextBox1.Text = "";
@@ -69,23 +70,25 @@
             // kryptonRichTextBox2
             // 
             this.kryptonRichTextBox2.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonRichTextBox2.Location = new System.Drawing.Point(405, 87);
+            this.kryptonRichTextBox2.Location = new System.Drawing.Point(540, 107);
+            this.kryptonRichTextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.kryptonRichTextBox2.Name = "kryptonRichTextBox2";
             this.kryptonRichTextBox2.ReadOnly = true;
-            this.kryptonRichTextBox2.Size = new System.Drawing.Size(383, 213);
+            this.kryptonRichTextBox2.Size = new System.Drawing.Size(511, 262);
             this.kryptonRichTextBox2.StateCommon.Content.Font = new System.Drawing.Font("Book Antiqua", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRichTextBox2.TabIndex = 1;
             this.kryptonRichTextBox2.Text = "";
             // 
             // frmTranslate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.kryptonRichTextBox2);
             this.Controls.Add(this.kryptonRichTextBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmTranslate";
             this.Palette = this.kryptonCustomPaletteBase1;
             this.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
