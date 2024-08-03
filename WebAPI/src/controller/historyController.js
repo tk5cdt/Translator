@@ -13,7 +13,6 @@ let getHistory = async (req, res) => {
     }
 }
 
-
 const  saveHistory = async (req, res) => {
     try{
         let {originalword, translatedword, fromlanguage, tolanguage,timesave, uid} = req.body;

@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BLL;
 using Krypton.Toolkit;
 using UserControls;
+using BLL;
 
 namespace TranslatorApp
 {
-    public partial class frmHistory : KryptonForm
+    public partial class frmFavorite : KryptonForm
     {
 
         private List<item_history> userControls;
@@ -22,12 +22,9 @@ namespace TranslatorApp
 
         private Panel panel;
         private int _id;
-
-        public frmHistory(int id)
+        public frmFavorite(int id)
         {
             InitializeComponent();
-            //InitializeItemHistoryEvents();
-            InitializeItemHistory();
             this._id = id;
 
             userControls = new List<item_history>();
@@ -43,30 +40,28 @@ namespace TranslatorApp
             this.Controls.Add(panel);
 
 
-            //saveFavorite();
         }
-
         //show list history
         private async Task ShowAsync()
         {
             // Khởi tạo HistoryAPI và lấy dữ liệu
-            HistoryAPI historyAPI = new HistoryAPI();
+            FavoriteAPI favoriteAPI = new FavoriteAPI();
 
             try
             {
-                List<HistoryReponse> historyReponses = await historyAPI.LoadHistoryContent(_id);
+                List<FavoriteResponse> favoriteResponses = await favoriteAPI.LoadFavoriteContent(_id);
 
                 // Xóa các điều khiển cũ
                 panel.Controls.Clear();
 
-                if (historyReponses != null && historyReponses.Count > 0)
+                if (favoriteResponses != null && favoriteResponses.Count > 0)
                 {
                     List<Control> userControls = new List<Control>();
 
                     // duyet qua danh sach historyresponse, gan du lieu vao cac item_history va luu vao danh sach control
-                    for (int i = 0; i < historyReponses.Count; i++)
+                    for (int i = 0; i < favoriteResponses.Count; i++)
                     {
-                        var history = historyReponses[i];
+                        var history = favoriteResponses[i];
 
                         item_history newUserControl = new item_history
                         {
@@ -75,14 +70,12 @@ namespace TranslatorApp
                             Anchor = AnchorStyles.Top,
 
                         };
-                        newUserControl.from = historyReponses[i].fromlanguage;
-                        newUserControl.into = historyReponses[i].tolanguage;
-                        newUserControl.wordFrom = historyReponses[i].originalword;
-                        newUserControl.wordInto = historyReponses[i].translatedword;
+                        newUserControl.from = favoriteResponses[i].fromlanguage;
+                        newUserControl.into = favoriteResponses[i].tolanguage;
+                        newUserControl.wordFrom = favoriteResponses[i].originalword;
+                        newUserControl.wordInto = favoriteResponses[i].translatedword;
                         //newUserControl.timeSave = DateTime.Parse(historyReponses[i].timesave);
 
-                        // Đăng ký sự kiện
-                        newUserControl.OnSaveFavorite = HandleSaveFavorite;
 
                         userControls.Add(newUserControl);
                     }
@@ -123,42 +116,9 @@ namespace TranslatorApp
             }
         }
 
-        private async void frmHistory_Load(object sender, EventArgs e)
+        private void frmFavorite_Load(object sender, EventArgs e)
         {
-            await ShowAsync();
+            ShowAsync();
         }
-
-        private void InitializeItemHistory()
-        {
-            var itemHistoryControl = new item_history();
-            itemHistoryControl.OnSaveFavorite = HandleSaveFavorite;
-        }
-
-        private void HandleSaveFavorite(string wordfrom, string wordinto, string from, string into, DateTime timesave, int id)
-        {
-            // Hiển thị thông báo đã lưu
-            MessageBox.Show($"Word From: {wordfrom}\nWord Into: {wordinto}\nFrom: {from}\nInto: {into}\nDate: {timesave}\nID: {id}");
-
-            // Lưu dữ liệu yêu thích qua API
-            SaveFavoriteAPI saveFavoriteAPI = new SaveFavoriteAPI();
-            try
-            {
-                var result = saveFavoriteAPI.SaveFavoriteContent(wordfrom, wordinto, from, into, _id);
-                // Xử lý kết quả lưu thành công
-                if (result != null)
-                {
-                    MessageBox.Show("Yêu thích đã được lưu thành công!");
-                }
-                else
-                {
-                    MessageBox.Show("Lưu yêu thích không thành công.");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
-        }
-
     }
 }

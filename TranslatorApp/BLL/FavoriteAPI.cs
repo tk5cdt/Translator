@@ -9,12 +9,12 @@ using System.Text.Json.Serialization;
 
 namespace BLL
 {
-    public class HistoryAPI
+    public class FavoriteAPI
     {
-        public async Task<List<HistoryReponse>> LoadHistoryContent(int uid)
+        public async Task<List<FavoriteResponse>> LoadFavoriteContent(int uid)
         {
             var client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:3000/api/gethistory?uid=" + uid);
+            client.BaseAddress = new Uri("http://localhost:3000/api/getfavorite?uid=" + uid);
 
             var response = await client.GetAsync(client.BaseAddress);
 
@@ -26,18 +26,15 @@ namespace BLL
                     PropertyNameCaseInsensitive = true,
                     NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString
                 };
-                var result = JsonSerializer.Deserialize<List<HistoryReponse>>(responseString, options);
+                var result = JsonSerializer.Deserialize<List<FavoriteResponse>>(responseString, options);
 
                 return result;
-                
+
             }
             else
             {
                 throw new Exception("Error: " + response.ReasonPhrase);
             }
         }
-
-
-
     }
 }

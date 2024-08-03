@@ -92,6 +92,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFavorite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFavorite.Designer.cs">
+      <DependentUpon>frmFavorite.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFavorite.resx">
+      <DependentUpon>frmFavorite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHistory.resx">
       <DependentUpon>frmHistory.cs</DependentUpon>

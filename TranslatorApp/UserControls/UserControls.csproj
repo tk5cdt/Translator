@@ -110,6 +110,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{9999b135-ff32-4b9c-b299-3ba993da3333}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TranslatorLibrary\TranslatorLibrary.csproj">
       <Project>{0C9BB05F-9832-4666-AE86-606F4FFF17E6}</Project>
       <Name>TranslatorLibrary</Name>

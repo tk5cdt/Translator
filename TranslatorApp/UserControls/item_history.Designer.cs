@@ -142,6 +142,9 @@ namespace UserControls
             this.Margin = new System.Windows.Forms.Padding(10);
             this.Name = "item_history";
             this.Size = new System.Drawing.Size(752, 164);
+            this.Load += new System.EventHandler(this.item_history_Load);
+            this.MouseEnter += new System.EventHandler(this.item_history_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.item_history_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
