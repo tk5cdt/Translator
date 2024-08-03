@@ -20,7 +20,45 @@ namespace TranslatorApp
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            uC_Login1.pEye.BackColor = Color.White;
+            uC_Login1.pHide.BackColor = Color.White;
+
             uC_Login1.login.Click += UC_Login1_Click;
+            uC_Login1.pEye.Click += PEye_Click;
+            uC_Login1.pHide.Click += PHide_Click;
+            llbSignup.Click += LlbSignup_Click;
+        }
+
+        private void LlbSignup_Click(object sender, EventArgs e)
+        {
+            frmSignup frm = new frmSignup();
+            frm.Show();
+            this.Hide();
+        }
+
+        private void PHide_Click(object sender, EventArgs e)
+        {
+            if (uC_Login1.password != null)
+            {
+                if (uC_Login1.password.PasswordChar == '*')
+                {
+                    uC_Login1.pEye.BringToFront();
+                    uC_Login1.password.PasswordChar = '\0';
+                }
+            }
+            
+        }
+
+        private void PEye_Click(object sender, EventArgs e)
+        {
+            if (uC_Login1.password != null)
+            {
+                if (uC_Login1.password.PasswordChar == '\0')
+                {
+                    uC_Login1.pHide.BringToFront();
+                    uC_Login1.password.PasswordChar = '*';
+                }
+            }           
         }
 
         private void UC_Login1_Click(object sender, EventArgs e)
@@ -41,11 +79,11 @@ namespace TranslatorApp
                 }
                 else
                 {
-                    MessageBox.Show("Email hoặc mật khẩu sai. Vui lòng nhập lại!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Incorrect email or password. Please re-enter!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else {
-                MessageBox.Show("Vui lòng nhập đủ thông tin!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter all required information!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
         }

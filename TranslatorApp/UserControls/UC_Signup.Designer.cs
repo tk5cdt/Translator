@@ -29,14 +29,22 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtUssername = new Krypton.Toolkit.KryptonTextBox();
+            this.txtUsername = new Krypton.Toolkit.KryptonTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtConfirm = new Krypton.Toolkit.KryptonTextBox();
-            this.emailTextbox1 = new TranslatorLibrary.EmailTextbox();
-            this.txtPassword = new TranslatorLibrary.PasswordTextbox();
-            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            this.btnSignup = new Krypton.Toolkit.KryptonButton();
+            this.picHidePass = new Krypton.Toolkit.KryptonPictureBox();
+            this.picEyePass = new Krypton.Toolkit.KryptonPictureBox();
+            this.picHideConfirm = new Krypton.Toolkit.KryptonPictureBox();
+            this.picEyeConfirm = new Krypton.Toolkit.KryptonPictureBox();
+            this.txtPasswordSignup = new TranslatorLibrary.PasswordTextbox();
+            this.txtEmailSignup = new TranslatorLibrary.EmailTextbox();
+            ((System.ComponentModel.ISupportInitialize)(this.picHidePass)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyePass)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHideConfirm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyeConfirm)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -49,16 +57,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Username";
             // 
-            // txtUssername
+            // txtUsername
             // 
-            this.txtUssername.Location = new System.Drawing.Point(10, 36);
-            this.txtUssername.Name = "txtUssername";
-            this.txtUssername.Size = new System.Drawing.Size(363, 33);
-            this.txtUssername.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.txtUsername.Location = new System.Drawing.Point(10, 36);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(363, 33);
+            this.txtUsername.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txtUssername.StateCommon.Border.Rounding = 15F;
-            this.txtUssername.TabIndex = 1;
+            this.txtUsername.StateCommon.Border.Rounding = 15F;
+            this.txtUsername.TabIndex = 1;
             // 
             // label2
             // 
@@ -94,6 +102,7 @@
             // 
             this.txtConfirm.Location = new System.Drawing.Point(10, 219);
             this.txtConfirm.Name = "txtConfirm";
+            this.txtConfirm.PasswordChar = '*';
             this.txtConfirm.Size = new System.Drawing.Size(363, 33);
             this.txtConfirm.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
@@ -101,55 +110,104 @@
             this.txtConfirm.StateCommon.Border.Rounding = 15F;
             this.txtConfirm.TabIndex = 4;
             // 
-            // emailTextbox1
+            // btnSignup
             // 
-            this.emailTextbox1.Location = new System.Drawing.Point(10, 98);
-            this.emailTextbox1.Name = "emailTextbox1";
-            this.emailTextbox1.Size = new System.Drawing.Size(363, 33);
-            this.emailTextbox1.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.btnSignup.Location = new System.Drawing.Point(123, 262);
+            this.btnSignup.Name = "btnSignup";
+            this.btnSignup.Size = new System.Drawing.Size(109, 34);
+            this.btnSignup.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.emailTextbox1.StateCommon.Border.Rounding = 15F;
-            this.emailTextbox1.TabIndex = 2;
+            this.btnSignup.StateCommon.Border.Rounding = 15F;
+            this.btnSignup.TabIndex = 4;
+            this.btnSignup.Values.Text = "SIGN UP";
             // 
-            // txtPassword
+            // picHidePass
             // 
-            this.txtPassword.Location = new System.Drawing.Point(10, 158);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(363, 33);
-            this.txtPassword.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.picHidePass.Image = global::UserControls.Properties.Resources.pHide;
+            this.picHidePass.Location = new System.Drawing.Point(325, 162);
+            this.picHidePass.Name = "picHidePass";
+            this.picHidePass.Size = new System.Drawing.Size(34, 24);
+            this.picHidePass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picHidePass.TabIndex = 5;
+            this.picHidePass.TabStop = false;
+            // 
+            // picEyePass
+            // 
+            this.picEyePass.Image = global::UserControls.Properties.Resources.pEye;
+            this.picEyePass.Location = new System.Drawing.Point(325, 162);
+            this.picEyePass.Name = "picEyePass";
+            this.picEyePass.Size = new System.Drawing.Size(34, 24);
+            this.picEyePass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEyePass.TabIndex = 5;
+            this.picEyePass.TabStop = false;
+            // 
+            // picHideConfirm
+            // 
+            this.picHideConfirm.Image = global::UserControls.Properties.Resources.pHide;
+            this.picHideConfirm.Location = new System.Drawing.Point(325, 223);
+            this.picHideConfirm.Name = "picHideConfirm";
+            this.picHideConfirm.Size = new System.Drawing.Size(34, 24);
+            this.picHideConfirm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picHideConfirm.TabIndex = 6;
+            this.picHideConfirm.TabStop = false;
+            // 
+            // picEyeConfirm
+            // 
+            this.picEyeConfirm.Image = global::UserControls.Properties.Resources.pEye;
+            this.picEyeConfirm.Location = new System.Drawing.Point(325, 223);
+            this.picEyeConfirm.Name = "picEyeConfirm";
+            this.picEyeConfirm.Size = new System.Drawing.Size(34, 24);
+            this.picEyeConfirm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEyeConfirm.TabIndex = 6;
+            this.picEyeConfirm.TabStop = false;
+            // 
+            // txtPasswordSignup
+            // 
+            this.txtPasswordSignup.Location = new System.Drawing.Point(10, 158);
+            this.txtPasswordSignup.Name = "txtPasswordSignup";
+            this.txtPasswordSignup.PasswordChar = '*';
+            this.txtPasswordSignup.Size = new System.Drawing.Size(363, 33);
+            this.txtPasswordSignup.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txtPassword.StateCommon.Border.Rounding = 15F;
-            this.txtPassword.TabIndex = 3;
+            this.txtPasswordSignup.StateCommon.Border.Rounding = 15F;
+            this.txtPasswordSignup.TabIndex = 3;
             // 
-            // kryptonButton1
+            // txtEmailSignup
             // 
-            this.kryptonButton1.Location = new System.Drawing.Point(123, 262);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(109, 34);
-            this.kryptonButton1.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            this.txtEmailSignup.Location = new System.Drawing.Point(10, 98);
+            this.txtEmailSignup.Name = "txtEmailSignup";
+            this.txtEmailSignup.Size = new System.Drawing.Size(363, 33);
+            this.txtEmailSignup.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.kryptonButton1.StateCommon.Border.Rounding = 15F;
-            this.kryptonButton1.TabIndex = 4;
-            this.kryptonButton1.Values.Text = "SIGN UP";
+            this.txtEmailSignup.StateCommon.Border.Rounding = 15F;
+            this.txtEmailSignup.TabIndex = 2;
             // 
             // UC_Signup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.kryptonButton1);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.emailTextbox1);
+            this.Controls.Add(this.picEyeConfirm);
+            this.Controls.Add(this.picHideConfirm);
+            this.Controls.Add(this.picEyePass);
+            this.Controls.Add(this.picHidePass);
+            this.Controls.Add(this.btnSignup);
+            this.Controls.Add(this.txtPasswordSignup);
+            this.Controls.Add(this.txtEmailSignup);
             this.Controls.Add(this.txtConfirm);
-            this.Controls.Add(this.txtUssername);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UC_Signup";
             this.Size = new System.Drawing.Size(376, 312);
+            ((System.ComponentModel.ISupportInitialize)(this.picHidePass)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyePass)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHideConfirm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEyeConfirm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,13 +216,17 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private Krypton.Toolkit.KryptonTextBox txtUssername;
+        private Krypton.Toolkit.KryptonTextBox txtUsername;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private Krypton.Toolkit.KryptonTextBox txtConfirm;
-        private TranslatorLibrary.EmailTextbox emailTextbox1;
-        private TranslatorLibrary.PasswordTextbox txtPassword;
-        private Krypton.Toolkit.KryptonButton kryptonButton1;
+        private TranslatorLibrary.EmailTextbox txtEmailSignup;
+        private TranslatorLibrary.PasswordTextbox txtPasswordSignup;
+        private Krypton.Toolkit.KryptonButton btnSignup;
+        private Krypton.Toolkit.KryptonPictureBox picHidePass;
+        private Krypton.Toolkit.KryptonPictureBox picEyePass;
+        private Krypton.Toolkit.KryptonPictureBox picHideConfirm;
+        private Krypton.Toolkit.KryptonPictureBox picEyeConfirm;
     }
 }

@@ -16,12 +16,16 @@ namespace UserControls
         public KryptonButton login;
         public KryptonTextBox email;
         public KryptonTextBox password;
+        public KryptonPictureBox pEye;
+        public KryptonPictureBox pHide;
         public UC_Login()
         {
             InitializeComponent();
             login = this.btnLogin;
             email = this.txtEmail;
             password = this.txtPassword;
+            pEye = this.picHide;
+            pHide = this.picEye;
         }
     }
 }

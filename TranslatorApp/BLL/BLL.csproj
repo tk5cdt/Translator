@@ -92,6 +92,8 @@
     <Compile Include="Languages.cs" />
     <Compile Include="LoginPostReponse.cs" />
     <Compile Include="SaveHistoryAPI.cs" />
+    <Compile Include="SignupPostContent.cs" />
+    <Compile Include="SignupPostReponse.cs" />
     <Compile Include="TranslateAPI.cs" />
     <Compile Include="TranslatePostContent.cs" />
     <Compile Include="TranslatePostResponse.cs" />

@@ -33,6 +33,10 @@
             this.btnLogin = new Krypton.Toolkit.KryptonButton();
             this.txtPassword = new Krypton.Toolkit.KryptonTextBox();
             this.txtEmail = new Krypton.Toolkit.KryptonTextBox();
+            this.picHide = new Krypton.Toolkit.KryptonPictureBox();
+            this.picEye = new Krypton.Toolkit.KryptonPictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picHide)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEye)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -71,6 +75,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(10, 106);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(363, 33);
             this.txtPassword.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
@@ -89,10 +94,32 @@
             this.txtEmail.StateCommon.Border.Rounding = 15F;
             this.txtEmail.TabIndex = 6;
             // 
+            // picHide
+            // 
+            this.picHide.Image = global::UserControls.Properties.Resources.pHide;
+            this.picHide.Location = new System.Drawing.Point(329, 109);
+            this.picHide.Name = "picHide";
+            this.picHide.Size = new System.Drawing.Size(32, 24);
+            this.picHide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picHide.TabIndex = 7;
+            this.picHide.TabStop = false;
+            // 
+            // picEye
+            // 
+            this.picEye.Image = global::UserControls.Properties.Resources.pEye;
+            this.picEye.Location = new System.Drawing.Point(329, 109);
+            this.picEye.Name = "picEye";
+            this.picEye.Size = new System.Drawing.Size(32, 24);
+            this.picEye.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEye.TabIndex = 7;
+            this.picEye.TabStop = false;
+            // 
             // UC_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.picEye);
+            this.Controls.Add(this.picHide);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.btnLogin);
@@ -102,6 +129,8 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_Login";
             this.Size = new System.Drawing.Size(376, 196);
+            ((System.ComponentModel.ISupportInitialize)(this.picHide)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEye)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,5 +143,7 @@
         private Krypton.Toolkit.KryptonButton btnLogin;
         private Krypton.Toolkit.KryptonTextBox txtPassword;
         private Krypton.Toolkit.KryptonTextBox txtEmail;
+        private Krypton.Toolkit.KryptonPictureBox picHide;
+        private Krypton.Toolkit.KryptonPictureBox picEye;
     }
 }
