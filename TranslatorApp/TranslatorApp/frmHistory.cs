@@ -19,10 +19,13 @@ namespace TranslatorApp
         private int userControlHeight;
         private int userControlWidth;
         private Panel panel;
+        private int _id;
 
-        public frmHistory()
+        public frmHistory(int id)
         {
             InitializeComponent();
+            this._id = id;
+
             userControls = new List<item_history>();
 
             userControlHeight = 130;
@@ -57,9 +60,7 @@ namespace TranslatorApp
 
             try
             {
-                LoginPostReponse loginPostReponse = new LoginPostReponse();
-                Console.WriteLine(loginPostReponse.id);
-                List<HistoryReponse> historyReponses = await historyAPI.LoadHistoryContent(loginPostReponse.id);
+                List<HistoryReponse> historyReponses = await historyAPI.LoadHistoryContent(_id);
 
                 // Xóa các điều khiển cũ
                 panel.Controls.Clear();
@@ -83,7 +84,7 @@ namespace TranslatorApp
                         newUserControl.into = historyReponses[i].tolanguage;
                         newUserControl.wordFrom = historyReponses[i].originalword;
                         newUserControl.wordInto = historyReponses[i].translatedword;
-                        
+                        //newUserControl.timeSave = DateTime.Parse(historyReponses[i].timesave);
 
                         userControls.Add(newUserControl);
                     }

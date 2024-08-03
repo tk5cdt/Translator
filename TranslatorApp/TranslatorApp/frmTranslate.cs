@@ -37,6 +37,13 @@ namespace TranslatorApp
         {
             timer.Stop();
             Translate();
+            saveHistory();
+        }
+        public async void saveHistory()
+        {
+            SaveHistoryAPI saveHistoryAPI = new SaveHistoryAPI();
+            await saveHistoryAPI.SaveHistoryContent(kryptonRichTextBox1.Text, kryptonRichTextBox2.Text, "en", "en", DateTime.Now, _id);
+
         }
 
         private void Translate()
@@ -50,6 +57,12 @@ namespace TranslatorApp
         {
             timer.Stop();
             timer.Start();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmHistory frm = new frmHistory(_id);
+            frm.Show();
         }
     }
 }

@@ -32,8 +32,9 @@ namespace TranslatorApp
 
                 if (reponse != null)
                 {
-                    frmTranslate frm = new frmTranslate();
-                    //frm.MdiParent = this;
+                    //frmTranslate frm = new frmTranslate();
+                    frmTranslate frm = new frmTranslate(reponse.UID);
+                    ////frm.MdiParent = this;
                     //frmHistory frm = new frmHistory();
                     frm.Show();
                     

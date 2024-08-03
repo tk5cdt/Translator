@@ -39,6 +39,7 @@ namespace UserControls
             this.kryptonLanguageManager1 = new Krypton.Toolkit.KryptonLanguageManager();
             this.kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
             this.kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
+            this.lbl_timesave = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,12 +116,21 @@ namespace UserControls
             this.kryptonBorderEdge1.Size = new System.Drawing.Size(500, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
+            // lbl_timesave
+            // 
+            this.lbl_timesave.Location = new System.Drawing.Point(600, 17);
+            this.lbl_timesave.Name = "lbl_timesave";
+            this.lbl_timesave.Size = new System.Drawing.Size(109, 24);
+            this.lbl_timesave.TabIndex = 4;
+            this.lbl_timesave.Values.Text = "kryptonLabel2";
+            // 
             // item_history
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.lbl_timesave);
             this.Controls.Add(this.kryptonBorderEdge1);
             this.Controls.Add(this.kryptonPictureBox1);
             this.Controls.Add(this.lbl_into);
@@ -149,5 +159,6 @@ namespace UserControls
         private Krypton.Toolkit.KryptonLanguageManager kryptonLanguageManager1;
         private Krypton.Toolkit.KryptonPictureBox kryptonPictureBox1;
         private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge1;
+        private Krypton.Toolkit.KryptonLabel lbl_timesave;
     }
 }
