@@ -36,7 +36,7 @@
             // 
             // uC_Signup1
             // 
-            this.uC_Signup1.Location = new System.Drawing.Point(30, 226);
+            this.uC_Signup1.Location = new System.Drawing.Point(30, 223);
             this.uC_Signup1.Name = "uC_Signup1";
             this.uC_Signup1.Size = new System.Drawing.Size(376, 312);
             this.uC_Signup1.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(151, 204);
+            this.label1.Location = new System.Drawing.Point(151, 200);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 26);
             this.label1.TabIndex = 1;
@@ -65,12 +65,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 530);
+            this.ClientSize = new System.Drawing.Size(442, 538);
             this.Controls.Add(this.kryptonPictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.uC_Signup1);
             this.Name = "frmSignup";
             this.Text = "SIGN UP";
+            this.Load += new System.EventHandler(this.frmSignup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -125,5 +125,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pHide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pEye.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
