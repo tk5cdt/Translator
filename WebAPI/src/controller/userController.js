@@ -8,7 +8,7 @@ const signup = async (req, res) => {
     const pool = await connectDB();
     const result = await pool.request().query(`Select * from ACCOUNT where email = '${email}'`);
     if (result.rowsAffected[0] > 0) {
-      return res.status(400).json({ message: "Error" });
+      return res.status(400).json({ message: "Email already exists" });
     }
     else{
         if(password !== confirmPassword){
@@ -42,7 +42,7 @@ const login = async (req, res) => {
     // console.log(username);
     const result = await pool.request().query(`select * from ACCOUNT where email = '${email}'`)
     if (result.recordset.length === 0) {
-        return res.status(400).json({ message: "Email không tồn tại" });
+        return res.status(400).json({ message: "Email is invalid" });
         // return res.render("login.ejs", { message: "email không tồn tại" });
     }
     else {
@@ -57,7 +57,7 @@ const login = async (req, res) => {
 
         }
         else {
-            return res.status(400).json({ message: "Sai mật khẩu" });
+            return res.status(400).json({ message: "Password is incorrect" });
         }
     }
 }

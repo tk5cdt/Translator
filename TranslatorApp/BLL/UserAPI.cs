@@ -73,13 +73,13 @@ namespace BLL
                     JsonNumberHandling.WriteAsString
                 };
                 var result = JsonSerializer.Deserialize<SignupPostReponse>(responseString, options);
-                return result;
+                return new SignupPostReponse { IsSuccess = true };
             }
             else
             {
                 var errorResponse = response.Content.ReadAsStringAsync().Result;
                 var jsonError = JsonSerializer.Deserialize<SignupPostReponse>(errorResponse);
-                return jsonError;
+                return new SignupPostReponse { IsSuccess = false, message = jsonError.message };
             }
         }
     }

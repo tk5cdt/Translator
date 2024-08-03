@@ -35,12 +35,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtConfirm = new Krypton.Toolkit.KryptonTextBox();
             this.btnSignup = new Krypton.Toolkit.KryptonButton();
+            this.txtPasswordSignup = new TranslatorLibrary.PasswordTextbox();
+            this.txtEmailSignup = new TranslatorLibrary.EmailTextbox();
             this.picHidePass = new Krypton.Toolkit.KryptonPictureBox();
             this.picEyePass = new Krypton.Toolkit.KryptonPictureBox();
             this.picHideConfirm = new Krypton.Toolkit.KryptonPictureBox();
             this.picEyeConfirm = new Krypton.Toolkit.KryptonPictureBox();
-            this.txtPasswordSignup = new TranslatorLibrary.PasswordTextbox();
-            this.txtEmailSignup = new TranslatorLibrary.EmailTextbox();
             ((System.ComponentModel.ISupportInitialize)(this.picHidePass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEyePass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picHideConfirm)).BeginInit();
@@ -122,46 +122,6 @@
             this.btnSignup.TabIndex = 4;
             this.btnSignup.Values.Text = "SIGN UP";
             // 
-            // picHidePass
-            // 
-            this.picHidePass.Image = global::UserControls.Properties.Resources.pHide;
-            this.picHidePass.Location = new System.Drawing.Point(325, 162);
-            this.picHidePass.Name = "picHidePass";
-            this.picHidePass.Size = new System.Drawing.Size(34, 24);
-            this.picHidePass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picHidePass.TabIndex = 5;
-            this.picHidePass.TabStop = false;
-            // 
-            // picEyePass
-            // 
-            this.picEyePass.Image = global::UserControls.Properties.Resources.pEye;
-            this.picEyePass.Location = new System.Drawing.Point(325, 162);
-            this.picEyePass.Name = "picEyePass";
-            this.picEyePass.Size = new System.Drawing.Size(34, 24);
-            this.picEyePass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picEyePass.TabIndex = 5;
-            this.picEyePass.TabStop = false;
-            // 
-            // picHideConfirm
-            // 
-            this.picHideConfirm.Image = global::UserControls.Properties.Resources.pHide;
-            this.picHideConfirm.Location = new System.Drawing.Point(325, 223);
-            this.picHideConfirm.Name = "picHideConfirm";
-            this.picHideConfirm.Size = new System.Drawing.Size(34, 24);
-            this.picHideConfirm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picHideConfirm.TabIndex = 6;
-            this.picHideConfirm.TabStop = false;
-            // 
-            // picEyeConfirm
-            // 
-            this.picEyeConfirm.Image = global::UserControls.Properties.Resources.pEye;
-            this.picEyeConfirm.Location = new System.Drawing.Point(325, 223);
-            this.picEyeConfirm.Name = "picEyeConfirm";
-            this.picEyeConfirm.Size = new System.Drawing.Size(34, 24);
-            this.picEyeConfirm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picEyeConfirm.TabIndex = 6;
-            this.picEyeConfirm.TabStop = false;
-            // 
             // txtPasswordSignup
             // 
             this.txtPasswordSignup.Location = new System.Drawing.Point(10, 158);
@@ -184,6 +144,46 @@
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.txtEmailSignup.StateCommon.Border.Rounding = 15F;
             this.txtEmailSignup.TabIndex = 2;
+            // 
+            // picHidePass
+            // 
+            this.picHidePass.Image = global::UserControls.Properties.Resources.pHide;
+            this.picHidePass.Location = new System.Drawing.Point(325, 162);
+            this.picHidePass.Name = "picHidePass";
+            this.picHidePass.Size = new System.Drawing.Size(32, 24);
+            this.picHidePass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picHidePass.TabIndex = 5;
+            this.picHidePass.TabStop = false;
+            // 
+            // picEyePass
+            // 
+            this.picEyePass.Image = global::UserControls.Properties.Resources.pEye;
+            this.picEyePass.Location = new System.Drawing.Point(325, 162);
+            this.picEyePass.Name = "picEyePass";
+            this.picEyePass.Size = new System.Drawing.Size(32, 24);
+            this.picEyePass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEyePass.TabIndex = 6;
+            this.picEyePass.TabStop = false;
+            // 
+            // picHideConfirm
+            // 
+            this.picHideConfirm.Image = global::UserControls.Properties.Resources.pHide;
+            this.picHideConfirm.Location = new System.Drawing.Point(325, 223);
+            this.picHideConfirm.Name = "picHideConfirm";
+            this.picHideConfirm.Size = new System.Drawing.Size(32, 24);
+            this.picHideConfirm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picHideConfirm.TabIndex = 7;
+            this.picHideConfirm.TabStop = false;
+            // 
+            // picEyeConfirm
+            // 
+            this.picEyeConfirm.Image = global::UserControls.Properties.Resources.pEye;
+            this.picEyeConfirm.Location = new System.Drawing.Point(325, 223);
+            this.picEyeConfirm.Name = "picEyeConfirm";
+            this.picEyeConfirm.Size = new System.Drawing.Size(32, 24);
+            this.picEyeConfirm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEyeConfirm.TabIndex = 8;
+            this.picEyeConfirm.TabStop = false;
             // 
             // UC_Signup
             // 

@@ -79,7 +79,7 @@ namespace TranslatorApp
                 }
                 else
                 {
-                    MessageBox.Show("Incorrect email or password. Please re-enter!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Email or password is incorrect. Please enter again!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else {

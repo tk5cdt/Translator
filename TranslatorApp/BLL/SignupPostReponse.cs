@@ -8,7 +8,7 @@ namespace BLL
 {
     public class SignupPostReponse
     {
-        public int UID { get; set; }
-        public string ErrorMessage { get; set; }
+        public bool IsSuccess { get; set; }
+        public string message { get; set; }
     }
 }
