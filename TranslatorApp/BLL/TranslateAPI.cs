@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Runtime.InteropServices;
 
 namespace BLL
 {
@@ -41,5 +42,27 @@ namespace BLL
             TranslatePostResponse result = JsonSerializer.Deserialize<TranslatePostResponse>(responseString, options);
             return result;
         }
+
+        public List<Languages> GetLanguages()
+        {
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                UseDefaultCredentials = true
+            };
+            var client = new HttpClient(handler);
+            client.BaseAddress = new Uri("https://libretranslate.com/languages");
+            var response = client.GetAsync(client.BaseAddress).Result;
+            var responseString = response.Content.ReadAsStringAsync().Result;
+            var options = new JsonSerializerOptions()
+            {
+                NumberHandling = JsonNumberHandling.AllowReadingFromString |
+                JsonNumberHandling.WriteAsString
+            };
+            List<Languages> result = JsonSerializer.Deserialize<List<Languages>>(responseString, options);
+            return result;
+        }
     }
+
+
+
 }
