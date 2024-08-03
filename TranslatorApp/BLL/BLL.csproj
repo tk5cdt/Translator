@@ -86,7 +86,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DetectedLanguage.cs" />
+    <Compile Include="HistoryAPI.cs" />
+    <Compile Include="HistoryContent.cs" />
+    <Compile Include="HistoryReponse.cs" />
     <Compile Include="LoginPostReponse.cs" />
+    <Compile Include="SaveHistoryAPI.cs" />
     <Compile Include="TranslateAPI.cs" />
     <Compile Include="TranslatePostContent.cs" />
     <Compile Include="TranslatePostResponse.cs" />

@@ -34,70 +34,6 @@ const signup = async (req, res) => {
     console.log(err);
   }
 }
-
-// const login = async (req, res) => {
-//     try {
-//         let { email, password } = req.body;
-//         console.log(email);
-//         const pool = await connectDB();
-
-//         // const result = await pool.request().query(`'select * from ACCOUNT where email = '${email}'`);
-
-//         const result = await pool.request()
-//       .input('email', email)
-//       .query('SELECT * FROM ACCOUNT WHERE email = @email');
-
-//       console.log(result.query);
-//         if (result.recordset.length === 0) {
-//             return res.status(400).json({ message: "Invalid email" });
-//         }
-//         const user = result.recordset[0];
-//         const match = await bcrypt.compare(password, user.pass);
-//         if (!match) {
-//             return res.status(400).json({ message: "Invalid password" });
-//         }
-//         else
-//         {
-//             req.session.user = user;
-//             return res.status(200).json({ message: "Success" });
-//         }
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
-// const login = async (req, res) => {
-//     try {
-//       let { email, password } = req.body;
-//       console.log("Received email: ", email);
-//       const pool = await connectDB();
-  
-//       const result = await pool.request().query(`Select * from ACCOUNT where email = '${email}'`);
-  
-//       console.log("Query result: ", result);
-//       if (result.recordset.length === 0) {
-//         console.log(result.recordset);
-//         return res.status(400).json({ message: "Invalid email" });
-//       }
-  
-//       const user = result.recordset[0];
-//     //   console.log("User found: ", user);
-
-//         const match = await bcrypt.compare(password, user.PASS);
-//         console.log("Match: ", match);
-//         if (!match) {
-//             return res.status(400).json({ message: "Invalid password" });
-//         }
-//         else
-//         {
-//             req.session.user = user;
-//             return res.status(200).json({ message: "Success" });
-//         }
-
-//     } catch (err) {
-//       console.log("Error during login: ", err);
-//       return res.status(500).json({ message: "Internal server error" });
-//     }
-//   }
   
 const login = async (req, res) => {
     let { email, password } = req.body;
@@ -135,6 +71,7 @@ const logout = (req, res) => {
         return res.json({ message: "Logout thanh cong" });
    })
 }
+
 
 module.exports = {
     signup,

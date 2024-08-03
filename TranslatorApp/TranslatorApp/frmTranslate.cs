@@ -14,11 +14,17 @@ namespace TranslatorApp
 {
     public partial class frmTranslate : KryptonForm
     {
+        private int _id;
 
         Timer timer = new Timer();
         public frmTranslate()
         {
             InitializeComponent();
+        }
+        public frmTranslate(int id)
+        {
+            InitializeComponent();
+            this._id = id;
         }
 
         private void frmTranslate_Load(object sender, EventArgs e)

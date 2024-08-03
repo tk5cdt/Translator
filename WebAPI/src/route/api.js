@@ -19,6 +19,7 @@ const initApiRoute = (app) => {
     router.get('/getfavorite', favoriteController.getFavorite);
     router.post('/savefavorite', favoriteController.saveFavorite);
     router.post('/deletefavorite', favoriteController.deleteFavorite);
+
     return app.use('/api', router);
 }
 

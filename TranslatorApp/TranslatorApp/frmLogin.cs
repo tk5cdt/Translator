@@ -18,7 +18,6 @@ namespace TranslatorApp
         {
             InitializeComponent();
         }
-
         private void frmLogin_Load(object sender, EventArgs e)
         {
             uC_Login1.login.Click += UC_Login1_Click;
@@ -30,11 +29,16 @@ namespace TranslatorApp
             if (!string.IsNullOrEmpty(uC_Login1.email.Text) || !string.IsNullOrEmpty(uC_Login1.password.Text))
             {
                 LoginPostReponse reponse = userAPI.sendLoginContent(uC_Login1.email.Text, uC_Login1.password.Text);
+
                 if (reponse != null)
                 {
                     frmTranslate frm = new frmTranslate();
                     //frm.MdiParent = this;
+                    //frmHistory frm = new frmHistory();
                     frm.Show();
+                    
+
+                    
                 }
                 else
                 {
