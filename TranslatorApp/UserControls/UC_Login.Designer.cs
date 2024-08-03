@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogin = new Krypton.Toolkit.KryptonButton();
             this.txtPassword = new Krypton.Toolkit.KryptonTextBox();
-            this.txtEmail = new TranslatorLibrary.EmailTextbox();
+            this.txtEmail = new Krypton.Toolkit.KryptonTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -65,7 +65,7 @@
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.btnLogin.StateCommon.Border.Rounding = 15F;
             this.btnLogin.TabIndex = 4;
-            this.btnLogin.Values.Text = "Login";
+            this.btnLogin.Values.Text = "LOGIN";
             // 
             // txtPassword
             // 
@@ -80,23 +80,23 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(10, 30);
+            this.txtEmail.Location = new System.Drawing.Point(10, 38);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(363, 33);
             this.txtEmail.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.txtEmail.StateCommon.Border.Rounding = 15F;
-            this.txtEmail.TabIndex = 1;
+            this.txtEmail.TabIndex = 6;
             // 
             // UC_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -110,9 +110,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private TranslatorLibrary.EmailTextbox txtEmail;
         private System.Windows.Forms.Label label2;
         private Krypton.Toolkit.KryptonButton btnLogin;
         private Krypton.Toolkit.KryptonTextBox txtPassword;
+        private Krypton.Toolkit.KryptonTextBox txtEmail;
     }
 }

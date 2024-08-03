@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
-using ComponentFactory.Krypton.Toolkit;
+using Krypton.Toolkit;
 using UserControls;
 
 namespace TranslatorApp
@@ -58,8 +58,8 @@ namespace TranslatorApp
             try
             {
                 LoginPostReponse loginPostReponse = new LoginPostReponse();
-                Console.WriteLine(loginPostReponse.id);
-                List<HistoryReponse> historyReponses = await historyAPI.LoadHistoryContent(loginPostReponse.id);
+                Console.WriteLine(loginPostReponse.UID);
+                List<HistoryReponse> historyReponses = await historyAPI.LoadHistoryContent(loginPostReponse.UID);
 
                 // Xóa các điều khiển cũ
                 panel.Controls.Clear();

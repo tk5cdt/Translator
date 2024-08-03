@@ -36,9 +36,7 @@ namespace TranslatorApp
                     //frm.MdiParent = this;
                     //frmHistory frm = new frmHistory();
                     frm.Show();
-                    
-
-                    
+                    this.Hide();
                 }
                 else
                 {
