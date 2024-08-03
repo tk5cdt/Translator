@@ -8,6 +8,6 @@ namespace BLL
 {
     public class LoginPostReponse
     {
-        public int id {  get; set; }
+        public int UID {  get; set; }
     }
 }

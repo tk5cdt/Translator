@@ -31,7 +31,12 @@ namespace BLL
             if (response.IsSuccessStatusCode)
             {
                 var responseString = response.Content.ReadAsStringAsync().Result;
-                var result = JsonSerializer.Deserialize<LoginPostReponse>(responseString);
+                var options = new JsonSerializerOptions()
+                {
+                    NumberHandling = JsonNumberHandling.AllowReadingFromString |
+                JsonNumberHandling.WriteAsString
+                };
+                var result = JsonSerializer.Deserialize<LoginPostReponse>(responseString, options);
                 return result;
             }
             else

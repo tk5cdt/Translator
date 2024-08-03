@@ -27,7 +27,7 @@ namespace TranslatorApp
         private void UC_Login1_Click(object sender, EventArgs e)
         {
             UserAPI userAPI = new UserAPI();
-            if (!string.IsNullOrEmpty(uC_Login1.email.Text) || !string.IsNullOrEmpty(uC_Login1.password.Text))
+            if (!string.IsNullOrEmpty(uC_Login1.email.Text) && !string.IsNullOrEmpty(uC_Login1.password.Text))
             {
                 LoginPostReponse reponse = userAPI.sendLoginContent(uC_Login1.email.Text, uC_Login1.password.Text);
                 if (reponse != null)
