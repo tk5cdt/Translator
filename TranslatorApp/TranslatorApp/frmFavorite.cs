@@ -84,7 +84,8 @@ namespace TranslatorApp
                     for (int i = 0; i < userControls.Count; i++)
                     {
                         var control = userControls[i];
-                        control.Top = i * (userControlHeight + 6) + 2;
+                        
+                        control.Top = i * (userControlHeight + 6) + 10;
 
                         int centerX = (panel.ClientSize.Width - userControlWidth) / 2;
                         control.Left = centerX;
@@ -97,7 +98,7 @@ namespace TranslatorApp
                     for (int i = 0; i < panel.Controls.Count; i++)
                     {
                         var control = panel.Controls[i];
-                        control.Top = i * (userControlHeight + 6) + 2;
+                        control.Top = i * (userControlHeight + 6) + 10;
 
                         int centerX = (panel.ClientSize.Width - userControlWidth) / 2;
                         control.Left = centerX;

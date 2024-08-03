@@ -20,8 +20,8 @@ namespace TranslatorApp
             //Application.Run(new frmLogin());
             //Application.Run(new frmSignup());
             //Application.Run(new frmTranslate(4));
-            //Application.Run(new frmHistory(5));
-            Application.Run(new frmFavorite(4));
+            Application.Run(new frmHistory(2));
+            //Application.Run(new frmFavorite(4));
 
 
         }

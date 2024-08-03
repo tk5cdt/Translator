@@ -35,7 +35,7 @@ namespace TranslatorApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 579);
+            this.ClientSize = new System.Drawing.Size(882, 579);
             this.Name = "frmHistory";
             this.Text = "frmHistory";
             this.Load += new System.EventHandler(this.frmHistory_Load);
