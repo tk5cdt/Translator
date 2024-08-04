@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
-            this.uC_Login1 = new UserControls.UC_Login();
             this.label2 = new System.Windows.Forms.Label();
             this.llbSignup = new System.Windows.Forms.LinkLabel();
+            this.uC_Login1 = new UserControls.UC_Login();
+            this.kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,25 +45,6 @@
             this.label1.Size = new System.Drawing.Size(91, 26);
             this.label1.TabIndex = 2;
             this.label1.Text = "LOGIN";
-            // 
-            // kryptonPictureBox1
-            // 
-            this.kryptonPictureBox1.Image = global::TranslatorApp.Properties.Resources.loginImg;
-            this.kryptonPictureBox1.Location = new System.Drawing.Point(12, 3);
-            this.kryptonPictureBox1.Name = "kryptonPictureBox1";
-            this.kryptonPictureBox1.Size = new System.Drawing.Size(418, 221);
-            this.kryptonPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.kryptonPictureBox1.TabIndex = 3;
-            this.kryptonPictureBox1.TabStop = false;
-            // 
-            // uC_Login1
-            // 
-            this.uC_Login1.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uC_Login1.Location = new System.Drawing.Point(29, 294);
-            this.uC_Login1.Margin = new System.Windows.Forms.Padding(4);
-            this.uC_Login1.Name = "uC_Login1";
-            this.uC_Login1.Size = new System.Drawing.Size(376, 190);
-            this.uC_Login1.TabIndex = 0;
             // 
             // label2
             // 
@@ -89,6 +70,25 @@
             this.llbSignup.TabStop = true;
             this.llbSignup.Text = "SIGN UP";
             // 
+            // uC_Login1
+            // 
+            this.uC_Login1.Font = new System.Drawing.Font("Times New Roman", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uC_Login1.Location = new System.Drawing.Point(29, 294);
+            this.uC_Login1.Margin = new System.Windows.Forms.Padding(4);
+            this.uC_Login1.Name = "uC_Login1";
+            this.uC_Login1.Size = new System.Drawing.Size(376, 190);
+            this.uC_Login1.TabIndex = 0;
+            // 
+            // kryptonPictureBox1
+            // 
+            this.kryptonPictureBox1.Image = global::TranslatorApp.Properties.Resources.loginImg;
+            this.kryptonPictureBox1.Location = new System.Drawing.Point(12, 3);
+            this.kryptonPictureBox1.Name = "kryptonPictureBox1";
+            this.kryptonPictureBox1.Size = new System.Drawing.Size(418, 221);
+            this.kryptonPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.kryptonPictureBox1.TabIndex = 3;
+            this.kryptonPictureBox1.TabStop = false;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +100,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.uC_Login1);
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LOGIN";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPictureBox1)).EndInit();
