@@ -32,7 +32,7 @@ namespace TranslatorApp
 
         private void frmTranslate_Load(object sender, EventArgs e)
         {
-            timer.Interval = 1200;
+            timer.Interval = 1000;
             timer.Tick += Timer_Tick;
             loadFromCbb();
             loadToCbb();
@@ -63,9 +63,10 @@ namespace TranslatorApp
             tbAlternatives.Text = string.Empty;
             if (response.alternatives != null)
             {
+                var count = 0;
                 foreach (var item in response.alternatives)
                 {
-                    tbAlternatives.Text += item + "\n\n";
+                    tbAlternatives.Text += ++count + ". " + item + "\n";
                 }
                 tbAlternatives.Text = tbAlternatives.Text.Trim();
             }
@@ -145,18 +146,12 @@ namespace TranslatorApp
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-            var pbuilder = new PromptBuilder();
-            var speaker2 = new SpeechSynthesizer();
-            speaker2.Rate = -2;
+            speechSynthesizer.Dispose();
+            speechSynthesizer = new SpeechSynthesizer();
+            var voice = speechSynthesizer.GetInstalledVoices();
 
-            var culture = CultureInfo.GetCultureInfo("zh-CN");
-            var voices = speaker2.GetInstalledVoices(culture);
-            if (voices.Count > 0) //Chinese voices found
-            {
-                speaker2.SelectVoice(voices[0].VoiceInfo.Name); //you need to call this API
-                pbuilder.AppendText("hello 你好");
-                speaker2.SpeakAsync(pbuilder);
-            }
+            speechSynthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo(cbbFromLanguage.SelectedValue.ToString()));
+            speechSynthesizer.SpeakAsync(kryptonRichTextBox1.Text);
         }
     }
 }

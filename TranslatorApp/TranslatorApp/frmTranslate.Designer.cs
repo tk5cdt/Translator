@@ -65,6 +65,7 @@
             this.kryptonButton1.Size = new System.Drawing.Size(56, 20);
             this.kryptonButton1.TabIndex = 16;
             this.kryptonButton1.Values.Text = "speech";
+            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
             // 
             // kryptonLabel1
             // 
@@ -94,7 +95,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 44);
+            this.label1.Location = new System.Drawing.Point(141, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 13;
@@ -137,6 +138,7 @@
             this.kryptonRichTextBox1.StateCommon.Content.Font = new System.Drawing.Font("Book Antiqua", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRichTextBox1.TabIndex = 9;
             this.kryptonRichTextBox1.Text = "";
+            this.kryptonRichTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.kryptonRichTextBox1_KeyPress);
             // 
             // frmTranslate
             // 
@@ -151,6 +153,9 @@
             this.ShowIcon = false;
             this.StateCommon.Border.Color1 = System.Drawing.Color.Transparent;
             this.StateCommon.Border.Color2 = System.Drawing.Color.Transparent;
+            this.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Text = "frmTranslate";
             this.Load += new System.EventHandler(this.frmTranslate_Load);
             this.panel1.ResumeLayout(false);
