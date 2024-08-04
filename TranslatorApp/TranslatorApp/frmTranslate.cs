@@ -126,7 +126,8 @@ namespace TranslatorApp
 
         private void cbbFromLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (kryptonRichTextBox1.Text != string.Empty)
+                Translate();
         }
 
         private void loadToCbb()
@@ -146,12 +147,31 @@ namespace TranslatorApp
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
+            if (kryptonRichTextBox1.Text == string.Empty) return;
+            string lang = cbbFromLanguage.SelectedValue.ToString();
+            if (cbbFromLanguage.SelectedValue.ToString() == "auto")
+            {
+                List<Languages> languages = (List<Languages>)cbbFromLanguage.DataSource;
+                lang = languages.Where(x => x.name == label1.Text.Split('\n')[0].Split(':')[1].Trim()).FirstOrDefault().code;
+            }
+                
             speechSynthesizer.Dispose();
             speechSynthesizer = new SpeechSynthesizer();
             var voice = speechSynthesizer.GetInstalledVoices();
 
-            speechSynthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo(cbbFromLanguage.SelectedValue.ToString()));
+            speechSynthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo(lang));
             speechSynthesizer.SpeakAsync(kryptonRichTextBox1.Text);
+        }
+
+        private void kryptonButton2_Click(object sender, EventArgs e)
+        {
+            if (kryptonRichTextBox2.Text == string.Empty) return;
+            speechSynthesizer.Dispose();
+            speechSynthesizer = new SpeechSynthesizer();
+            var voice = speechSynthesizer.GetInstalledVoices();
+
+            speechSynthesizer.SelectVoiceByHints(VoiceGender.Neutral, VoiceAge.NotSet, 0, CultureInfo.GetCultureInfo(cbbToLanguage.SelectedValue.ToString()));
+            speechSynthesizer.SpeakAsync(kryptonRichTextBox2.Text);
         }
     }
 }

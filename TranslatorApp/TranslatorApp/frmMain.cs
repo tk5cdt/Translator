@@ -51,6 +51,7 @@ namespace TranslatorApp
 
         private void mTranslate_Click_1(object sender, EventArgs e)
         {
+            if (child != null && child is frmTranslate) return;
             if (child != null) child.Close();
             frmTranslate frm = new frmTranslate();
             child = frm;

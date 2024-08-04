@@ -37,12 +37,14 @@
             this.cbbFromLanguage = new System.Windows.Forms.ComboBox();
             this.kryptonRichTextBox2 = new Krypton.Toolkit.KryptonRichTextBox();
             this.kryptonRichTextBox1 = new Krypton.Toolkit.KryptonRichTextBox();
+            this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.kryptonButton2);
             this.panel1.Controls.Add(this.kryptonButton1);
             this.panel1.Controls.Add(this.kryptonLabel1);
             this.panel1.Controls.Add(this.tbAlternatives);
@@ -51,9 +53,9 @@
             this.panel1.Controls.Add(this.cbbFromLanguage);
             this.panel1.Controls.Add(this.kryptonRichTextBox2);
             this.panel1.Controls.Add(this.kryptonRichTextBox1);
-            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 451);
+            this.panel1.Size = new System.Drawing.Size(907, 529);
             this.panel1.TabIndex = 0;
             // 
             // kryptonButton1
@@ -87,7 +89,7 @@
             this.tbAlternatives.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.tbAlternatives.ReadOnly = true;
             this.tbAlternatives.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.tbAlternatives.Size = new System.Drawing.Size(287, 82);
+            this.tbAlternatives.Size = new System.Drawing.Size(433, 82);
             this.tbAlternatives.StateCommon.Content.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbAlternatives.TabIndex = 14;
             this.tbAlternatives.Text = "";
@@ -103,10 +105,11 @@
             // cbbToLanguage
             // 
             this.cbbToLanguage.FormattingEnabled = true;
-            this.cbbToLanguage.Location = new System.Drawing.Point(407, 36);
+            this.cbbToLanguage.Location = new System.Drawing.Point(464, 36);
             this.cbbToLanguage.Name = "cbbToLanguage";
             this.cbbToLanguage.Size = new System.Drawing.Size(121, 21);
             this.cbbToLanguage.TabIndex = 12;
+            this.cbbToLanguage.SelectedIndexChanged += new System.EventHandler(this.cbbToLanguage_SelectedIndexChanged);
             // 
             // cbbFromLanguage
             // 
@@ -119,10 +122,10 @@
             // kryptonRichTextBox2
             // 
             this.kryptonRichTextBox2.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonRichTextBox2.Location = new System.Drawing.Point(407, 63);
+            this.kryptonRichTextBox2.Location = new System.Drawing.Point(464, 63);
             this.kryptonRichTextBox2.Name = "kryptonRichTextBox2";
             this.kryptonRichTextBox2.ReadOnly = true;
-            this.kryptonRichTextBox2.Size = new System.Drawing.Size(383, 213);
+            this.kryptonRichTextBox2.Size = new System.Drawing.Size(430, 213);
             this.kryptonRichTextBox2.StateCommon.Content.Font = new System.Drawing.Font("Book Antiqua", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRichTextBox2.TabIndex = 10;
             this.kryptonRichTextBox2.Text = "";
@@ -134,11 +137,22 @@
             this.kryptonRichTextBox1.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             this.kryptonRichTextBox1.Location = new System.Drawing.Point(14, 63);
             this.kryptonRichTextBox1.Name = "kryptonRichTextBox1";
-            this.kryptonRichTextBox1.Size = new System.Drawing.Size(383, 213);
+            this.kryptonRichTextBox1.Size = new System.Drawing.Size(430, 213);
             this.kryptonRichTextBox1.StateCommon.Content.Font = new System.Drawing.Font("Book Antiqua", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRichTextBox1.TabIndex = 9;
             this.kryptonRichTextBox1.Text = "";
             this.kryptonRichTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.kryptonRichTextBox1_KeyPress);
+            // 
+            // kryptonButton2
+            // 
+            this.kryptonButton2.Location = new System.Drawing.Point(464, 281);
+            this.kryptonButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.kryptonButton2.Name = "kryptonButton2";
+            this.kryptonButton2.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonButton2.Size = new System.Drawing.Size(56, 20);
+            this.kryptonButton2.TabIndex = 17;
+            this.kryptonButton2.Values.Text = "speech";
+            this.kryptonButton2.Click += new System.EventHandler(this.kryptonButton2_Click);
             // 
             // frmTranslate
             // 
@@ -146,7 +160,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(906, 529);
             this.Controls.Add(this.panel1);
             this.Name = "frmTranslate";
             this.PaletteMode = Krypton.Toolkit.PaletteMode.VisualStudio2010Render365;
@@ -176,5 +190,6 @@
         private System.Windows.Forms.ComboBox cbbFromLanguage;
         private Krypton.Toolkit.KryptonRichTextBox kryptonRichTextBox2;
         private Krypton.Toolkit.KryptonRichTextBox kryptonRichTextBox1;
+        private Krypton.Toolkit.KryptonButton kryptonButton2;
     }
 }
