@@ -69,6 +69,7 @@ namespace TranslatorApp
             if (response)
             {
                 UserSession.Instance.SetUsername(null);
+                UserSession.Instance.SetUid(0);
                 updateLoginButton();
             }
         }
