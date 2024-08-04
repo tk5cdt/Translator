@@ -14,7 +14,7 @@ namespace BLL
 {
     public class TranslateAPI
     {
-        public TranslatePostResponse sendTranslateContent(string q, string source = "auto", string target = "en", string format = "text", int alternatives = 2)
+        public async Task<TranslatePostResponse> sendTranslateContent(string q, string source = "auto", string target = "en", string format = "text", int alternatives = 2)
         {
             TranslatePostContent content = new TranslatePostContent();
             content.q = q;
@@ -32,8 +32,8 @@ namespace BLL
             var json = JsonSerializer.Serialize(content);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = client.PostAsync(client.BaseAddress, data).Result;
-            var responseString = response.Content.ReadAsStringAsync().Result;
+            var response = await client.PostAsync(client.BaseAddress, data);
+            var responseString = await response.Content.ReadAsStringAsync();
             var options = new JsonSerializerOptions()
             {
                 NumberHandling = JsonNumberHandling.AllowReadingFromString |

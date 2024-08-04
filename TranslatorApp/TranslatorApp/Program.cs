@@ -18,8 +18,8 @@ namespace TranslatorApp
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
             //Application.Run(new frmLogin());
-            Application.Run(new frmSignup());
-            //Application.Run(new frmTranslate());
+            //Application.Run(new frmSignup());
+            Application.Run(new frmTranslate());
             //Application.Run(new frmHistory());
 
 
