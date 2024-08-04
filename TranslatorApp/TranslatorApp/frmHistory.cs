@@ -26,7 +26,6 @@ namespace TranslatorApp
         public frmHistory(int id)
         {
             InitializeComponent();
-            //InitializeItemHistoryEvents();
             InitializeItemHistory();
             this._id = id;
 
@@ -35,15 +34,6 @@ namespace TranslatorApp
             userControlHeight = 130;
             userControlWidth = 600;
 
-            panel = new Panel
-            {
-                Dock = DockStyle.Fill,
-                AutoScroll = true
-            };
-            this.Controls.Add(panel);
-
-
-            //saveFavorite();
         }
 
         //show list history
@@ -57,7 +47,7 @@ namespace TranslatorApp
                 List<HistoryReponse> historyReponses = await historyAPI.LoadHistoryContent(_id);
 
                 // Xóa các điều khiển cũ
-                panel.Controls.Clear();
+                kryptonPanel1.Controls.Clear();
 
                 if (historyReponses != null && historyReponses.Count > 0)
                 {
@@ -79,10 +69,12 @@ namespace TranslatorApp
                         newUserControl.into = historyReponses[i].tolanguage;
                         newUserControl.wordFrom = historyReponses[i].originalword;
                         newUserControl.wordInto = historyReponses[i].translatedword;
+                        newUserControl.wordid = historyReponses[i].wordid;
                         //newUserControl.timeSave = DateTime.Parse(historyReponses[i].timesave);
 
                         // Đăng ký sự kiện
                         newUserControl.OnSaveFavorite = HandleSaveFavorite;
+                        newUserControl.OnDeleteHistory = HandleDeleteHistory;
 
                         userControls.Add(newUserControl);
                     }
@@ -93,20 +85,20 @@ namespace TranslatorApp
                         var control = userControls[i];
                         control.Top = i * (userControlHeight + 6) + 2;
 
-                        int centerX = (panel.ClientSize.Width - userControlWidth) / 2;
+                        int centerX = (kryptonPanel1.ClientSize.Width - userControlWidth) / 2;
                         control.Left = centerX;
 
-                        panel.Controls.Add(control);
-                        panel.Controls.SetChildIndex(control, 0);
+                        kryptonPanel1.Controls.Add(control);
+                        kryptonPanel1.Controls.SetChildIndex(control, 0);
                     }
 
                     // Cập nhật vị trí các điều khiển trong panel
-                    for (int i = 0; i < panel.Controls.Count; i++)
+                    for (int i = 0; i < kryptonPanel1.Controls.Count; i++)
                     {
-                        var control = panel.Controls[i];
+                        var control = kryptonPanel1.Controls[i];
                         control.Top = i * (userControlHeight + 6) + 2;
 
-                        int centerX = (panel.ClientSize.Width - userControlWidth) / 2;
+                        int centerX = (kryptonPanel1.ClientSize.Width - userControlWidth) / 2;
                         control.Left = centerX;
                     }
                 }
@@ -131,14 +123,14 @@ namespace TranslatorApp
         private void InitializeItemHistory()
         {
             var itemHistoryControl = new item_history();
+
             itemHistoryControl.OnSaveFavorite = HandleSaveFavorite;
+            itemHistoryControl.OnDeleteHistory = HandleDeleteHistory;
+            
         }
 
-        private void HandleSaveFavorite(string wordfrom, string wordinto, string from, string into, DateTime timesave, int id)
+        private void HandleSaveFavorite(string wordfrom, string wordinto, string from, string into)
         {
-            // Hiển thị thông báo đã lưu
-            MessageBox.Show($"Word From: {wordfrom}\nWord Into: {wordinto}\nFrom: {from}\nInto: {into}\nDate: {timesave}\nID: {id}");
-
             // Lưu dữ liệu yêu thích qua API
             SaveFavoriteAPI saveFavoriteAPI = new SaveFavoriteAPI();
             try
@@ -152,6 +144,31 @@ namespace TranslatorApp
                 else
                 {
                     MessageBox.Show("Lưu yêu thích không thành công.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+        }
+
+        private void HandleDeleteHistory(int wordid)
+        {
+            // Lưu dữ liệu yêu thích qua API
+            HistoryAPI historyAPI = new HistoryAPI();
+            try
+            {
+                MessageBox.Show("wordid: " + wordid);
+                var result = historyAPI.DeleteHistoryContent(wordid, _id);
+                // Xử lý kết quả lưu thành công
+                if (result != null)
+                {
+                    MessageBox.Show("Xóa lịch sử thành công!");
+                    ShowAsync();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa lịch sử không thành công.");
                 }
             }
             catch (Exception ex)

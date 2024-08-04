@@ -8,6 +8,7 @@ namespace BLL
 {
     public class FavoriteContent
     {
+        public int wordid { get; set; }
         public int uid { get; set; }
     }
 }

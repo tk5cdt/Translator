@@ -11,21 +11,28 @@ using Krypton.Toolkit;
 
 namespace UserControls
 {
-    public partial class item_history : UserControl
-    {public Action<int> OnDeleteHistory;
-        public Action<string, string, string, string> OnSaveFavorite;
-       
-        
-        public item_history()
+    public partial class item_favorite : UserControl
+    {
+        public Action<int> DeleteFavorite;
+
+        public KryptonPictureBox KryptonPictureBox;
+
+        public item_favorite()
         {
             InitializeComponent();
+            KryptonPictureBox = this.kryptonPictureBox1;
             kryptonPictureBox1.Click += KryptonPictureBox1_Click;
-
         }
 
-        private async void KryptonPictureBox1_Click(object sender, EventArgs e)
+        private void KryptonPictureBox1_Click(object sender, EventArgs e)
         {
-            OnSaveFavorite?.Invoke(lbl_wordfrom.Text, lbl_wordinto.Text, lbl_from.Text, lbl_into.Text);
+            DeleteFavorite?.Invoke(wordid);
+        }
+
+        public int wordid
+        {
+            get;
+            set;
         }
 
         public string from
@@ -58,30 +65,20 @@ namespace UserControls
             set;
         }
 
-        public int wordid
+
+        public KryptonPictureBox GetKryptonPictureBox()
         {
-            get;
-            set;
+            return this.KryptonPictureBox;
         }
 
-        private void item_history_MouseEnter(object sender, EventArgs e)
+        private void item_favorite_MouseEnter(object sender, EventArgs e)
         {
             this.BackColor = Color.AliceBlue;
         }
 
-        private void item_history_MouseLeave(object sender, EventArgs e)
+        private void item_favorite_MouseLeave(object sender, EventArgs e)
         {
             this.BackColor = Color.White;
-        }
-
-        private void item_history_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kryptonPictureBox2_Click(object sender, EventArgs e)
-        {
-            OnDeleteHistory?.Invoke(wordid);
         }
     }
 }

@@ -76,7 +76,8 @@ namespace TranslatorApp
             SaveHistoryAPI saveHistoryAPI = new SaveHistoryAPI();
             try
             {
-                var result = await saveHistoryAPI.SaveHistoryContent(kryptonRichTextBox1.Text, kryptonRichTextBox2.Text, cbbFromLanguage.Text, cbbToLanguage.Text, DateTime.Now, _id);
+                Languages languages = new Languages();
+                var result = await saveHistoryAPI.SaveHistoryContent(languages.name, kryptonRichTextBox2.Text, cbbFromLanguage.Text, cbbToLanguage.Text, DateTime.Now, _id);
                 
             }
             catch (Exception ex)

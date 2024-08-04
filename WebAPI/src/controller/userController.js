@@ -63,15 +63,9 @@ const login = async (req, res) => {
 }
 
 const logout = (req, res) => {
-   req.session.destroy((error) => {
-        if (error) {
-            return res.status(500).json({ message: "Server error" });
-        }
-        res.clearCookie(process.env.SESSION_NAME);
-        return res.json({ message: "Logout thanh cong" });
-   })
+    req.session.destroy();
+    res.status(200).json({ message: "Logout success" });
 }
-
 
 module.exports = {
     signup,

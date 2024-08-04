@@ -1,5 +1,6 @@
 import e from 'express';
 import { connectDB, sql } from '../configs/connectDB';
+import { Message } from 'tinacms';
 
 let getHistory = async (req, res) => {
     try{
@@ -43,8 +44,20 @@ let deleteHistory = async (req, res) => {
     }
 }
 
+let deleteAllHistory = async (req, res) => {
+    try{
+        let {uid} = req.body;
+        let pool = await connectDB();
+        let result = await pool.request().query(`DELETE FROM HISTORY WHERE UID = ${uid}`);
+        return res.status(200).json(result.recordset);
+    }catch (err) {
+        console.log(err);
+    }
+}
+
 module.exports = {
     getHistory,
     saveHistory,
-    deleteHistory
+    deleteHistory, 
+    deleteAllHistory
 }
