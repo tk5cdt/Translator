@@ -14,7 +14,7 @@ let getFavorite = async (req, res) => {
 
 let saveFavorite = async (req, res) => {
     try{
-        let{originalword, translatedword, fromlanguage, tolanguage, uid} = req.body;
+        let{originalword, translatedword, fromlanguage, tolanguage,timesave, uid} = req.body;
         let pool = await connectDB();
         let result = await pool.request()
             // .input('originalword', sql.NVarChar, originalword)

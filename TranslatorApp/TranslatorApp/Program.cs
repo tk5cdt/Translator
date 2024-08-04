@@ -19,8 +19,8 @@ namespace TranslatorApp
             //Application.Run(new Form1());
             //Application.Run(new frmLogin());
             //Application.Run(new frmSignup());
-            Application.Run(new frmTranslate(4));
-            //Application.Run(new frmHistory(4));
+            //Application.Run(new frmTranslate(4));
+            Application.Run(new frmHistory(2));
             //Application.Run(new frmFavorite(4));
 
 

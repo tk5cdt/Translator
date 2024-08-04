@@ -8,24 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Krypton.Toolkit;
+using BLL;
 
 namespace UserControls
 {
     public partial class item_history : UserControl
-    {public Action<int> OnDeleteHistory;
-        public Action<string, string, string, string> OnSaveFavorite;
-       
+    {
+        public Action<string, string, string, string, DateTime, int> OnSaveFavorite;
+
+        public KryptonPictureBox KryptonPictureBox;
         
         public item_history()
         {
             InitializeComponent();
+            KryptonPictureBox = this.kryptonPictureBox1;
             kryptonPictureBox1.Click += KryptonPictureBox1_Click;
 
         }
 
         private async void KryptonPictureBox1_Click(object sender, EventArgs e)
         {
-            OnSaveFavorite?.Invoke(lbl_wordfrom.Text, lbl_wordinto.Text, lbl_from.Text, lbl_into.Text);
+            OnSaveFavorite?.Invoke(lbl_wordfrom.Text, lbl_wordinto.Text, lbl_from.Text, lbl_into.Text, DateTime.Now, uid);
+
         }
 
         public string from
@@ -58,12 +62,6 @@ namespace UserControls
             set;
         }
 
-        public int wordid
-        {
-            get;
-            set;
-        }
-
         private void item_history_MouseEnter(object sender, EventArgs e)
         {
             this.BackColor = Color.AliceBlue;
@@ -74,14 +72,15 @@ namespace UserControls
             this.BackColor = Color.White;
         }
 
+        public KryptonPictureBox GetKryptonPictureBox()
+        {
+            return this.KryptonPictureBox;
+        }
+
         private void item_history_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void kryptonPictureBox2_Click(object sender, EventArgs e)
-        {
-            OnDeleteHistory?.Invoke(wordid);
-        }
     }
 }
