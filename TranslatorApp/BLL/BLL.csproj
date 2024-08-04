@@ -105,7 +105,6 @@
     <Compile Include="UserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LoginPostContent.cs" />
-    <Compile Include="UserSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

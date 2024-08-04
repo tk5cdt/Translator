@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.tbAlternatives = new Krypton.Toolkit.KryptonRichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbbToLanguage = new System.Windows.Forms.ComboBox();
-            this.cbbFromLanguage = new System.Windows.Forms.ComboBox();
-            this.kryptonRichTextBox2 = new Krypton.Toolkit.KryptonRichTextBox();
+            this.components = new System.ComponentModel.Container();
+            this.kryptonCustomPaletteBase1 = new Krypton.Toolkit.KryptonCustomPaletteBase(this.components);
             this.kryptonRichTextBox1 = new Krypton.Toolkit.KryptonRichTextBox();
-            this.panel1.SuspendLayout();
+            this.kryptonRichTextBox2 = new Krypton.Toolkit.KryptonRichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cbbFromLanguage = new System.Windows.Forms.ComboBox();
+            this.cbbToLanguage = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbAlternatives = new Krypton.Toolkit.KryptonRichTextBox();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.SuspendLayout();
             // 
-            // panel1
+            // kryptonCustomPaletteBase1
             // 
             this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.kryptonButton1);
@@ -132,24 +133,40 @@
             this.kryptonRichTextBox1.CueHint.CueHintText = "Enter text here ....";
             this.kryptonRichTextBox1.CueHint.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kryptonRichTextBox1.CueHint.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            this.kryptonRichTextBox1.Location = new System.Drawing.Point(14, 63);
+            this.kryptonRichTextBox1.Location = new System.Drawing.Point(12, 50);
             this.kryptonRichTextBox1.Name = "kryptonRichTextBox1";
             this.kryptonRichTextBox1.Size = new System.Drawing.Size(383, 213);
+            this.kryptonRichTextBox1.StateCommon.Content.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonRichTextBox1.Location = new System.Drawing.Point(16, 107);
+            this.kryptonRichTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.kryptonRichTextBox1.Name = "kryptonRichTextBox1";
+            this.kryptonRichTextBox1.Size = new System.Drawing.Size(511, 262);
             this.kryptonRichTextBox1.StateCommon.Content.Font = new System.Drawing.Font("Book Antiqua", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonRichTextBox1.TabIndex = 9;
+            this.kryptonRichTextBox1.TabIndex = 0;
             this.kryptonRichTextBox1.Text = "";
             this.kryptonRichTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.kryptonRichTextBox1_KeyPress);
             // 
             // frmTranslate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.kryptonButton1);
+            this.Controls.Add(this.kryptonLabel1);
+            this.Controls.Add(this.tbAlternatives);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbbToLanguage);
+            this.Controls.Add(this.cbbFromLanguage);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.kryptonRichTextBox2);
+            this.Controls.Add(this.kryptonRichTextBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmTranslate";
-            this.PaletteMode = Krypton.Toolkit.PaletteMode.VisualStudio2010Render365;
+            this.Palette = this.kryptonCustomPaletteBase1;
+            this.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
             this.ShowIcon = false;
             this.StateCommon.Border.Color1 = System.Drawing.Color.Transparent;
             this.StateCommon.Border.Color2 = System.Drawing.Color.Transparent;
@@ -158,8 +175,6 @@
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Text = "frmTranslate";
             this.Load += new System.EventHandler(this.frmTranslate_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,14 +182,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private Krypton.Toolkit.KryptonButton kryptonButton1;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.KryptonRichTextBox tbAlternatives;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbbToLanguage;
-        private System.Windows.Forms.ComboBox cbbFromLanguage;
-        private Krypton.Toolkit.KryptonRichTextBox kryptonRichTextBox2;
+        private Krypton.Toolkit.KryptonCustomPaletteBase kryptonCustomPaletteBase1;
         private Krypton.Toolkit.KryptonRichTextBox kryptonRichTextBox1;
+        private Krypton.Toolkit.KryptonRichTextBox kryptonRichTextBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cbbFromLanguage;
+        private System.Windows.Forms.ComboBox cbbToLanguage;
+        private System.Windows.Forms.Label label1;
+        private Krypton.Toolkit.KryptonRichTextBox tbAlternatives;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private Krypton.Toolkit.KryptonButton kryptonButton1;
     }
 }

@@ -37,7 +37,7 @@ namespace TranslatorApp
             else
             {
                 mLogin.Click += MLogin_Click;
-                mLogin.Enabled = true;
+                mLogin.Text = "Login";
                 mLogout.Visible = false;
             }
         }
@@ -59,6 +59,17 @@ namespace TranslatorApp
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Dock = DockStyle.Fill;
             frm.Show();
+        }
+
+        private void mLogout_Click(object sender, EventArgs e)
+        {
+            UserAPI userAPI = new UserAPI();
+            bool response = userAPI.sendLogoutRequest();
+            if (response)
+            {
+                UserSession.Instance.SetUsername(null);
+                updateLoginButton();
+            }
         }
 
         //private void mHistory_Click(object sender, EventArgs e)
