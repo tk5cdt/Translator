@@ -11,6 +11,7 @@ const initApiRoute = (app) => {
     router.post('/newaccount', userController.signup);
     //router.post('/newaccount', apiController.newAccount);
     router.post('/login', userController.login);
+    router.post('/logout', userController.logout)
 
     router.get('/gethistory', historyController.getHistory);
     router.post('/savehistory', historyController.saveHistory);
