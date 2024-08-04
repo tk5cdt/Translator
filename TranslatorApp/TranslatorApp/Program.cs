@@ -8,8 +8,6 @@ namespace TranslatorApp
 {
     internal static class Program
     {
-        public static frmMain mainForm = null;
-        public static frmLogin loginForm = null;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -18,13 +16,11 @@ namespace TranslatorApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            mainForm = new frmMain();
-            Application.Run(mainForm);
-            //Application.Run(new frmMain());
+            //Application.Run(new Form1());
             //Application.Run(new frmLogin());
             //Application.Run(new frmSignup());
-            //Application.Run(new frmTranslate(4));
-            //Application.Run(new frmHistory(2));
+            Application.Run(new frmTranslate(4));
+            //Application.Run(new frmHistory(4));
             //Application.Run(new frmFavorite(4));
 
 
