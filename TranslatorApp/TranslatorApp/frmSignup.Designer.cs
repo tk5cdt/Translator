@@ -28,11 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.uC_Signup1 = new UserControls.UC_Signup();
+            this.label1 = new System.Windows.Forms.Label();
             this.kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // uC_Signup1
+            // 
+            this.uC_Signup1.Location = new System.Drawing.Point(30, 223);
+            this.uC_Signup1.Name = "uC_Signup1";
+            this.uC_Signup1.Size = new System.Drawing.Size(376, 312);
+            this.uC_Signup1.TabIndex = 0;
             // 
             // label1
             // 
@@ -43,13 +50,6 @@
             this.label1.Size = new System.Drawing.Size(107, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "SIGN UP";
-            // 
-            // uC_Signup1
-            // 
-            this.uC_Signup1.Location = new System.Drawing.Point(30, 223);
-            this.uC_Signup1.Name = "uC_Signup1";
-            this.uC_Signup1.Size = new System.Drawing.Size(376, 312);
-            this.uC_Signup1.TabIndex = 0;
             // 
             // kryptonPictureBox1
             // 
@@ -70,7 +70,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.uC_Signup1);
             this.Name = "frmSignup";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SIGN UP";
             this.Load += new System.EventHandler(this.frmSignup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPictureBox1)).EndInit();
