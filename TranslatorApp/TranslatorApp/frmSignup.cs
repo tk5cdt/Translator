@@ -31,6 +31,12 @@ namespace TranslatorApp
             uC_Signup1.pHidePass.Click += PHidePass_Click;
             uC_Signup1.pEyeConfirm.Click += PEyeConfirm_Click;
             uC_Signup1.pHideConfirm.Click += PHideConfirm_Click;
+            this.FormClosed += FrmSignup_FormClosed;
+        }
+
+        private void FrmSignup_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.mainForm.Show();
         }
 
         private void PHideConfirm_Click(object sender, EventArgs e)
@@ -106,6 +112,13 @@ namespace TranslatorApp
             {
                 MessageBox.Show("Please enter all required information!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Program.loginForm = new frmLogin();
+            Program.loginForm.Show();
+            this.Hide();
         }
     }
 }

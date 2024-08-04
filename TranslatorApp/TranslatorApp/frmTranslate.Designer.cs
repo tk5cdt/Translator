@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
             this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.tbAlternatives = new Krypton.Toolkit.KryptonRichTextBox();
@@ -37,7 +38,6 @@
             this.cbbFromLanguage = new System.Windows.Forms.ComboBox();
             this.kryptonRichTextBox2 = new Krypton.Toolkit.KryptonRichTextBox();
             this.kryptonRichTextBox1 = new Krypton.Toolkit.KryptonRichTextBox();
-            this.kryptonButton2 = new Krypton.Toolkit.KryptonButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,21 +58,34 @@
             this.panel1.Size = new System.Drawing.Size(907, 529);
             this.panel1.TabIndex = 0;
             // 
+            // kryptonButton2
+            // 
+            this.kryptonButton2.Location = new System.Drawing.Point(464, 281);
+            this.kryptonButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.kryptonButton2.Name = "kryptonButton2";
+            this.kryptonButton2.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.kryptonButton2.Size = new System.Drawing.Size(30, 30);
+            this.kryptonButton2.TabIndex = 17;
+            this.kryptonButton2.Values.Image = global::TranslatorApp.Properties.Resources.ic_Volume;
+            this.kryptonButton2.Values.Text = "speech";
+            this.kryptonButton2.Click += new System.EventHandler(this.kryptonButton2_Click);
+            // 
             // kryptonButton1
             // 
             this.kryptonButton1.Location = new System.Drawing.Point(14, 281);
             this.kryptonButton1.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonButton1.Name = "kryptonButton1";
             this.kryptonButton1.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonButton1.Size = new System.Drawing.Size(56, 20);
+            this.kryptonButton1.Size = new System.Drawing.Size(30, 30);
             this.kryptonButton1.TabIndex = 16;
+            this.kryptonButton1.Values.Image = global::TranslatorApp.Properties.Resources.ic_Volume;
             this.kryptonButton1.Values.Text = "speech";
             this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
             // 
             // kryptonLabel1
             // 
             this.kryptonLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.NormalControl;
-            this.kryptonLabel1.Location = new System.Drawing.Point(11, 300);
+            this.kryptonLabel1.Location = new System.Drawing.Point(11, 315);
             this.kryptonLabel1.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonLabel1.Name = "kryptonLabel1";
             this.kryptonLabel1.PaletteMode = Krypton.Toolkit.PaletteMode.Microsoft365White;
@@ -83,7 +96,7 @@
             // 
             // tbAlternatives
             // 
-            this.tbAlternatives.Location = new System.Drawing.Point(11, 333);
+            this.tbAlternatives.Location = new System.Drawing.Point(11, 348);
             this.tbAlternatives.Margin = new System.Windows.Forms.Padding(2);
             this.tbAlternatives.Name = "tbAlternatives";
             this.tbAlternatives.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
@@ -142,17 +155,6 @@
             this.kryptonRichTextBox1.TabIndex = 9;
             this.kryptonRichTextBox1.Text = "";
             this.kryptonRichTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.kryptonRichTextBox1_KeyPress);
-            // 
-            // kryptonButton2
-            // 
-            this.kryptonButton2.Location = new System.Drawing.Point(464, 281);
-            this.kryptonButton2.Margin = new System.Windows.Forms.Padding(2);
-            this.kryptonButton2.Name = "kryptonButton2";
-            this.kryptonButton2.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.kryptonButton2.Size = new System.Drawing.Size(56, 20);
-            this.kryptonButton2.TabIndex = 17;
-            this.kryptonButton2.Values.Text = "speech";
-            this.kryptonButton2.Click += new System.EventHandler(this.kryptonButton2_Click);
             // 
             // frmTranslate
             // 

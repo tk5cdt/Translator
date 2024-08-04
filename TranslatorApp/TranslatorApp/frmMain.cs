@@ -77,6 +77,7 @@ namespace TranslatorApp
 
         private void mHistory_Click_1(object sender, EventArgs e)
         {
+            if (child != null && child is frmHistory) return;
             if (child != null) child.Close();
             frmHistory frm = new frmHistory(UserSession.Instance.Uid);
             child = frm;
@@ -90,6 +91,7 @@ namespace TranslatorApp
 
         private void mFavorite_Click(object sender, EventArgs e)
         {
+            if (child != null && child is frmFavorite) return;
             if (child != null) child.Close();
             frmFavorite frm = new frmFavorite(UserSession.Instance.Uid);
             child = frm;
