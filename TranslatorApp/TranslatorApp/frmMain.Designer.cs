@@ -97,9 +97,10 @@
             // 
             this.mLogout.Image = global::TranslatorApp.Properties.Resources.ic_Logout;
             this.mLogout.Name = "mLogout";
-            this.mLogout.Size = new System.Drawing.Size(112, 22);
+            this.mLogout.Size = new System.Drawing.Size(180, 22);
             this.mLogout.Text = "Logout";
             this.mLogout.Visible = false;
+            this.mLogout.Click += new System.EventHandler(this.mLogout_Click);
             // 
             // frmMain
             // 
