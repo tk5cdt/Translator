@@ -82,5 +82,26 @@ namespace BLL
                 return new SignupPostReponse { IsSuccess = false, message = jsonError.message };
             }
         }
+
+        public bool sendLogoutRequest()
+        {
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                UseDefaultCredentials = true
+            };
+
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:3000/api/logout");
+
+            var response = client.PostAsync(client.BaseAddress, null).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
