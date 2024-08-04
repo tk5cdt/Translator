@@ -32,7 +32,7 @@
             this.kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
             this.uC_Login1 = new UserControls.UC_Login();
             this.label2 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.llbSignup = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,25 +76,25 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "DON\'T HAVE AN ACCOUNT?";
             // 
-            // linkLabel1
+            // llbSignup
             // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(276, 493);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(66, 17);
-            this.linkLabel1.TabIndex = 5;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "SIGN UP";
+            this.llbSignup.ActiveLinkColor = System.Drawing.Color.Black;
+            this.llbSignup.AutoSize = true;
+            this.llbSignup.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llbSignup.LinkColor = System.Drawing.Color.Black;
+            this.llbSignup.Location = new System.Drawing.Point(276, 493);
+            this.llbSignup.Name = "llbSignup";
+            this.llbSignup.Size = new System.Drawing.Size(66, 17);
+            this.llbSignup.TabIndex = 5;
+            this.llbSignup.TabStop = true;
+            this.llbSignup.Text = "SIGN UP";
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 530);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.llbSignup);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.kryptonPictureBox1);
             this.Controls.Add(this.label1);
@@ -114,6 +114,6 @@
         private System.Windows.Forms.Label label1;
         private Krypton.Toolkit.KryptonPictureBox kryptonPictureBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel llbSignup;
     }
 }

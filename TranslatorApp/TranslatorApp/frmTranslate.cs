@@ -55,7 +55,7 @@ namespace TranslatorApp
         {
             timer.Stop();
             Translate();
-            //saveHistory();
+            saveHistory();
         }
 
         private void loadAlternatives(TranslatePostResponse response)
@@ -74,8 +74,15 @@ namespace TranslatorApp
         public async void saveHistory()
         {
             SaveHistoryAPI saveHistoryAPI = new SaveHistoryAPI();
-            await saveHistoryAPI.SaveHistoryContent(kryptonRichTextBox1.Text, kryptonRichTextBox2.Text, "en", "en", DateTime.Now, _id);
-
+            try
+            {
+                var result = await saveHistoryAPI.SaveHistoryContent(kryptonRichTextBox1.Text, kryptonRichTextBox2.Text, cbbFromLanguage.Text, cbbToLanguage.Text, DateTime.Now, _id);
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex);
+            }
         }
 
         private async void Translate()
@@ -111,7 +118,8 @@ namespace TranslatorApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmHistory frm = new frmHistory(_id);
+            //frmHistory frm = new frmHistory(_id);
+            frmFavorite frm = new frmFavorite(_id);
             frm.Show();
         }
 

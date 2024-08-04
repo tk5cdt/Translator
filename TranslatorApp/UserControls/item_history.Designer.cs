@@ -55,7 +55,7 @@ namespace UserControls
             // 
             // lbl_from
             // 
-            this.lbl_from.Location = new System.Drawing.Point(155, 7);
+            this.lbl_from.Location = new System.Drawing.Point(159, 7);
             this.lbl_from.Name = "lbl_from";
             this.lbl_from.Size = new System.Drawing.Size(154, 31);
             this.lbl_from.StateCommon.ShortText.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -64,7 +64,7 @@ namespace UserControls
             // 
             // kryptonLabel3
             // 
-            this.kryptonLabel3.Location = new System.Drawing.Point(21, 92);
+            this.kryptonLabel3.Location = new System.Drawing.Point(48, 92);
             this.kryptonLabel3.Name = "kryptonLabel3";
             this.kryptonLabel3.Size = new System.Drawing.Size(59, 31);
             this.kryptonLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -73,7 +73,7 @@ namespace UserControls
             // 
             // lbl_into
             // 
-            this.lbl_into.Location = new System.Drawing.Point(75, 92);
+            this.lbl_into.Location = new System.Drawing.Point(106, 92);
             this.lbl_into.Name = "lbl_into";
             this.lbl_into.Size = new System.Drawing.Size(154, 31);
             this.lbl_into.StateCommon.ShortText.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -82,7 +82,8 @@ namespace UserControls
             // 
             // lbl_wordfrom
             // 
-            this.lbl_wordfrom.Location = new System.Drawing.Point(21, 44);
+            this.lbl_wordfrom.Location = new System.Drawing.Point(51, 44);
+            this.lbl_wordfrom.MaximumSize = new System.Drawing.Size(700, 0);
             this.lbl_wordfrom.Name = "lbl_wordfrom";
             this.lbl_wordfrom.Size = new System.Drawing.Size(154, 31);
             this.lbl_wordfrom.StateCommon.LongText.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -92,7 +93,8 @@ namespace UserControls
             // 
             // lbl_wordinto
             // 
-            this.lbl_wordinto.Location = new System.Drawing.Point(21, 127);
+            this.lbl_wordinto.Location = new System.Drawing.Point(48, 127);
+            this.lbl_wordinto.MaximumSize = new System.Drawing.Size(700, 0);
             this.lbl_wordinto.Name = "lbl_wordinto";
             this.lbl_wordinto.Size = new System.Drawing.Size(154, 31);
             this.lbl_wordinto.StateCommon.ShortText.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -103,7 +105,7 @@ namespace UserControls
             // 
             this.kryptonPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPictureBox1.Image")));
             this.kryptonPictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("kryptonPictureBox1.InitialImage")));
-            this.kryptonPictureBox1.Location = new System.Drawing.Point(47, 6);
+            this.kryptonPictureBox1.Location = new System.Drawing.Point(21, 7);
             this.kryptonPictureBox1.Name = "kryptonPictureBox1";
             this.kryptonPictureBox1.Size = new System.Drawing.Size(32, 35);
             this.kryptonPictureBox1.TabIndex = 3;
@@ -111,18 +113,19 @@ namespace UserControls
             // 
             // kryptonBorderEdge1
             // 
-            this.kryptonBorderEdge1.Location = new System.Drawing.Point(131, 81);
+            this.kryptonBorderEdge1.Location = new System.Drawing.Point(46, 81);
+            this.kryptonBorderEdge1.MinimumSize = new System.Drawing.Size(680, 0);
             this.kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            this.kryptonBorderEdge1.Size = new System.Drawing.Size(500, 1);
+            this.kryptonBorderEdge1.Size = new System.Drawing.Size(700, 1);
             this.kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // lbl_timesave
             // 
             this.lbl_timesave.Location = new System.Drawing.Point(600, 17);
             this.lbl_timesave.Name = "lbl_timesave";
-            this.lbl_timesave.Size = new System.Drawing.Size(109, 24);
+            this.lbl_timesave.Size = new System.Drawing.Size(6, 2);
             this.lbl_timesave.TabIndex = 4;
-            this.lbl_timesave.Values.Text = "kryptonLabel2";
+            this.lbl_timesave.Values.Text = "";
             // 
             // item_history
             // 
@@ -140,8 +143,13 @@ namespace UserControls
             this.Controls.Add(this.lbl_wordfrom);
             this.Controls.Add(this.kryptonLabel1);
             this.Margin = new System.Windows.Forms.Padding(10);
+            this.MaximumSize = new System.Drawing.Size(800, 180);
+            this.MinimumSize = new System.Drawing.Size(700, 0);
             this.Name = "item_history";
-            this.Size = new System.Drawing.Size(752, 164);
+            this.Size = new System.Drawing.Size(798, 178);
+            this.Load += new System.EventHandler(this.item_history_Load);
+            this.MouseEnter += new System.EventHandler(this.item_history_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.item_history_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

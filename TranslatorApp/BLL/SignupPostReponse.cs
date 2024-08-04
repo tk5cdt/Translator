@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class LoginPostReponse
+    public class SignupPostReponse
     {
-        public int UID {  get; set; }
-        public string USERNAME { get; set; }
+        public bool IsSuccess { get; set; }
+        public string message { get; set; }
     }
 }

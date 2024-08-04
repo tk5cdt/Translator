@@ -9,16 +9,16 @@ using System.Net.Http;
 
 namespace BLL
 {
-    public class SaveHistoryAPI
+    public class SaveFavoriteAPI
     {
-        public async Task<List<HistoryReponse>> SaveHistoryContent(string originalword, string translatedword, string fromlanguage, string tolanguage, DateTime timesave, int uid)
+        public async Task<List<FavoriteResponse>> SaveFavoriteContent(string originalword, string translatedword, string fromlanguage, string tolanguage, int uid)
         {
-            HistoryReponse content = new HistoryReponse();
+            FavoriteResponse content = new FavoriteResponse();
             content.originalword = originalword;
             content.translatedword = translatedword;
             content.fromlanguage = fromlanguage;
             content.tolanguage = tolanguage;
-            content.timesave = timesave;
+            //content.timesave = timesave;
             content.uid = uid;
 
             HttpClientHandler handler = new HttpClientHandler()
@@ -27,12 +27,12 @@ namespace BLL
             };
 
             var client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:3000/api/savehistory");
+            client.BaseAddress = new Uri("http://localhost:3000/api/savefavorite");
 
             var json = JsonSerializer.Serialize(content);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync(client.BaseAddress, data);
+            var response = client.PostAsync(client.BaseAddress, data).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -42,7 +42,7 @@ namespace BLL
                     PropertyNameCaseInsensitive = true,
                     NumberHandling = JsonNumberHandling.AllowReadingFromString | JsonNumberHandling.WriteAsString
                 };
-                var result = JsonSerializer.Deserialize<List<HistoryReponse>>(responseString, options);
+                var result = JsonSerializer.Deserialize<List<FavoriteResponse>>(responseString, options);
                 return result;
             }
             else

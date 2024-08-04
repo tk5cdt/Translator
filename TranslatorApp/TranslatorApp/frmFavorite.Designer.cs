@@ -1,7 +1,7 @@
 ﻿
 namespace TranslatorApp
 {
-    partial class frmHistory
+    partial class frmFavorite
     {
         /// <summary>
         /// Required designer variable.
@@ -31,14 +31,14 @@ namespace TranslatorApp
         {
             this.SuspendLayout();
             // 
-            // frmHistory
+            // frmFavorite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 579);
-            this.Name = "frmHistory";
-            this.Text = "frmHistory";
-            this.Load += new System.EventHandler(this.frmHistory_Load);
+            this.ClientSize = new System.Drawing.Size(882, 653);
+            this.Name = "frmFavorite";
+            this.Text = "frmFavorite";
+            this.Load += new System.EventHandler(this.frmFavorite_Load);
             this.ResumeLayout(false);
 
         }

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class LoginPostReponse
+    public class FavoriteContent
     {
-        public int UID {  get; set; }
-        public string USERNAME { get; set; }
+        public int uid { get; set; }
     }
 }
