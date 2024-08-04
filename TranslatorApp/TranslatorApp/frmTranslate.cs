@@ -55,7 +55,6 @@ namespace TranslatorApp
         {
             timer.Stop();
             Translate();
-            saveHistory();
         }
 
         private void loadAlternatives(TranslatePostResponse response)
@@ -72,12 +71,14 @@ namespace TranslatorApp
             }
         }
 
-        public async void saveHistory()
+        public async void saveHistory(string origi, string trans, string fromlang, string tolang, DateTime dt, int _id)
         {
             SaveHistoryAPI saveHistoryAPI = new SaveHistoryAPI();
             try
             {
-                var result = await saveHistoryAPI.SaveHistoryContent(kryptonRichTextBox1.Text, kryptonRichTextBox2.Text, cbbFromLanguage.Text, cbbToLanguage.Text, DateTime.Now, _id);
+                Languages lang = new Languages();
+                
+                var result = await saveHistoryAPI.SaveHistoryContent(origi, trans, fromlang, tolang, dt, _id);
                 
             }
             catch (Exception ex)
@@ -106,6 +107,8 @@ namespace TranslatorApp
                 languages = (List<Languages>)cbbFromLanguage.DataSource;
                 string langDetected = languages.Where(x => x.code == lang).FirstOrDefault().name;
                 label1.Text = "Detected language: " + langDetected + "\nConfidence: " + response.detectedLanguage.confidence + "%";
+
+                saveHistory(kryptonRichTextBox1.Text, kryptonRichTextBox2.Text, langDetected, cbbToLanguage.SelectedValue.ToString(), DateTime.Now, UserSession.Instance.Uid);
             }
             loadAlternatives(response);
         }

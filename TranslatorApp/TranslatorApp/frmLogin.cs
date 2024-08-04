@@ -77,6 +77,8 @@ namespace TranslatorApp
                 if (response != null)
                 {
                     UserSession.Instance.SetUsername(response.USERNAME);
+                    UserSession.Instance.SetUid(response.UID);
+
                     frmMain frm = new frmMain();
                     frm.Show();                   
                     this.Hide();

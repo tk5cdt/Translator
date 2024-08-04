@@ -25,10 +25,17 @@ namespace BLL
         }
         public UserSession() { }
         public string Username { get; private set; }
+        public int Uid { get; private set; }
+
         public void SetUsername(string username)
         {
             Username = username;
         }
+        public void SetUid(int uid)
+        {
+            Uid = uid;
+        }
+
 
     }
 }

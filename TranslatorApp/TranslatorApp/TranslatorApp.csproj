@@ -115,6 +115,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistory.Designer.cs">
+      <DependentUpon>frmHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,12 +132,6 @@
     </Compile>
     <Compile Include="frmFavorite.Designer.cs">
       <DependentUpon>frmFavorite.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmHistory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmHistory.Designer.cs">
-      <DependentUpon>frmHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -153,14 +153,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmHistory.resx">
+      <DependentUpon>frmHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFavorite.resx">
       <DependentUpon>frmFavorite.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmHistory.resx">
-      <DependentUpon>frmHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -196,20 +196,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj">
-      <Project>{9999b135-ff32-4b9c-b299-3ba993da3333}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TranslatorLibrary\TranslatorLibrary.csproj">
-      <Project>{0c9bb05f-9832-4666-ae86-606f4fff17e6}</Project>
-      <Name>TranslatorLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UserControls\UserControls.csproj">
-      <Project>{90c2cd58-9753-4194-921f-ff7e4aa3c3b9}</Project>
-      <Name>UserControls</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\loginImg.png" />
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +227,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ic_Logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{9999b135-ff32-4b9c-b299-3ba993da3333}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TranslatorLibrary\TranslatorLibrary.csproj">
+      <Project>{0c9bb05f-9832-4666-ae86-606f4fff17e6}</Project>
+      <Name>TranslatorLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserControls\UserControls.csproj">
+      <Project>{90c2cd58-9753-4194-921f-ff7e4aa3c3b9}</Project>
+      <Name>UserControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

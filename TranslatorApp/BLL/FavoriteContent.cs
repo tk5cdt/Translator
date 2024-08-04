@@ -9,5 +9,6 @@ namespace BLL
     public class FavoriteContent
     {
         public int uid { get; set; }
+        public int wordid { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace TranslatorApp
     public partial class frmFavorite : KryptonForm
     {
 
-        private List<item_history> userControls;
+        private List<item_favorite> userControls;
         private int userControlHeight;
         private int userControlWidth;
 
@@ -25,9 +25,10 @@ namespace TranslatorApp
         public frmFavorite(int id)
         {
             InitializeComponent();
+            DeleteFavorite();
             this._id = id;
 
-            userControls = new List<item_history>();
+            userControls = new List<item_favorite>();
 
             userControlHeight = 130;
             userControlWidth = 600;
@@ -63,19 +64,22 @@ namespace TranslatorApp
                     {
                         var history = favoriteResponses[i];
 
-                        item_history newUserControl = new item_history
+                        item_favorite newUserControl = new item_favorite
                         {
                             Width = userControlWidth,
                             Height = userControlHeight,
                             Anchor = AnchorStyles.Top,
 
                         };
+                        newUserControl.wordid = favoriteResponses[i].wordid;
                         newUserControl.from = favoriteResponses[i].fromlanguage;
                         newUserControl.into = favoriteResponses[i].tolanguage;
                         newUserControl.wordFrom = favoriteResponses[i].originalword;
                         newUserControl.wordInto = favoriteResponses[i].translatedword;
                         //newUserControl.timeSave = DateTime.Parse(historyReponses[i].timesave);
 
+                        // Đăng ký sự kiện
+                        newUserControl.DeleteFavorite = HandleSaveFavorite;
 
                         userControls.Add(newUserControl);
                     }
@@ -84,7 +88,7 @@ namespace TranslatorApp
                     for (int i = 0; i < userControls.Count; i++)
                     {
                         var control = userControls[i];
-                        
+
                         control.Top = i * (userControlHeight + 6) + 10;
 
                         int centerX = (panel.ClientSize.Width - userControlWidth) / 2;
@@ -120,6 +124,37 @@ namespace TranslatorApp
         private void frmFavorite_Load(object sender, EventArgs e)
         {
             ShowAsync();
+        }
+
+        private void DeleteFavorite()
+        {
+            var itemHistoryControl = new item_favorite();
+            itemHistoryControl.DeleteFavorite = HandleSaveFavorite;
+        }
+
+        private void HandleSaveFavorite(int wordid)
+        {
+            MessageBox.Show("Wordid: " + wordid);
+            // Lưu dữ liệu yêu thích qua API
+            FavoriteAPI deleteFavorite = new FavoriteAPI();
+            try
+            {
+                var result = deleteFavorite.DeleteFavoriteContent(wordid, _id);
+                // Xử lý kết quả lưu thành công
+                if (result != null)
+                {
+                    MessageBox.Show("Đã xóa thành công!");
+                    ShowAsync();
+                }
+                else
+                {
+                    MessageBox.Show("không thành công.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
         }
     }
 }

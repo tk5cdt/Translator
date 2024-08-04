@@ -73,17 +73,31 @@ namespace TranslatorApp
             }
         }
 
-        //private void mHistory_Click(object sender, EventArgs e)
-        //{
-        //    if ()
-        //        if (child != null) child.Close();
-        //    frmHistory frm = new frmHistory();
-        //    child = frm;
-        //    frm.MdiParent = this;
-        //    frm.TopLevel = false;
-        //    frm.FormBorderStyle = FormBorderStyle.None;
-        //    frm.Dock = DockStyle.Fill;
-        //    frm.Show();
-        //}
+
+        private void mHistory_Click_1(object sender, EventArgs e)
+        {
+            if (child != null) child.Close();
+            frmHistory frm = new frmHistory(UserSession.Instance.Uid);
+            child = frm;
+            frm.MdiParent = this;
+            frm.TopLevel = false;
+            frm.Dock= DockStyle.Fill;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
+        private void mFavorite_Click(object sender, EventArgs e)
+        {
+            if (child != null) child.Close();
+            frmFavorite frm = new frmFavorite(UserSession.Instance.Uid);
+            child = frm;
+            frm.MdiParent = this;
+            frm.TopLevel = false;
+            frm.Dock = DockStyle.Fill;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
     }
 }

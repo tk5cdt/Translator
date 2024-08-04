@@ -36,5 +36,40 @@ namespace BLL
                 throw new Exception("Error: " + response.ReasonPhrase);
             }
         }
+
+        public async Task<List<FavoriteResponse>> DeleteFavoriteContent(int wordid, int uid)
+        {
+            FavoriteContent content = new FavoriteContent();
+            content.wordid = wordid;
+            content.uid = uid;
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                UseDefaultCredentials = true
+            };
+
+            var client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:3000/api/deletefavorite");
+
+            var json = JsonSerializer.Serialize(content);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = client.PostAsync(client.BaseAddress, data).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseString = response.Content.ReadAsStringAsync().Result;
+                var options = new JsonSerializerOptions()
+                {
+                    NumberHandling = JsonNumberHandling.AllowReadingFromString |
+                JsonNumberHandling.WriteAsString
+                };
+                var result = JsonSerializer.Deserialize<List<FavoriteResponse>>(responseString, options);
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
     }
 }

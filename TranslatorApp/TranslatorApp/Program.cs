@@ -23,7 +23,7 @@ namespace TranslatorApp
             //Application.Run(new frmMain());
             //Application.Run(new frmLogin());
             //Application.Run(new frmSignup());
-            //Application.Run(new frmTranslate(4));
+            //Application.Run(new frmTranslate());
             //Application.Run(new frmHistory(2));
             //Application.Run(new frmFavorite(4));
 

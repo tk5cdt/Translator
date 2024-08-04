@@ -73,15 +73,17 @@
             // 
             this.mHistory.Image = global::TranslatorApp.Properties.Resources.ic_History;
             this.mHistory.Name = "mHistory";
-            this.mHistory.Size = new System.Drawing.Size(116, 22);
+            this.mHistory.Size = new System.Drawing.Size(180, 22);
             this.mHistory.Text = "History";
+            this.mHistory.Click += new System.EventHandler(this.mHistory_Click_1);
             // 
             // mFavorite
             // 
             this.mFavorite.Image = global::TranslatorApp.Properties.Resources.ic_Favorite;
             this.mFavorite.Name = "mFavorite";
-            this.mFavorite.Size = new System.Drawing.Size(116, 22);
+            this.mFavorite.Size = new System.Drawing.Size(180, 22);
             this.mFavorite.Text = "Favorite";
+            this.mFavorite.Click += new System.EventHandler(this.mFavorite_Click);
             // 
             // mLogin
             // 
@@ -97,7 +99,7 @@
             // 
             this.mLogout.Image = global::TranslatorApp.Properties.Resources.ic_Logout;
             this.mLogout.Name = "mLogout";
-            this.mLogout.Size = new System.Drawing.Size(180, 22);
+            this.mLogout.Size = new System.Drawing.Size(112, 22);
             this.mLogout.Text = "Logout";
             this.mLogout.Visible = false;
             this.mLogout.Click += new System.EventHandler(this.mLogout_Click);
