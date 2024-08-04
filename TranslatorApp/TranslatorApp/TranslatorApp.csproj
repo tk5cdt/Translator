@@ -115,11 +115,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmMain.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="frmFavorite.cs">
       <SubType>Form</SubType>
@@ -153,8 +153,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFavorite.resx">
       <DependentUpon>frmFavorite.cs</DependentUpon>
@@ -223,24 +223,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pHide.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_Save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_langauge.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_Account.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_History.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_Favorite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_Logout.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

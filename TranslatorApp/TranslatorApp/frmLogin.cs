@@ -27,12 +27,6 @@ namespace TranslatorApp
             uC_Login1.pEye.Click += PEye_Click;
             uC_Login1.pHide.Click += PHide_Click;
             llbSignup.Click += LlbSignup_Click;
-            this.FormClosed += FrmLogin_FormClosed;
-        }
-
-        private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Program.mainForm.Show();
         }
 
         private void LlbSignup_Click(object sender, EventArgs e)
@@ -72,13 +66,15 @@ namespace TranslatorApp
             UserAPI userAPI = new UserAPI();
             if (!string.IsNullOrEmpty(uC_Login1.email.Text) && !string.IsNullOrEmpty(uC_Login1.password.Text))
             {
-                LoginPostReponse response = userAPI.sendLoginContent(uC_Login1.email.Text, uC_Login1.password.Text);
+                LoginPostReponse reponse = userAPI.sendLoginContent(uC_Login1.email.Text, uC_Login1.password.Text);
 
-                if (response != null)
+                if (reponse != null)
                 {
-                    UserSession.Instance.SetUsername(response.USERNAME);
-                    frmMain frm = new frmMain();
-                    frm.Show();                   
+                    //frmTranslate frm = new frmTranslate();
+                    frmTranslate frm = new frmTranslate(reponse.UID);
+                    ////frm.MdiParent = this;
+                    //frmHistory frm = new frmHistory();
+                    frm.Show();
                     this.Hide();
                 }
                 else
