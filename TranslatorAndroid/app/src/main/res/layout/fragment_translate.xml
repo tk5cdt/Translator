@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment.TranslateFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtOriginalWord"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_text_background"
+        android:ems="10"
+        android:gravity="top"
+        android:inputType="text|textMultiLine"
+        android:minHeight="150dp"
+        android:hint="Enter text here..."/>
+
+    <ImageButton
+        android:id="@+id/ibtnOriginalWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/baseline_volume_up_24" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/tvTranslatedWord"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:minHeight="150dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"/>
+
+    <ImageButton
+        android:id="@+id/imgTranslatedWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/baseline_volume_up_24" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Alternatives"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/tvAlternatives"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:background="@drawable/edit_text_background"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"/>
+</LinearLayout>
