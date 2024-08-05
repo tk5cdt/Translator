@@ -1,4 +1,4 @@
-package com.example.translatorandroid;
+package com.example.translatorandroid.Activity;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.translatorandroid.R;
 
 public class SignUp extends AppCompatActivity {
 
