@@ -34,7 +34,7 @@ const signup = async (req, res) => {
     console.log(err);
   }
 }
-  
+
 const login = async (req, res) => {
     let { email, password } = req.body;
     const pool = await connectDB();

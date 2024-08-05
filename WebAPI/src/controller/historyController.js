@@ -5,7 +5,7 @@ let getHistory = async (req, res) => {
     try{
         let {uid} = req.query;
         let pool = await connectDB();
-        let result = await pool.request().query(`SELECT WORDID, ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE FROM HISTORY WHERE UID = ${uid}`);
+        let result = await pool.request().query(`SELECT WORDID, ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, UID, ISFAVORITE FROM HISTORY WHERE UID = ${uid}`);
         res.status(200).json(result.recordset);
     }catch (err) {
         console.log(err);
@@ -15,7 +15,7 @@ let getHistory = async (req, res) => {
 
 const  saveHistory = async (req, res) => {
     try{
-        let {originalword, translatedword, fromlanguage, tolanguage,timesave, uid} = req.body;
+        let {originalword, translatedword, fromlanguage, tolanguage,timesave, uid, isfavorite} = req.body;
 
         let pool = await connectDB();
         let result = await pool.request()
@@ -24,8 +24,10 @@ const  saveHistory = async (req, res) => {
             .input('fromlanguage', sql.NVarChar, fromlanguage)
             .input('tolanguage', sql.NVarChar, tolanguage)
             .input('timesave', sql.DateTime, timesave)
+            .input('isfavorite', sql.Bit, isfavorite)
             .input('uid', sql.Int, uid)
-            .query('INSERT INTO HISTORY(ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, UID) VALUES(@originalword, @translatedword, @fromlanguage, @tolanguage, @timesave, @uid)');
+            
+            .query('INSERT INTO HISTORY(ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, ISFAVORITE, UID) VALUES(@originalword, @translatedword, @fromlanguage, @tolanguage, @timesave, @isfavorite, @uid)');
         res.status(200).json(result.recordset);
     }catch (err) {
         console.log(err);
@@ -43,8 +45,19 @@ let deleteHistory = async (req, res) => {
     }
 }
 
+let deleteAllHistory = async (req, res) => {
+    try{
+        let {uid} = req.body;
+        let pool = await connectDB();
+        let result = await pool.request().query(`DELETE FROM HISTORY WHERE UID = ${uid}`);
+        return res.status(200).json(result.recordset);
+    }catch (err) {
+        console.log(err);
+    }
+}
 module.exports = {
     getHistory,
     saveHistory,
-    deleteHistory
+    deleteHistory,
+    deleteAllHistory
 }

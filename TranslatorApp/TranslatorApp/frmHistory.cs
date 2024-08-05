@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -68,6 +69,7 @@ namespace TranslatorApp
                         newUserControl.wordFrom = historyReponses[i].originalword;
                         newUserControl.wordInto = historyReponses[i].translatedword;
                         newUserControl.wordid = historyReponses[i].wordid;
+                        newUserControl.isfavorite = historyReponses[i].isfavorite;
                         //newUserControl.timeSave = DateTime.Parse(historyReponses[i].timesave);
 
                         // Đăng ký sự kiện
@@ -127,22 +129,33 @@ namespace TranslatorApp
             
         }
 
-        private void HandleSaveFavorite(string wordfrom, string wordinto, string from, string into)
+        private void HandleSaveFavorite(string wordfrom, string wordinto, string from, string into, bool isfavorite, KryptonPictureBox kryptonPicture)
         {
             // Lưu dữ liệu yêu thích qua API
             SaveFavoriteAPI saveFavoriteAPI = new SaveFavoriteAPI();
             try
             {
-                var result = saveFavoriteAPI.SaveFavoriteContent(wordfrom, wordinto, from, into, UserSession.Instance.Uid);
-                // Xử lý kết quả lưu thành công
-                if (result != null)
+                if (isfavorite)
                 {
-                    MessageBox.Show("Yêu thích đã được lưu thành công!");
+                    var result = saveFavoriteAPI.SaveFavoriteContent(wordfrom, wordinto, from, into, DateTime.Now, isfavorite, UserSession.Instance.Uid);
+                    // Xử lý kết quả lưu thành công
+                    if (result != null)
+                    {
 
+                        MessageBox.Show("Yêu thích đã được lưu thành công!");
+                        kryptonPicture.Image = Properties.Resources.save_click;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lưu yêu thích không thành công.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Lưu yêu thích không thành công.");
+                    HandleDeleteHistory(UserSession.Instance.Uid, isfavorite);
+                    isfavorite = false;
+                    kryptonPicture.Image = Properties.Resources.save;
                 }
             }
             catch (Exception ex)
@@ -151,7 +164,7 @@ namespace TranslatorApp
             }
         }
 
-        private void HandleDeleteHistory(int wordid)
+        private void HandleDeleteHistory(int wordid, bool isfavorite)
         {
             // Lưu dữ liệu yêu thích qua API
             HistoryAPI historyAPI = new HistoryAPI();
@@ -164,6 +177,7 @@ namespace TranslatorApp
                 {
                     MessageBox.Show("Xóa lịch sử thành công!");
                     ShowAsync();
+                    isfavorite = true;
                 }
                 else
                 {

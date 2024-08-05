@@ -11,7 +11,7 @@ namespace BLL
 {
     public class SaveHistoryAPI
     {
-        public async Task<List<HistoryReponse>> SaveHistoryContent(string originalword, string translatedword, string fromlanguage, string tolanguage, DateTime timesave, int uid)
+        public async Task<List<HistoryReponse>> SaveHistoryContent(string originalword, string translatedword, string fromlanguage, string tolanguage, DateTime timesave, int uid, bool isfavorite)
         {
             HistoryReponse content = new HistoryReponse();
             content.originalword = originalword;
@@ -20,6 +20,7 @@ namespace BLL
             content.tolanguage = tolanguage;
             content.timesave = timesave;
             content.uid = uid;
+            content.isfavorite = isfavorite;
 
             HttpClientHandler handler = new HttpClientHandler()
             {

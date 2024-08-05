@@ -13,8 +13,8 @@ namespace UserControls
 {
     public partial class item_history : UserControl
     {
-        public Action<int> OnDeleteHistory;
-        public Action<string, string, string, string> OnSaveFavorite;
+        public Action<int, bool> OnDeleteHistory;
+        public Action<string, string, string, string, bool, KryptonPictureBox> OnSaveFavorite;
 
 
         public item_history()
@@ -26,7 +26,7 @@ namespace UserControls
 
         private async void KryptonPictureBox1_Click(object sender, EventArgs e)
         {
-            OnSaveFavorite?.Invoke(lbl_wordfrom.Text, lbl_wordinto.Text, lbl_from.Text, lbl_into.Text);
+            OnSaveFavorite?.Invoke(lbl_wordfrom.Text, lbl_wordinto.Text, lbl_from.Text, lbl_into.Text, isfavorite, kryptonPictureBox1);
         }
 
         public string from
@@ -65,6 +65,9 @@ namespace UserControls
             set;
         }
 
+        public bool isfavorite
+        { get; set; }
+
         private void item_history_MouseEnter(object sender, EventArgs e)
         {
             this.BackColor = Color.AliceBlue;
@@ -80,9 +83,17 @@ namespace UserControls
 
         }
 
+        public void setIcon(bool isfavorite)
+        {
+            if (isfavorite == true)
+            {
+
+            }
+        }
+
         private void kryptonPictureBox2_Click(object sender, EventArgs e)
         {
-            OnDeleteHistory?.Invoke(wordid);
+            OnDeleteHistory?.Invoke(wordid , isfavorite);
         }
     }
 }

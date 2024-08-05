@@ -76,7 +76,7 @@ namespace TranslatorApp
                         newUserControl.into = favoriteResponses[i].tolanguage;
                         newUserControl.wordFrom = favoriteResponses[i].originalword;
                         newUserControl.wordInto = favoriteResponses[i].translatedword;
-                        //newUserControl.timeSave = DateTime.Parse(historyReponses[i].timesave);
+                        newUserControl.wordidhis = favoriteResponses[i].wordidhis;
 
                         // Đăng ký sự kiện
                         newUserControl.DeleteFavorite = HandleSaveFavorite;
