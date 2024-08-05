@@ -5,7 +5,7 @@ let getFavorite = async (req, res) => {
     try{
         let {uid} = req.query;
         let pool = await connectDB();
-        let result = await pool.request().query(`SELECT WORDID, ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, UID FROM FAVORITE WHERE UID = ${uid}`);
+        let result = await pool.request().query(`SELECT WORDID, ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, UID, WORDIDHIS FROM FAVORITE WHERE UID = ${uid}`);
         res.status(200).json(result.recordset);
     }catch (err) {
         console.log(err);
@@ -23,7 +23,7 @@ let saveFavorite = async (req, res) => {
             // .input('tolanguage', sql.NVarChar, tolanguage)
             // .input('timesave', sql.DateTime, timesave)
             // .input('uid', sql.Int, uid)
-            .query(`INSERT INTO FAVORITE(ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, UID) VALUES('${originalword}', '${translatedword}', '${fromlanguage}', '${tolanguage}', ${uid})`);
+            .query(`INSERT INTO FAVORITE(ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, UID, WORDIDHIS) VALUES('${originalword}', '${translatedword}', '${fromlanguage}', '${tolanguage}', '${timesave}', ${uid}). ${wordidhis})`);
         res.status(200).json(result.recordset);
     }catch (err) {
         console.log(err);
@@ -40,6 +40,7 @@ let deleteFavorite = async (req, res) => {
         console.log(err);
     }
 }
+
 
 module.exports = {
     getFavorite,

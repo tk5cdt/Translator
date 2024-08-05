@@ -5,7 +5,7 @@ let getHistory = async (req, res) => {
     try{
         let {uid} = req.query;
         let pool = await connectDB();
-        let result = await pool.request().query(`SELECT WORDID, ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE FROM HISTORY WHERE UID = ${uid}`);
+        let result = await pool.request().query(`SELECT WORDID, ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, UID, ISFAVORITE FROM HISTORY WHERE UID = ${uid}`);
         res.status(200).json(result.recordset);
     }catch (err) {
         console.log(err);
@@ -24,8 +24,9 @@ const  saveHistory = async (req, res) => {
             .input('fromlanguage', sql.NVarChar, fromlanguage)
             .input('tolanguage', sql.NVarChar, tolanguage)
             .input('timesave', sql.DateTime, timesave)
+            .input('isfavorite', sql.Bit, isfavorite)
             .input('uid', sql.Int, uid)
-            .query('INSERT INTO HISTORY(ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, UID) VALUES(@originalword, @translatedword, @fromlanguage, @tolanguage, @timesave, @uid)');
+            .query('INSERT INTO HISTORY(ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, UID, ISFAVORITE) VALUES(@originalword, @translatedword, @fromlanguage, @tolanguage, @timesave, @uid, @isfavorite)');
         res.status(200).json(result.recordset);
     }catch (err) {
         console.log(err);

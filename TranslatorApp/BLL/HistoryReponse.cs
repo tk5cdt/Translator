@@ -13,6 +13,7 @@ namespace BLL
         public string translatedword{ get; set; }
         public string fromlanguage { get; set; }
         public string tolanguage{ get; set; }
+        public bool isfavorite { get; set; }
         public DateTime timesave{ get; set; }
         public int uid { get; set; }
     }

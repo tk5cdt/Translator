@@ -11,14 +11,15 @@ namespace BLL
 {
     public class SaveFavoriteAPI
     {
-        public async Task<List<FavoriteResponse>> SaveFavoriteContent(string originalword, string translatedword, string fromlanguage, string tolanguage, int uid)
+        public async Task<List<FavoriteResponse>> SaveFavoriteContent(string originalword, string translatedword, string fromlanguage, string tolanguage, DateTime timesave, bool isfavorite, int uid)
         {
             FavoriteResponse content = new FavoriteResponse();
             content.originalword = originalword;
             content.translatedword = translatedword;
             content.fromlanguage = fromlanguage;
             content.tolanguage = tolanguage;
-            //content.timesave = timesave;
+            content.timesave = timesave;
+            content.isfavorite = isfavorite;
             content.uid = uid;
 
             HttpClientHandler handler = new HttpClientHandler()
@@ -32,7 +33,7 @@ namespace BLL
             var json = JsonSerializer.Serialize(content);
             var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = client.PostAsync(client.BaseAddress, data).Result;
+            var response = await client.PostAsync(client.BaseAddress, data);
 
             if (response.IsSuccessStatusCode)
             {
