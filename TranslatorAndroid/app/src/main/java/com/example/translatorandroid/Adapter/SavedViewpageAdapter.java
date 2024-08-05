@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class HistoryViewpageAdapter extends FragmentStateAdapter {
-    public HistoryViewpageAdapter(@NonNull FragmentActivity fragmentActivity) {
+import com.example.translatorandroid.Fragment.FavoriteFragment;
+import com.example.translatorandroid.Fragment.HistoryFragment;
+
+public class SavedViewpageAdapter extends FragmentStateAdapter {
+    public SavedViewpageAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 
@@ -15,11 +18,11 @@ public class HistoryViewpageAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new com.example.translatorandroid.Fragment.HistoryFragment();
+                return new HistoryFragment();
             case 1:
-                return new com.example.translatorandroid.Fragment.FavoriteFragment();
+                return new FavoriteFragment();
             default:
-                return null;
+                return new HistoryFragment();
         }
     }
 

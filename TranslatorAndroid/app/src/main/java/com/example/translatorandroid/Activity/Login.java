@@ -10,8 +10,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.translatorandroid.R;
 import com.example.translatorandroid.databinding.ActivityLoginBinding;
-import com.example.translatorandroid.databinding.ActivitySaveBinding;
-
 public class Login extends AppCompatActivity {
 
     ActivityLoginBinding binding;

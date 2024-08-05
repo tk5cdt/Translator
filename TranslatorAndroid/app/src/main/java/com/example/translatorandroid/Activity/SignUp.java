@@ -9,7 +9,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.translatorandroid.R;
-import com.example.translatorandroid.databinding.ActivitySaveBinding;
+
 import com.example.translatorandroid.databinding.ActivitySignUpBinding;
 
 public class SignUp extends AppCompatActivity {
