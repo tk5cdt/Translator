@@ -4,63 +4,148 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
+import com.example.translatorandroid.Model.Language;
+import com.example.translatorandroid.Model.Translate;
+import com.example.translatorandroid.Model.TranslateResponse;
 import com.example.translatorandroid.R;
+import com.example.translatorandroid.Service.LanguageAPI;
+import com.example.translatorandroid.Service.TranslateAPI;
+import com.example.translatorandroid.databinding.FragmentTranslateBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TranslateFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class TranslateFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public TranslateFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TranslateFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TranslateFragment newInstance(String param1, String param2) {
-        TranslateFragment fragment = new TranslateFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    FragmentTranslateBinding binding;
+    Handler handler = new Handler(Looper.getMainLooper());
+    Runnable translateRunnable;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_translate, container, false);
+        View view = inflater.inflate(R.layout.fragment_translate, container, false);
+        binding = FragmentTranslateBinding.bind(view);
+        loadSpFromLanguage();
+        loadSpToLanguage();
+
+        binding.edtOriginalWord.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (translateRunnable != null) {
+                    handler.removeCallbacks(translateRunnable);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                translateRunnable = new Runnable() {
+                    @Override
+                    public void run() {
+                        translate(s.toString());
+                    }
+                };
+                handler.postDelayed(translateRunnable, 1000);
+            }
+        });
+
+
+        return view;
+    }
+
+    private void loadSpFromLanguage(){
+        LanguageAPI.languageAPI.getLanguages().enqueue(new Callback<List<Language>>() {
+            @Override
+            public void onResponse(Call<List<Language>> call, Response<List<Language>> response) {
+                if(response.isSuccessful() && response.body() != null){
+                    List<Language> languages = new ArrayList<>();
+
+                    Language detectLanguage = new Language();
+                    detectLanguage.code ="auto";
+                    detectLanguage.name="Detect lanuage";
+                    languages.add(detectLanguage);
+
+                    for (Language language : response.body()){
+                        if(!language.code.equals("vi")){
+                            languages.add(language);
+                        }
+                    }
+
+                    ArrayAdapter<Language> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, languages);
+                    binding.spOriginalLang.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Language>> call, Throwable throwable) {
+
+            }
+        });
+    }
+
+    private void loadSpToLanguage(){
+        LanguageAPI.languageAPI.getLanguages().enqueue(new Callback<List<Language>>() {
+            @Override
+            public void onResponse(Call<List<Language>> call, Response<List<Language>> response) {
+                if(response.isSuccessful() && response.body() != null){
+                    List<Language> languages = new ArrayList<>();
+                    for (Language language : response.body()){
+                        if(!language.code.equals("vi")){
+                            languages.add(language);
+                        }
+                    }
+
+                    ArrayAdapter<Language> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, languages);
+                    binding.spTranslatedLang.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Language>> call, Throwable throwable) {
+
+            }
+        });
+    }
+
+    private  void translate(String q){
+        Translate content = new Translate();
+        content.setQ(q);
+        content.setSource(((Language) binding.spOriginalLang.getSelectedItem()).code);
+        content.setTarget(((Language) binding.spTranslatedLang.getSelectedItem()).code);
+        content.setFormat("text");
+        content.setAlternatives(2);
+
+        TranslateAPI.translateAPI.sendTranslateContent(content).enqueue(new Callback<TranslateResponse>() {
+            @Override
+            public void onResponse(Call<TranslateResponse> call, Response<TranslateResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    String translatedText = response.body().getTranslatedText();
+                    binding.tvTranslatedWord.setText(translatedText);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TranslateResponse> call, Throwable throwable) {
+
+            }
+        });
     }
 }
