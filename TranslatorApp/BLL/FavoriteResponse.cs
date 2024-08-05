@@ -16,5 +16,6 @@ namespace BLL
         public DateTime timesave { get; set; }
         public bool isfavorite { get; set; }
         public int uid { get; set; }
+        public int wordidhis { get; set; }
     }
 }

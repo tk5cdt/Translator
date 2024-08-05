@@ -155,6 +155,7 @@ namespace TranslatorApp
                 {
                     HandleDeleteHistory(UserSession.Instance.Uid, isfavorite);
                     isfavorite = false;
+                    kryptonPicture.Image = Properties.Resources.save;
                 }
             }
             catch (Exception ex)

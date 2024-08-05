@@ -65,6 +65,11 @@ namespace UserControls
             set;
         }
 
+        public int wordidhis
+        {
+            get;
+            set;
+        }
 
         public KryptonPictureBox GetKryptonPictureBox()
         {

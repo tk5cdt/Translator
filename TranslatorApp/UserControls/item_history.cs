@@ -58,16 +58,15 @@ namespace UserControls
             get;
             set;
         }
-        public bool isfavorite
-        { 
-            get; set; 
-        }
 
         public int wordid
         {
             get;
             set;
         }
+
+        public bool isfavorite
+        { get; set; }
 
         private void item_history_MouseEnter(object sender, EventArgs e)
         {
@@ -84,9 +83,17 @@ namespace UserControls
 
         }
 
+        public void setIcon(bool isfavorite)
+        {
+            if (isfavorite == true)
+            {
+
+            }
+        }
+
         private void kryptonPictureBox2_Click(object sender, EventArgs e)
         {
-            OnDeleteHistory?.Invoke(wordid);
+            OnDeleteHistory?.Invoke(wordid , isfavorite);
         }
     }
 }

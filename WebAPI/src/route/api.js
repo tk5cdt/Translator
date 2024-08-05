@@ -16,10 +16,12 @@ const initApiRoute = (app) => {
     router.get('/gethistory', historyController.getHistory);
     router.post('/savehistory', historyController.saveHistory);
     router.post('/deletehistory', historyController.deleteHistory);
+    router.post('/deleteallhistory', historyController.deleteAllHistory);
 
     router.get('/getfavorite', favoriteController.getFavorite);
     router.post('/savefavorite', favoriteController.saveFavorite);
     router.post('/deletefavorite', favoriteController.deleteFavorite);
+    router.post('/deletefavoritehistory', favoriteController.deleteFavoriteHistory);
 
     return app.use('/api', router);
 }
