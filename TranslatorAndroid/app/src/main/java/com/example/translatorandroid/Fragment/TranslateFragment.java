@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -139,12 +140,14 @@ public class TranslateFragment extends Fragment {
                 if (response.isSuccessful() && response.body() != null) {
                     String translatedText = response.body().getTranslatedText();
                     binding.tvTranslatedWord.setText(translatedText);
+
                 }
+                Log.e("error", response.body().getTranslatedText());
             }
 
             @Override
             public void onFailure(Call<TranslateResponse> call, Throwable throwable) {
-
+                Log.e("error:", throwable.toString());
             }
         });
     }

@@ -8,6 +8,7 @@ const router = express.Router();
 
 const initApiRoute = (app) => {
     router.get('/getaccount', apiController.getAccount);
+    router.post('/translate', apiController.translateText);
     router.post('/newaccount', userController.signup);
     //router.post('/newaccount', apiController.newAccount);
     router.post('/login', userController.login);

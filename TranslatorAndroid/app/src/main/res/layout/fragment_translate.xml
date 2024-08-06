@@ -54,7 +54,8 @@
         android:gravity="top"
         android:inputType="text|textMultiLine"
         android:minHeight="150dp"
-        android:hint="Enter text here..."/>
+        android:hint="Enter text here..."
+        android:padding="5dp"/>
 
     <ImageButton
         android:id="@+id/ibtnOriginalWord"
@@ -77,7 +78,8 @@
         android:minHeight="150dp"
         android:background="@drawable/edit_text_background"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:padding="5dp"/>
 
     <ImageButton
         android:id="@+id/imgTranslatedWord"
@@ -94,8 +96,7 @@
         android:text="Alternatives"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginLeft="15dp"/>
-
+        android:layout_marginLeft="15dp" />
     <TextView
         android:id="@+id/tvAlternatives"
         android:layout_width="380dp"
@@ -103,5 +104,6 @@
         android:minHeight="100dp"
         android:background="@drawable/edit_text_background"
         android:layout_gravity="center"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:padding="5dp"/>
 </LinearLayout>
