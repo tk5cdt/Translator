@@ -1,6 +1,7 @@
 package com.example.translatorandroid.Service;
 
 import com.example.translatorandroid.Model.Favorite;
+import com.example.translatorandroid.Model.FavoriteRequest;
 import com.example.translatorandroid.Model.History;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,7 +11,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ServicesAPI {
@@ -19,7 +22,7 @@ public interface ServicesAPI {
             .create();
 
     ServicesAPI servicesAPI = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.18:3000/api/")
+            .baseUrl("http://172.16.52.94:3000/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ServicesAPI.class);
@@ -28,4 +31,19 @@ public interface ServicesAPI {
 
     @GET("getfavorite")
     Call<List<Favorite>> getFavorite(@Query("uid") int uid);
+
+    @POST("savehistory")
+    Call<History> saveHistory(@Body History history);
+
+    @POST("savefavorite")
+    Call<Favorite> saveFavorite(@Body FavoriteRequest favorite);
+
+    @POST("deletehistory")
+    Call<History> deleteHistory(@Body int uid, @Body int wordid);
+
+    @POST("deletefavorite")
+    Call<Favorite> deleteFavorite(@Body int uid, @Body int wordid);
+
+    @POST("deletefavoritehistory")
+    Call<Favorite> deleteFavoriteHistory(@Body FavoriteRequest favoriteRequest);
 }

@@ -142,7 +142,7 @@ public class TranslateFragment extends Fragment {
                     binding.tvTranslatedWord.setText(translatedText);
 
                 }
-                Log.e("error", response.body().getTranslatedText());
+//                Log.e("error", response.body().getTranslatedText());
             }
 
             @Override

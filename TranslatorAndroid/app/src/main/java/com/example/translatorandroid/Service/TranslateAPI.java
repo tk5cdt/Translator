@@ -30,7 +30,7 @@ public interface TranslateAPI {
             .build();
 
     TranslateAPI translateAPI = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.18:3000/api/")
+            .baseUrl("http://172.16.52.94:3000/api/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
