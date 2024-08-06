@@ -16,6 +16,7 @@ import com.example.translatorandroid.Fragment.FavoriteFragment;
 import com.example.translatorandroid.Model.Favorite;
 import com.example.translatorandroid.Model.FavoriteRequest;
 import com.example.translatorandroid.Model.History;
+import com.example.translatorandroid.Model.HistoryRequest;
 import com.example.translatorandroid.R;
 import com.example.translatorandroid.Service.ServicesAPI;
 import com.example.translatorandroid.databinding.ItemHistoryBinding;
@@ -69,6 +70,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                     favorite.timesave = Date.from(LocalDateTime.now().toInstant(java.time.ZoneOffset.UTC));
                     favorite.wordidhis = history.WORDID;
                     favorite.uid = 4;
+                    HistoryRequest historyRequest = new HistoryRequest();
+                    historyRequest.wordid = history.WORDID;
+                    historyRequest.uid = 4;
+                    historyRequest.isfavorite = false;
+                    ServicesAPI.servicesAPI.updateHistory(historyRequest).enqueue(new Callback<History>() {
+                        @Override
+                        public void onResponse(Call<History> call, Response<History> response) {
+                            notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onFailure(Call<History> call, Throwable throwable) {
+
+                        }
+                    });
                     ServicesAPI.servicesAPI.deleteFavoriteHistory(favorite).enqueue(new Callback<Favorite>() {
                         @SuppressLint("NotifyDataSetChanged")
                         @Override
@@ -117,12 +133,16 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         binding.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ServicesAPI.servicesAPI.deleteHistory(4, history.WORDID).enqueue(new Callback<History>() {
+                HistoryRequest historyRequest = new HistoryRequest();
+                historyRequest.wordid = history.WORDID;
+                historyRequest.uid = 4;
+                historyList.remove(history);
+                notifyDataSetChanged();
+                ServicesAPI.servicesAPI.deleteHistory(historyRequest).enqueue(new Callback<History>() {
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onResponse(Call<History> call, Response<History> response) {
-                        historyList.remove(history);
-                        notifyDataSetChanged();
+
                     }
 
                     @Override

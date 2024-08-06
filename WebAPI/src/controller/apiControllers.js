@@ -24,7 +24,7 @@ let newAccount = async (req, res) => {
 let translateText = async (req, res) => {
     const { q, source, target, format, alternatives } = req.body;
     try {
-        const response = await axios.post('http://localhost:5000/translate', {
+        const response = await axios.post('http://127.0.0.1:5000/translate', {
             q: q,
             source: source || 'auto',
             target: target || 'en',
