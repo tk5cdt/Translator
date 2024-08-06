@@ -10,5 +10,6 @@ namespace BLL
     {
         public int uid { get; set; }
         public int wordid { get; set; }
+        public int wordidhis { get; set; }
     }
 }

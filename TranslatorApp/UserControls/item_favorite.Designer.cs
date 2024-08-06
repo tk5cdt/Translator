@@ -103,9 +103,9 @@ namespace UserControls
             this.lbl_wordinto.Margin = new System.Windows.Forms.Padding(2);
             this.lbl_wordinto.MaximumSize = new System.Drawing.Size(488, 0);
             this.lbl_wordinto.Name = "lbl_wordinto";
-            this.lbl_wordinto.Size = new System.Drawing.Size(109, 22);
+            this.lbl_wordinto.Size = new System.Drawing.Size(138, 26);
             this.lbl_wordinto.StateCommon.ShortText.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbl_wordinto.StateNormal.ShortText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbl_wordinto.StateNormal.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbl_wordinto.TabIndex = 8;
             this.lbl_wordinto.Values.Text = "kryptonLabel1";
             // 
@@ -115,10 +115,10 @@ namespace UserControls
             this.lbl_wordfrom.Margin = new System.Windows.Forms.Padding(2);
             this.lbl_wordfrom.MaximumSize = new System.Drawing.Size(488, 0);
             this.lbl_wordfrom.Name = "lbl_wordfrom";
-            this.lbl_wordfrom.Size = new System.Drawing.Size(109, 22);
+            this.lbl_wordfrom.Size = new System.Drawing.Size(138, 26);
             this.lbl_wordfrom.StateCommon.LongText.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbl_wordfrom.StateCommon.ShortText.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbl_wordfrom.StateNormal.ShortText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbl_wordfrom.StateNormal.ShortText.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbl_wordfrom.TabIndex = 9;
             this.lbl_wordfrom.Values.Text = "kryptonLabel1";
             // 

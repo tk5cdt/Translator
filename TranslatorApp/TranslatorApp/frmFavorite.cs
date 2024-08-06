@@ -50,7 +50,7 @@ namespace TranslatorApp
 
             try
             {
-                List<FavoriteResponse> favoriteResponses = await favoriteAPI.LoadFavoriteContent(_id);
+                List<FavoriteResponse> favoriteResponses = await favoriteAPI.LoadFavoriteContent(UserSession.Instance.Uid);
 
                 // Xóa các điều khiển cũ
                 panel.Controls.Clear();

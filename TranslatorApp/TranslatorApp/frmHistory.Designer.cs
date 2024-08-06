@@ -39,10 +39,12 @@ namespace TranslatorApp
             // kryptonPanel1
             // 
             this.kryptonPanel1.AutoScroll = true;
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 37);
+            this.kryptonPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 54);
             this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(15, 16, 15, 16);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(891, 481);
+            this.kryptonPanel1.Size = new System.Drawing.Size(894, 467);
             this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.Transparent;
             this.kryptonPanel1.TabIndex = 1;
             // 

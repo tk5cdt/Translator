@@ -22,6 +22,7 @@ namespace TranslatorApp
         private int userControlWidth;
 
         private Panel panel;
+        HistoryAPI historyAPI;
 
         public frmHistory(int id)
         {
@@ -39,7 +40,7 @@ namespace TranslatorApp
         private async Task ShowAsync()
         {
             // Khởi tạo HistoryAPI và lấy dữ liệu
-            HistoryAPI historyAPI = new HistoryAPI();
+            historyAPI = new HistoryAPI();
 
             try
             {
@@ -63,18 +64,19 @@ namespace TranslatorApp
                             Height = userControlHeight,
                             Anchor = AnchorStyles.Top,
 
+                            from = history.fromlanguage,
+                            into = history.tolanguage,
+                            wordFrom = history.originalword,
+                            wordInto = history.translatedword,
+                            wordid = history.wordid,
+                            isfavorite = history.isfavorite,
                         };
-                        newUserControl.from = historyReponses[i].fromlanguage;
-                        newUserControl.into = historyReponses[i].tolanguage;
-                        newUserControl.wordFrom = historyReponses[i].originalword;
-                        newUserControl.wordInto = historyReponses[i].translatedword;
-                        newUserControl.wordid = historyReponses[i].wordid;
-                        newUserControl.isfavorite = historyReponses[i].isfavorite;
-                        //newUserControl.timeSave = DateTime.Parse(historyReponses[i].timesave);
 
                         // Đăng ký sự kiện
                         newUserControl.OnSaveFavorite = HandleSaveFavorite;
                         newUserControl.OnDeleteHistory = HandleDeleteHistory;
+
+                        newUserControl.UpdateFavoriteStatus(history.isfavorite);
 
                         userControls.Add(newUserControl);
                     }
@@ -87,7 +89,7 @@ namespace TranslatorApp
 
                         int centerX = (kryptonPanel1.ClientSize.Width - userControlWidth) / 2;
                         control.Left = centerX;
-
+                        
                         kryptonPanel1.Controls.Add(control);
                         kryptonPanel1.Controls.SetChildIndex(control, 0);
                     }
@@ -129,22 +131,36 @@ namespace TranslatorApp
             
         }
 
-        private void HandleSaveFavorite(string wordfrom, string wordinto, string from, string into, bool isfavorite, KryptonPictureBox kryptonPicture)
+        private void HandleSaveFavorite(string wordfrom, string wordinto, string from, string into, int wordid, KryptonPictureBox kryptonPicture, bool isfavorite)
         {
             // Lưu dữ liệu yêu thích qua API
             SaveFavoriteAPI saveFavoriteAPI = new SaveFavoriteAPI();
+            HistoryAPI historyAPI = new HistoryAPI();
+
             try
             {
-                if (isfavorite)
+                if (!isfavorite)
                 {
-                    var result = saveFavoriteAPI.SaveFavoriteContent(wordfrom, wordinto, from, into, DateTime.Now, isfavorite, UserSession.Instance.Uid);
+                    var result = saveFavoriteAPI.SaveFavoriteContent(wordfrom, wordinto, from, into, wordid, UserSession.Instance.Uid);
                     // Xử lý kết quả lưu thành công
                     if (result != null)
                     {
+                        // Cập nhật trạng thái isfavorite
+                        isfavorite = true;
+                        historyAPI.UpdateHistory(isfavorite, wordid, UserSession.Instance.Uid);
+
+                        // Cập nhật icon và trạng thái cho tất cả các item_history
+                        foreach (var control in kryptonPanel1.Controls.OfType<item_history>())
+                        {
+                            if (control.wordid == wordid)
+                            {
+                                control.UpdateFavoriteStatus(isfavorite);
+                                kryptonPicture.Image = Properties.Resources.save_click;
+                                break;
+                            }
+                        }
 
                         MessageBox.Show("Yêu thích đã được lưu thành công!");
-                        kryptonPicture.Image = Properties.Resources.save_click;
-
                     }
                     else
                     {
@@ -153,9 +169,22 @@ namespace TranslatorApp
                 }
                 else
                 {
-                    HandleDeleteHistory(UserSession.Instance.Uid, isfavorite);
+                    FavoriteAPI favoriteAPI = new FavoriteAPI();
+                    favoriteAPI.DeleteFavoriteInHistory(wordid, UserSession.Instance.Uid);
                     isfavorite = false;
-                    kryptonPicture.Image = Properties.Resources.save;
+
+                    historyAPI.UpdateHistory(isfavorite, wordid, UserSession.Instance.Uid);
+
+                    // Cập nhật icon và trạng thái cho tất cả các item_history
+                    foreach (var control in kryptonPanel1.Controls.OfType<item_history>())
+                    {
+                        if (control.wordid == wordid)
+                        {
+                            control.UpdateFavoriteStatus(isfavorite);
+                            kryptonPicture.Image = Properties.Resources.save;
+                            break;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -164,7 +193,8 @@ namespace TranslatorApp
             }
         }
 
-        private void HandleDeleteHistory(int wordid, bool isfavorite)
+
+        private void HandleDeleteHistory(int wordid)
         {
             // Lưu dữ liệu yêu thích qua API
             HistoryAPI historyAPI = new HistoryAPI();
@@ -177,7 +207,6 @@ namespace TranslatorApp
                 {
                     MessageBox.Show("Xóa lịch sử thành công!");
                     ShowAsync();
-                    isfavorite = true;
                 }
                 else
                 {
