@@ -13,22 +13,22 @@ namespace UserControls
 {
     public partial class item_history : UserControl
     {
-        public Action<int, bool> OnDeleteHistory;
-        public Action<string, string, string, string, bool, KryptonPictureBox> OnSaveFavorite;
-
+        public Action<int> OnDeleteHistory;
+        public Action<string, string, string, string,int, KryptonPictureBox, bool> OnSaveFavorite;
 
         public item_history()
         {
             InitializeComponent();
             kryptonPictureBox1.Click += KryptonPictureBox1_Click;
-
+            UpdateFavoriteStatus(isfavorite);
         }
 
         private async void KryptonPictureBox1_Click(object sender, EventArgs e)
         {
-            OnSaveFavorite?.Invoke(lbl_wordfrom.Text, lbl_wordinto.Text, lbl_from.Text, lbl_into.Text, isfavorite, kryptonPictureBox1);
+            OnSaveFavorite?.Invoke(lbl_wordfrom.Text, lbl_wordinto.Text, lbl_from.Text, lbl_into.Text, wordid, kryptonPictureBox1, isfavorite);
         }
 
+        
         public string from
         {
             get { return lbl_from.Text; }
@@ -90,10 +90,16 @@ namespace UserControls
 
             }
         }
+        public void UpdateFavoriteStatus(bool favorite)
+        {
+            this.isfavorite = favorite;
+            kryptonPictureBox1.Image = favorite ? Properties.Resources.save_click : Properties.Resources.save;
+        }
+
 
         private void kryptonPictureBox2_Click(object sender, EventArgs e)
         {
-            OnDeleteHistory?.Invoke(wordid , isfavorite);
+            OnDeleteHistory?.Invoke(wordid);
         }
     }
 }

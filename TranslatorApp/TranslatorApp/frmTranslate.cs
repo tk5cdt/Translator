@@ -78,7 +78,7 @@ namespace TranslatorApp
             {
                 Languages lang = new Languages();
                 
-                var result = await saveHistoryAPI.SaveHistoryContent(origi, trans, fromlang, tolang, dt, _id, isfavorite);
+                var result = await saveHistoryAPI.SaveHistoryContent(origi, trans, fromlang, tolang, dt, UserSession.Instance.Uid, isfavorite);
                 
             }
             catch (Exception ex)
@@ -108,7 +108,7 @@ namespace TranslatorApp
                 string langDetected = languages.Where(x => x.code == lang).FirstOrDefault().name;
                 label1.Text = "Detected language: " + langDetected + "\nConfidence: " + response.detectedLanguage.confidence + "%";
 
-                saveHistory(kryptonRichTextBox1.Text, kryptonRichTextBox2.Text, langDetected, cbbToLanguage.SelectedValue.ToString(), DateTime.Now, UserSession.Instance.Uid, false);
+                saveHistory(kryptonRichTextBox1.Text, kryptonRichTextBox2.Text, langDetected, target, DateTime.Now, UserSession.Instance.Uid, false);
             }
             loadAlternatives(response);
         }

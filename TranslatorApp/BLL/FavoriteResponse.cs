@@ -14,8 +14,8 @@ namespace BLL
         public string fromlanguage { get; set; }
         public string tolanguage { get; set; }
         public DateTime timesave { get; set; }
-        public bool isfavorite { get; set; }
-        public int uid { get; set; }
         public int wordidhis { get; set; }
+        public int uid { get; set; }
+        
     }
 }

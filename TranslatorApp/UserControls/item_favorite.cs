@@ -71,6 +71,7 @@ namespace UserControls
             set;
         }
 
+
         public KryptonPictureBox GetKryptonPictureBox()
         {
             return this.KryptonPictureBox;
