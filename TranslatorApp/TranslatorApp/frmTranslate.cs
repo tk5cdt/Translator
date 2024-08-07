@@ -108,7 +108,7 @@ namespace TranslatorApp
                 string langDetected = languages.Where(x => x.code == lang).FirstOrDefault().name;
                 label1.Text = "Detected language: " + langDetected + "\nConfidence: " + response.detectedLanguage.confidence + "%";
 
-                saveHistory(kryptonRichTextBox1.Text, kryptonRichTextBox2.Text, langDetected, target, DateTime.Now, UserSession.Instance.Uid, false);
+                saveHistory(kryptonRichTextBox1.Text, kryptonRichTextBox2.Text, langDetected, cbbToLanguage.Text, DateTime.Now, UserSession.Instance.Uid, false);
             }
             loadAlternatives(response);
         }

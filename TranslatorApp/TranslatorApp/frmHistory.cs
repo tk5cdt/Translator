@@ -89,20 +89,21 @@ namespace TranslatorApp
 
                         int centerX = (kryptonPanel1.ClientSize.Width - userControlWidth) / 2;
                         control.Left = centerX;
-                        
+
+
                         kryptonPanel1.Controls.Add(control);
                         kryptonPanel1.Controls.SetChildIndex(control, 0);
                     }
 
-                    // Cập nhật vị trí các điều khiển trong panel
-                    for (int i = 0; i < kryptonPanel1.Controls.Count; i++)
-                    {
-                        var control = kryptonPanel1.Controls[i];
-                        control.Top = i * (userControlHeight + 6) + 2;
+                    //// Cập nhật vị trí các điều khiển trong panel
+                    //for (int i = 0; i < kryptonPanel1.Controls.Count; i++)
+                    //{
+                    //    var control = kryptonPanel1.Controls[i];
+                    //    control.Top = i * (userControlHeight + 6) + 2;
 
-                        int centerX = (kryptonPanel1.ClientSize.Width - userControlWidth) / 2;
-                        control.Left = centerX;
-                    }
+                    //    int centerX = (kryptonPanel1.ClientSize.Width - userControlWidth) / 2;
+                    //    control.Left = centerX;
+                    //}
                 }
                 else
                 {
@@ -160,11 +161,11 @@ namespace TranslatorApp
                             }
                         }
 
-                        MessageBox.Show("Yêu thích đã được lưu thành công!");
+                        MessageBox.Show("Saved favorite successful!");
                     }
                     else
                     {
-                        MessageBox.Show("Lưu yêu thích không thành công.");
+                        MessageBox.Show("Saved favorite unsuccessful!");
                     }
                 }
                 else

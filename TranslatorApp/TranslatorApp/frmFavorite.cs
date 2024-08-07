@@ -98,15 +98,15 @@ namespace TranslatorApp
                         panel.Controls.SetChildIndex(control, 0);
                     }
 
-                    // Cập nhật vị trí các điều khiển trong panel
-                    for (int i = 0; i < panel.Controls.Count; i++)
-                    {
-                        var control = panel.Controls[i];
-                        control.Top = i * (userControlHeight + 6) + 10;
+                    //// Cập nhật vị trí các điều khiển trong panel
+                    //for (int i = 0; i < panel.Controls.Count; i++)
+                    //{
+                    //    var control = panel.Controls[i];
+                    //    control.Top = i * (userControlHeight + 6) + 10;
 
-                        int centerX = (panel.ClientSize.Width - userControlWidth) / 2;
-                        control.Left = centerX;
-                    }
+                    //    int centerX = (panel.ClientSize.Width - userControlWidth) / 2;
+                    //    control.Left = centerX;
+                    //}
                 }
                 else
                 {
@@ -134,7 +134,6 @@ namespace TranslatorApp
 
         private void HandleSaveFavorite(int wordid)
         {
-            MessageBox.Show("Wordid: " + wordid);
             // Lưu dữ liệu yêu thích qua API
             FavoriteAPI deleteFavorite = new FavoriteAPI();
             try
@@ -143,12 +142,12 @@ namespace TranslatorApp
                 // Xử lý kết quả lưu thành công
                 if (result != null)
                 {
-                    MessageBox.Show("Đã xóa thành công!");
+                    MessageBox.Show("Deleted successful!");
                     ShowAsync();
                 }
                 else
                 {
-                    MessageBox.Show("không thành công.");
+                    MessageBox.Show("Deleted unsuccessful.");
                 }
             }
             catch (Exception ex)

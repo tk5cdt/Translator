@@ -51,6 +51,7 @@ let deleteFavoriteHistory = async (req, res) => {
         let {uid, wordidhis} = req.body;
         let pool = await connectDB();
         let result = await pool.request().query(`DELETE FROM FAVORITE WHERE UID = ${uid} AND WORDIDHIS = ${wordidhis}`);
+
         res.status(200).json(result.recordset);
     }
     catch (err) {

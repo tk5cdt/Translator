@@ -20,6 +20,7 @@ const initApiRoute = (app) => {
     router.post('/deleteallhistory', historyController.deleteAllHistory);
     router.post('/updatehistory', historyController.updateHistory);
 
+
     router.get('/getfavorite', favoriteController.getFavorite);
     router.post('/savefavorite', favoriteController.saveFavorite);
     router.post('/deletefavorite', favoriteController.deleteFavorite);
