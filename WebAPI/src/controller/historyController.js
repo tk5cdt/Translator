@@ -5,7 +5,7 @@ let getHistory = async (req, res) => {
     try{
         let {uid} = req.query;
         let pool = await connectDB();
-        let result = await pool.request().query(`SELECT WORDID, ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, UID, ISFAVORITE FROM HISTORY WHERE UID = ${uid}`);
+        let result = await pool.request().query(`SELECT WORDID, ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, UID, ISFAVORITE FROM HISTORY WHERE UID = ${uid} ORDER BY TIMESAVE DESC`);
         res.status(200).json(result.recordset);
     }catch (err) {
         console.log(err);

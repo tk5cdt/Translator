@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.translatorandroid.Activity.Login;
+import com.example.translatorandroid.Activity.MainActivity;
 import com.example.translatorandroid.Adapter.FavoriteAdapter;
 import com.example.translatorandroid.Model.Account;
 import com.example.translatorandroid.Model.Favorite;
@@ -44,7 +45,7 @@ public class FavoriteFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        Account account = ((MainActivity) requireActivity()).account;
         ServicesAPI.servicesAPI.getFavorite(4).enqueue(new Callback<List<Favorite>>() {
             @Override
             public void onResponse(Call<List<Favorite>> call, Response<List<Favorite>> response) {
@@ -53,7 +54,7 @@ public class FavoriteFragment extends Fragment {
                 } else {
                     favoriteList = response.body();
                 }
-                adapter = new FavoriteAdapter(favoriteList);
+                adapter = new FavoriteAdapter(favoriteList, account.getUID());
                 binding.rvFavorite.setAdapter(adapter);
                 binding.rvFavorite.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
             }

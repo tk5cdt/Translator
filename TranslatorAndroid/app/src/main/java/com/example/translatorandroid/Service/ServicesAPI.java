@@ -26,7 +26,7 @@ public interface ServicesAPI {
             .create();
 
     ServicesAPI servicesAPI = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.111:3000/api/")
+            .baseUrl("http://192.168.1.4:3000/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ServicesAPI.class);
@@ -49,7 +49,7 @@ public interface ServicesAPI {
     Call<Account> logout();
 
     @POST("savehistory")
-    Call<History> saveHistory(@Body History history);
+    Call<History> saveHistory(@Body HistoryRequest history);
 
     @POST("savefavorite")
     Call<Favorite> saveFavorite(@Body FavoriteRequest favorite);

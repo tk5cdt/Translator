@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.translatorandroid.Activity.MainActivity;
 import com.example.translatorandroid.Adapter.HistoryAdapter;
 import com.example.translatorandroid.Model.Account;
 import com.example.translatorandroid.Model.History;
@@ -19,6 +20,7 @@ import com.example.translatorandroid.databinding.FragmentHistoryBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,6 +40,7 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        Account account = ((MainActivity) requireActivity()).account;
         ServicesAPI.servicesAPI.getHistory(4).enqueue(new Callback<List<History>>() {
             @Override
             public void onResponse(Call<List<History>> call, Response<List<History>> response) {
@@ -46,7 +49,7 @@ public class HistoryFragment extends Fragment {
                 } else {
                     historyList = response.body();
                 }
-                HistoryAdapter adapter = new HistoryAdapter(historyList);
+                HistoryAdapter adapter = new HistoryAdapter(historyList, account.getUID());
                 binding.rvHistory.setAdapter(adapter);
                 binding.rvHistory.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
             }

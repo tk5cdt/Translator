@@ -1,7 +1,9 @@
 package com.example.translatorandroid.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     MainViewpageAdapter adapter = new MainViewpageAdapter(this);
 
-    Account account;
+    public Account account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +52,27 @@ public class MainActivity extends AppCompatActivity {
                     binding.vpMain.setCurrentItem(0);
                     return true;
                 } else {
-                    binding.vpMain.setCurrentItem(1);
+                    if (account != null) {
+                        binding.vpMain.setCurrentItem(1);
+                    } else {
+                        AlertDialog Dialog = new AlertDialog.Builder(MainActivity.this)
+                                .setTitle("Login required")
+                                .setMessage("You need to login to access this feature")
+                                .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(MainActivity.this, Login.class);
+                                        startActivity(intent);
+                                    }
+                                }).setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface DialogInterface, int i) {
+                                        //make  NavigationBarView.OnItemSelectedListener() return false
+                                        binding.navBotMain.setSelectedItemId(R.id.miTranslate);
+                                    }
+                                }).create();
+                        Dialog.show();
+                    }
                     return true;
                 }
             }

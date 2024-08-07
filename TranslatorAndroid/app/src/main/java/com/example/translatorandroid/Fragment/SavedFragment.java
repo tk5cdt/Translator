@@ -27,7 +27,7 @@ public class SavedFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        SavedViewpageAdapter savedViewpageAdapter = new SavedViewpageAdapter(this.requireActivity());
+        SavedViewpageAdapter savedViewpageAdapter = new SavedViewpageAdapter(getChildFragmentManager(), getLifecycle());
         binding.vpSaved.setAdapter(savedViewpageAdapter);
         new TabLayoutMediator(binding.tabs, binding.vpSaved, (tab, position) -> {
             switch (position){

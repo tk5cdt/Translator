@@ -4,6 +4,7 @@ import static android.app.Activity.RESULT_OK;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -25,16 +26,24 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.example.translatorandroid.Activity.MainActivity;
+import com.example.translatorandroid.Model.Account;
+import com.example.translatorandroid.Model.History;
+import com.example.translatorandroid.Model.HistoryRequest;
 import com.example.translatorandroid.Model.Language;
 import com.example.translatorandroid.Model.Translate;
 import com.example.translatorandroid.Model.TranslateResponse;
 import com.example.translatorandroid.R;
 import com.example.translatorandroid.Service.LanguageAPI;
+import com.example.translatorandroid.Service.ServicesAPI;
 import com.example.translatorandroid.Service.TranslateAPI;
 import com.example.translatorandroid.databinding.FragmentTranslateBinding;
 import com.google.errorprone.annotations.Var;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -52,6 +61,7 @@ public class TranslateFragment extends Fragment {
     Runnable translateRunnable;
     TextToSpeech textToSpeech;
     String lang;
+    String langDetected;
     private static final int RESULT_SPEECH = 1;
 
     private final ActivityResultLauncher<Intent> speechRecognizerLauncher = registerForActivityResult(
@@ -89,7 +99,7 @@ public class TranslateFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s != null){
+                if(s != null && !s.toString().trim().isEmpty()){
                     translateRunnable = new Runnable() {
                         @Override
                         public void run() {
@@ -101,13 +111,43 @@ public class TranslateFragment extends Fragment {
                 else{
                     binding.tvTranslatedWord.setText("");
                 }
+                Account account = ((MainActivity) requireActivity()).account;
+                if (account != null || !binding.tvTranslatedWord.getText().toString().trim().isEmpty()) {
+                    HistoryRequest historyRequest = new HistoryRequest();
+                    historyRequest.originalword = s.toString();
+                    if (binding.spOriginalLang.getSelectedItemPosition() == 0) {
+                        String dl = binding.txtDetectedLanguage.getText().toString();
+                        String ld =dl.replace("Detected Language: ","");
+                        historyRequest.fromlanguage = ld;
+                    } else {
+                        historyRequest.fromlanguage = ((Language) binding.spOriginalLang.getSelectedItem()).name;
+                    }
+                    historyRequest.isfavorite = false;
+                    historyRequest.tolanguage = ((Language) binding.spTranslatedLang.getSelectedItem()).name;
+                    historyRequest.translatedword = binding.tvTranslatedWord.getText().toString();
+                    historyRequest.uid = ((MainActivity) requireActivity()).account.getUID();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        historyRequest.timesave = Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC));
+                    }
+                    ServicesAPI.servicesAPI.saveHistory(historyRequest).enqueue(new Callback<History>() {
+                        @Override
+                        public void onResponse(Call<History> call, Response<History> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<History> call, Throwable throwable) {
+
+                        }
+                    });
+                }
             }
         });
 
         binding.spOriginalLang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(binding.edtOriginalWord.getText().toString().trim().length() > 0){
+                if(!binding.edtOriginalWord.getText().toString().trim().isEmpty()){
                     translate(binding.edtOriginalWord.getText().toString());
                 }
             }
@@ -121,7 +161,7 @@ public class TranslateFragment extends Fragment {
         binding.spTranslatedLang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(binding.edtOriginalWord.getText().toString().trim().length() > 0){
+                if(!binding.edtOriginalWord.getText().toString().trim().isEmpty()){
                     translate(binding.edtOriginalWord.getText().toString());
                 }
             }
@@ -145,7 +185,7 @@ public class TranslateFragment extends Fragment {
         binding.ibtnOriginalWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!Objects.requireNonNull(binding.edtOriginalWord.getText().toString().isEmpty())) {
+                if (!binding.edtOriginalWord.getText().toString().isEmpty()) {
                     Locale locale = getLocaleFromLanguageCode(lang);
                     if (locale != null) {
                         textToSpeech.setLanguage(locale);
@@ -158,7 +198,7 @@ public class TranslateFragment extends Fragment {
         binding.ibtnTranslatedWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!Objects.requireNonNull(binding.tvTranslatedWord.getText().toString().isEmpty())) {
+                if (!binding.tvTranslatedWord.getText().toString().isEmpty()) {
                     Locale locale = getLocaleFromLanguageCode(((Language) binding.spTranslatedLang.getSelectedItem()).code);
                     if (locale != null) {
                         textToSpeech.setLanguage(locale);
@@ -268,7 +308,7 @@ public class TranslateFragment extends Fragment {
         }
     }
 
-    private  void translate(String q){
+    private void translate(String q){
         Translate content = new Translate();
         content.setQ(q);
         content.setSource(((Language) binding.spOriginalLang.getSelectedItem()).code);
@@ -291,13 +331,13 @@ public class TranslateFragment extends Fragment {
                         for (int i = 0; i < adapter.getCount(); i++) {
                             languages.add(adapter.getItem(i));
                         }
-                        String langDetected;
 
                         for (Language language : languages) {
                             if (language.code.equals(lang)) {
                                 langDetected = language.name;
                                 binding.txtDetectedLanguage.setText("Detected Language: " + langDetected);
                                 binding.txtConfidence.setText("Confidence: " + response.body().detectedLanguage.getConfidence() + "%");
+                                break;
                             }
                         }
                     }

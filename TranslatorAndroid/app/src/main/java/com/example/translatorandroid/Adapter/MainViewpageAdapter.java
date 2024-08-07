@@ -3,16 +3,26 @@ package com.example.translatorandroid.Adapter;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.translatorandroid.Fragment.SavedFragment;
 import com.example.translatorandroid.Fragment.TranslateFragment;
 
 public class MainViewpageAdapter extends FragmentStateAdapter {
-
-    public  MainViewpageAdapter(@NonNull FragmentActivity fragmentActivity){
+    public MainViewpageAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
+
+    public MainViewpageAdapter(@NonNull Fragment fragment) {
+        super(fragment);
+    }
+
+    public MainViewpageAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+        super(fragmentManager, lifecycle);
+    }
+
     @NonNull
     @Override
     public Fragment createFragment(int position) {

@@ -25,8 +25,6 @@ import com.example.translatorandroid.Service.ServicesAPI;
 import com.example.translatorandroid.databinding.ActivityLoginBinding;
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;

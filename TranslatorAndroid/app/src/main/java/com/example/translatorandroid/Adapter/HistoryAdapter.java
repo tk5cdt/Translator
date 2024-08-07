@@ -31,8 +31,10 @@ import retrofit2.Response;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
     List<History> historyList;
-    public HistoryAdapter(List<History> historyList) {
+    int uid;
+    public HistoryAdapter(List<History> historyList, int uid) {
         this.historyList = historyList;
+        this.uid = uid;
     }
     @NonNull
     @Override
@@ -69,7 +71,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                     favorite.tolanguage = history.TOLANGUAGE;
                     favorite.timesave = Date.from(LocalDateTime.now().toInstant(java.time.ZoneOffset.UTC));
                     favorite.wordidhis = history.WORDID;
-                    favorite.uid = 4;
+                    favorite.uid = uid;
                     HistoryRequest historyRequest = new HistoryRequest();
                     historyRequest.wordid = history.WORDID;
                     historyRequest.uid = 4;

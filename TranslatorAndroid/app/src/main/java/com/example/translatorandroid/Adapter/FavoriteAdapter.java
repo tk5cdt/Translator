@@ -20,8 +20,10 @@ import java.util.List;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder> {
     List<Favorite> favoriteList;
-    public FavoriteAdapter(List<Favorite> favoriteList) {
+    int uid;
+    public FavoriteAdapter(List<Favorite> favoriteList, int uid) {
         this.favoriteList = favoriteList;
+        this.uid = uid;
     }
     @NonNull
     @Override
@@ -46,7 +48,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
             public void onClick(View v) {
                 FavoriteRequest favoriteRequest = new FavoriteRequest();
                 favoriteRequest.wordid = favorite.WORDID;
-                favoriteRequest.uid = 4;
+                favoriteRequest.uid = uid;
                 favoriteList.remove(position);
                 notifyDataSetChanged();
                 ServicesAPI.servicesAPI.deleteFavorite(favoriteRequest).enqueue(new retrofit2.Callback<Favorite>() {
