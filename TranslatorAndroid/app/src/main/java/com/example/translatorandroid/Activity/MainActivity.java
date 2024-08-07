@@ -93,18 +93,20 @@ public class MainActivity extends AppCompatActivity {
         if (isLoggedIn) {
             loginStatusItem.setVisible(false); // Ẩn mục Login
             logoutItem.setVisible(true); // Hiển thị mục Logout
+            // hien thi icon
+            logoutItem.setIcon(R.drawable.iclogout);
         } else {
             loginStatusItem.setVisible(true); // Hiển thị mục Login
+            loginStatusItem.setIcon(R.drawable.ic_account);
             logoutItem.setVisible(false); // Ẩn mục Logout
         }
+        loginStatusItem.setIcon(R.drawable.ic_account);
         return true;
     }
 
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        Intent intent = new Intent(this, Login.class);
-//        startActivity(intent);
 
         if(item.getItemId() == R.id.login)
         {
@@ -123,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             performLogout();
             boolean isLoggedIn = getIntent().getBooleanExtra("isLoggedIn", false);
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("isLoggedIn", false);
+            intent.putExtra("isLoggedIn", isLoggedIn);
             startActivity(intent);
 
         }

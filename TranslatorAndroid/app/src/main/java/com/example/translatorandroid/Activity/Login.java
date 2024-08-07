@@ -55,9 +55,12 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String email = binding.email.getText().toString();
                 String password = binding.password.getText().toString();
-                isValidEmail(email);
-                if (isValidPassword(password)) {
+
+                if (isValidEmail(email) && isValidPassword(password)) {
                         login(email, password);
+                }
+                else {
+                    Toast.makeText(Login.this, "Invalid input", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -71,17 +74,16 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
     }
 
-        private boolean isValidEmail(String email) {
-            // Kiểm tra định dạng cơ bản và số lượng ký tự
-            if (email == null && email.length() <= 0 && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                binding.email.setError("Invalid email");
-                return false;
-            }
-            return true;
+    private boolean isValidEmail(String email) {
+        // Kiểm tra định dạng cơ bản và số lượng ký tự
+        if (email.isEmpty() && !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.email.setError("Invalid email");
+            return false;
         }
+        return true;
+    }
     private String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
 
     private Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
