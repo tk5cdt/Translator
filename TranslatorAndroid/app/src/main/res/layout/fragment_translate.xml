@@ -66,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:background="@null"
+            android:layout_marginTop="5dp"
             android:src="@drawable/baseline_volume_up_24" />
 
         <ImageButton
@@ -74,6 +75,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/baseline_mic_24" />
     </LinearLayout>
 

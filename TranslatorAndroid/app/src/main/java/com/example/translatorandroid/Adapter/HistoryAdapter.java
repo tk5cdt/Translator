@@ -74,7 +74,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                     favorite.uid = uid;
                     HistoryRequest historyRequest = new HistoryRequest();
                     historyRequest.wordid = history.WORDID;
-                    historyRequest.uid = 4;
+                    historyRequest.uid = uid;
                     historyRequest.isfavorite = false;
                     ServicesAPI.servicesAPI.updateHistory(historyRequest).enqueue(new Callback<History>() {
                         @Override
@@ -115,7 +115,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                     favorite.tolanguage = history.TOLANGUAGE;
                     favorite.timesave = Date.from(LocalDateTime.now().toInstant(java.time.ZoneOffset.UTC));
                     favorite.wordidhis = history.WORDID;
-                    favorite.uid = 4;
+                    favorite.uid = uid;
                     ServicesAPI.servicesAPI.saveFavorite(favorite).enqueue(new Callback<Favorite>() {
                         @SuppressLint("NotifyDataSetChanged")
                         @Override
@@ -129,15 +129,31 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                             Log.e("Error", throwable.toString());
                         }
                     });
+                    HistoryRequest historyRequest = new HistoryRequest();
+                    historyRequest.uid = uid;
+                    historyRequest.wordid = history.WORDID;
+                    historyRequest.isfavorite = true;
+                    ServicesAPI.servicesAPI.updateHistory(historyRequest).enqueue(new Callback<History>() {
+                        @Override
+                        public void onResponse(Call<History> call, Response<History> response) {
+                            notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onFailure(Call<History> call, Throwable throwable) {
+
+                        }
+                    });
                 }
             }
         });
+
         binding.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 HistoryRequest historyRequest = new HistoryRequest();
                 historyRequest.wordid = history.WORDID;
-                historyRequest.uid = 4;
+                historyRequest.uid = uid;
                 historyList.remove(history);
                 notifyDataSetChanged();
                 ServicesAPI.servicesAPI.deleteHistory(historyRequest).enqueue(new Callback<History>() {

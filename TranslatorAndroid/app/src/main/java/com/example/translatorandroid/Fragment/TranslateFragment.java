@@ -106,40 +106,10 @@ public class TranslateFragment extends Fragment {
                             translate(s.toString());
                         }
                     };
-                    handler.postDelayed(translateRunnable, 1000);
+                    handler.postDelayed(translateRunnable, 2000);
                 }
                 else{
                     binding.tvTranslatedWord.setText("");
-                }
-                Account account = ((MainActivity) requireActivity()).account;
-                if (account != null || !binding.tvTranslatedWord.getText().toString().trim().isEmpty()) {
-                    HistoryRequest historyRequest = new HistoryRequest();
-                    historyRequest.originalword = s.toString();
-                    if (binding.spOriginalLang.getSelectedItemPosition() == 0) {
-                        String dl = binding.txtDetectedLanguage.getText().toString();
-                        String ld =dl.replace("Detected Language: ","");
-                        historyRequest.fromlanguage = ld;
-                    } else {
-                        historyRequest.fromlanguage = ((Language) binding.spOriginalLang.getSelectedItem()).name;
-                    }
-                    historyRequest.isfavorite = false;
-                    historyRequest.tolanguage = ((Language) binding.spTranslatedLang.getSelectedItem()).name;
-                    historyRequest.translatedword = binding.tvTranslatedWord.getText().toString();
-                    historyRequest.uid = ((MainActivity) requireActivity()).account.getUID();
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        historyRequest.timesave = Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC));
-                    }
-                    ServicesAPI.servicesAPI.saveHistory(historyRequest).enqueue(new Callback<History>() {
-                        @Override
-                        public void onResponse(Call<History> call, Response<History> response) {
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<History> call, Throwable throwable) {
-
-                        }
-                    });
                 }
             }
         });
@@ -337,6 +307,37 @@ public class TranslateFragment extends Fragment {
                                 langDetected = language.name;
                                 binding.txtDetectedLanguage.setText("Detected Language: " + langDetected);
                                 binding.txtConfidence.setText("Confidence: " + response.body().detectedLanguage.getConfidence() + "%");
+
+                                Account account = ((MainActivity) requireActivity()).account;
+                                if (account != null || !binding.tvTranslatedWord.getText().toString().trim().isEmpty()) {
+                                    HistoryRequest historyRequest = new HistoryRequest();
+                                    historyRequest.originalword = q;
+                                    if (binding.spOriginalLang.getSelectedItemPosition() == 0) {
+                                        //String dl = binding.txtDetectedLanguage.getText().toString();
+                                       // String ld =dl.replace("Detected Language: ","");
+                                        historyRequest.fromlanguage = langDetected;
+                                    } else {
+                                        historyRequest.fromlanguage = ((Language) binding.spOriginalLang.getSelectedItem()).name;
+                                    }
+                                    historyRequest.isfavorite = false;
+                                    historyRequest.tolanguage = ((Language) binding.spTranslatedLang.getSelectedItem()).name;
+                                    historyRequest.translatedword = binding.tvTranslatedWord.getText().toString();
+                                    historyRequest.uid = ((MainActivity) requireActivity()).account.getUID();
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                        historyRequest.timesave = Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC));
+                                    }
+                                    ServicesAPI.servicesAPI.saveHistory(historyRequest).enqueue(new Callback<History>() {
+                                        @Override
+                                        public void onResponse(Call<History> call, Response<History> response) {
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<History> call, Throwable throwable) {
+
+                                        }
+                                    });
+                                }
                                 break;
                             }
                         }
