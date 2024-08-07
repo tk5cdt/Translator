@@ -3,8 +3,10 @@ package com.example.translatorandroid.Service;
 import com.example.translatorandroid.Model.Account;
 import com.example.translatorandroid.Model.ClassSignUp;
 import com.example.translatorandroid.Model.Favorite;
+import com.example.translatorandroid.Model.FavoriteRequest;
 import com.example.translatorandroid.Model.History;
 import com.example.translatorandroid.Model.ClassLogin;
+import com.example.translatorandroid.Model.HistoryRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -46,4 +48,21 @@ public interface ServicesAPI {
     @POST("logout")
     Call<Account> logout();
 
+    @POST("savehistory")
+    Call<History> saveHistory(@Body History history);
+
+    @POST("savefavorite")
+    Call<Favorite> saveFavorite(@Body FavoriteRequest favorite);
+
+    @POST("deletehistory")
+    Call<History> deleteHistory(@Body HistoryRequest historyRequest);
+
+    @POST("deletefavorite")
+    Call<Favorite> deleteFavorite(@Body FavoriteRequest favoriteRequest);
+
+    @POST("deletefavoritehistory")
+    Call<Favorite> deleteFavoriteHistory(@Body FavoriteRequest favoriteRequest);
+
+    @POST("updateHistory")
+    Call<History> updateHistory(@Body HistoryRequest historyRequest);
 }

@@ -30,6 +30,7 @@ import retrofit2.Response;
 public class FavoriteFragment extends Fragment {
     FragmentFavoriteBinding binding;
     List<Favorite> favoriteList;
+    public static FavoriteAdapter adapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class FavoriteFragment extends Fragment {
                 } else {
                     favoriteList = response.body();
                 }
-                FavoriteAdapter adapter = new FavoriteAdapter(favoriteList);
+                adapter = new FavoriteAdapter(favoriteList);
                 binding.rvFavorite.setAdapter(adapter);
                 binding.rvFavorite.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
             }

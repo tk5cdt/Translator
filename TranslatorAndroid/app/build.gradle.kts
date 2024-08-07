@@ -58,4 +58,5 @@ dependencies {
 
     implementation("org.mindrot:jbcrypt:0.4")
 
+    implementation ("androidx.activity:activity-ktx:1.4.0")
 }
