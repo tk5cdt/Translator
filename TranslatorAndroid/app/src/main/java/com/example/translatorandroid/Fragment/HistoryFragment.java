@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.translatorandroid.Adapter.HistoryAdapter;
+import com.example.translatorandroid.Model.Account;
 import com.example.translatorandroid.Model.History;
 import com.example.translatorandroid.R;
 import com.example.translatorandroid.Service.ServicesAPI;

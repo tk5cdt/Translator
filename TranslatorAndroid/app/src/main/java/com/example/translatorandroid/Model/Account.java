@@ -1,40 +1,42 @@
 package com.example.translatorandroid.Model;
 
-public class Account {
-    private int uid;
-    private String username;
-    private String email;
-    private String password;
+import java.io.Serializable;
 
-    public int getUid() {
-        return uid;
+public class Account implements Serializable {
+    private int UID;
+    private String USERNAME;
+    private String EMAIL;
+    private String PASS;
+
+    public int getUID() {
+        return UID;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setUID(int UID) {
+        this.UID = UID;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUSERNAME() {
+        return USERNAME;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUSERNAME(String USERNAME) {
+        this.USERNAME = USERNAME;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEMAIL() {
+        return EMAIL;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEMAIL(String EMAIL) {
+        this.EMAIL = EMAIL;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPASS() {
+        return PASS;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPASS(String PASS) {
+        this.PASS = PASS;
     }
 }

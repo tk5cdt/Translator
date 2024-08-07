@@ -53,8 +53,9 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="20dp"
                 android:paddingTop="5dp"
-                android:paddingEnd="20dp"
+                android:paddingRight="20dp"
                 android:paddingBottom="5dp">
+                >
 
                 <EditText
                     android:id="@+id/password"
@@ -63,22 +64,11 @@
                     android:drawableStart="@drawable/password"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:textSize="16sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/forgot_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:gravity="end"
-                android:paddingEnd="20dp"
-                android:text="Forgot Password?"
-                android:textColor="@color/blue"
-                android:textSize="18sp"
-                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLogin"
