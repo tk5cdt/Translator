@@ -117,13 +117,13 @@ public class MainActivity extends AppCompatActivity {
             loginStatusItem.setVisible(false); // Ẩn mục Login
             logoutItem.setVisible(true); // Hiển thị mục Logout
             // hien thi icon
-            logoutItem.setIcon(R.drawable.iclogout);
+            logoutItem.setIcon(R.drawable.baseline_logout_24);
         } else {
             loginStatusItem.setVisible(true); // Hiển thị mục Login
-            loginStatusItem.setIcon(R.drawable.ic_account);
+            loginStatusItem.setIcon(R.drawable.baseline_account_circle_24);
             logoutItem.setVisible(false); // Ẩn mục Logout
         }
-        loginStatusItem.setIcon(R.drawable.ic_account);
+        loginStatusItem.setIcon(R.drawable.baseline_account_circle_24);
         return true;
     }
 
