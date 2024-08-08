@@ -142,7 +142,7 @@ namespace TranslatorApp
             {
                 if (!isfavorite)
                 {
-                    var result = saveFavoriteAPI.SaveFavoriteContent(wordfrom, wordinto, from, into, wordid, UserSession.Instance.Uid);
+                    var result = saveFavoriteAPI.SaveFavoriteContent(wordfrom, wordinto, from, into, DateTime.Now, wordid, UserSession.Instance.Uid);
                     // Xử lý kết quả lưu thành công
                     if (result != null)
                     {

@@ -1,5 +1,5 @@
 import e from 'express';
-import { connectDB } from '../configs/connectDB';
+import { connectDB, sql } from '../configs/connectDB';
 
 let getFavorite = async (req, res) => {
     try{
@@ -17,13 +17,13 @@ let saveFavorite = async (req, res) => {
         let{originalword, translatedword, fromlanguage, tolanguage,timesave,wordidhis,uid} = req.body;
         let pool = await connectDB();
         let result = await pool.request()
-            // .input('originalword', sql.NVarChar, originalword)
-            // .input('translatedword', sql.NVarChar, translatedword)
-            // .input('fromlanguage', sql.NVarChar, fromlanguage)
-            // .input('tolanguage', sql.NVarChar, tolanguage)
-            // .input('timesave', sql.DateTime, timesave)
-            // .input('uid', sql.Int, uid)
-            .query(`INSERT INTO FAVORITE(ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, WORDIDHIS, UID) VALUES('${originalword}', '${translatedword}', '${fromlanguage}', '${tolanguage}', '${timesave}', ${wordidhis}, ${uid})`);
+            .input('originalword', sql.NVarChar, originalword)
+            .input('translatedword', sql.NVarChar, translatedword)
+            .input('fromlanguage', sql.NVarChar, fromlanguage)
+            .input('tolanguage', sql.NVarChar, tolanguage)
+            .input('timesave', sql.DateTime, timesave)
+            .input('uid', sql.Int, uid)
+            .query(`INSERT INTO FAVORITE(ORIGINALWORD, TRANSLATEDWORD, FROMLANGUAGE, TOLANGUAGE, TIMESAVE, WORDIDHIS, UID) VALUES(@originalword, @translatedword, @fromlanguage, @tolanguage, @timesave, ${wordidhis}, @uid)`);
         res.status(200).json(result.recordset);
     }catch (err) {
         console.log(err);
