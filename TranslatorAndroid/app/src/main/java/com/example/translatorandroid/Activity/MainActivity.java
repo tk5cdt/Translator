@@ -22,6 +22,7 @@ import com.example.translatorandroid.Adapter.MainViewpageAdapter;
 import com.example.translatorandroid.Model.Account;
 import com.example.translatorandroid.R;
 import com.example.translatorandroid.Service.ServicesAPI;
+import com.example.translatorandroid.ShareReferences.DataManager;
 import com.example.translatorandroid.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -90,6 +91,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        account = DataManager.GetAccount();
+        if(account != null)
+        {
+            Toast.makeText(MainActivity.this, "Hello " + account.getUSERNAME(), Toast.LENGTH_SHORT).show();
+        }
+
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null)
@@ -112,8 +119,13 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         boolean isLoggedIn = intent.getBooleanExtra("isLoggedIn", false);
+        if (account != null) {
+            loginStatusItem.setVisible(false);
+            logoutItem.setVisible(true);
+            logoutItem.setIcon(R.drawable.baseline_logout_24);
+        }
 
-        if (isLoggedIn) {
+        else if (isLoggedIn) {
             loginStatusItem.setVisible(false); // Ẩn mục Login
             logoutItem.setVisible(true); // Hiển thị mục Logout
             // hien thi icon
@@ -123,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             loginStatusItem.setIcon(R.drawable.baseline_account_circle_24);
             logoutItem.setVisible(false); // Ẩn mục Logout
         }
-        loginStatusItem.setIcon(R.drawable.baseline_account_circle_24);
+
         return true;
     }
 

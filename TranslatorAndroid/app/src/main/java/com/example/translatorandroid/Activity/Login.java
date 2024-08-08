@@ -22,6 +22,7 @@ import com.example.translatorandroid.Model.Account;
 import com.example.translatorandroid.Model.ClassLogin;
 import com.example.translatorandroid.R;
 import com.example.translatorandroid.Service.ServicesAPI;
+import com.example.translatorandroid.ShareReferences.DataManager;
 import com.example.translatorandroid.databinding.ActivityLoginBinding;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -55,7 +56,8 @@ public class Login extends AppCompatActivity {
                 String password = binding.password.getText().toString();
 
                 if (isValidEmail(email) && isValidPassword(password)) {
-                        login(email, password);
+                    login(email, password);
+
                 }
                 else {
                     Toast.makeText(Login.this, "Invalid input", Toast.LENGTH_SHORT).show();
@@ -104,6 +106,8 @@ public class Login extends AppCompatActivity {
                 if (response.body() != null) {
                     account = response.body();
                     Toast.makeText(Login.this, "Login successful", Toast.LENGTH_SHORT).show();
+
+                    DataManager.SetAccount(account);
 
                     // Chuyển sang MainActivity và gửi trạng thái đăng nhập
                     Intent intent = new Intent(Login.this, MainActivity.class);
