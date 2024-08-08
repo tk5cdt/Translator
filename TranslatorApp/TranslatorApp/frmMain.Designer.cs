@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mTranslate = new System.Windows.Forms.ToolStripMenuItem();
             this.savedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -35,6 +36,7 @@
             this.mFavorite = new System.Windows.Forms.ToolStripMenuItem();
             this.mLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.mLogout = new System.Windows.Forms.ToolStripMenuItem();
+            this.kryptonCustomPaletteBase1 = new Krypton.Toolkit.KryptonCustomPaletteBase(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +75,7 @@
             // 
             this.mHistory.Image = global::TranslatorApp.Properties.Resources.ic_History;
             this.mHistory.Name = "mHistory";
-            this.mHistory.Size = new System.Drawing.Size(180, 22);
+            this.mHistory.Size = new System.Drawing.Size(116, 22);
             this.mHistory.Text = "History";
             this.mHistory.Click += new System.EventHandler(this.mHistory_Click_1);
             // 
@@ -81,7 +83,7 @@
             // 
             this.mFavorite.Image = global::TranslatorApp.Properties.Resources.ic_Favorite;
             this.mFavorite.Name = "mFavorite";
-            this.mFavorite.Size = new System.Drawing.Size(180, 22);
+            this.mFavorite.Size = new System.Drawing.Size(116, 22);
             this.mFavorite.Text = "Favorite";
             this.mFavorite.Click += new System.EventHandler(this.mFavorite_Click);
             // 
@@ -104,6 +106,14 @@
             this.mLogout.Visible = false;
             this.mLogout.Click += new System.EventHandler(this.mLogout_Click);
             // 
+            // kryptonCustomPaletteBase1
+            // 
+            this.kryptonCustomPaletteBase1.BaseFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.kryptonCustomPaletteBase1.BaseFontSize = 9F;
+            this.kryptonCustomPaletteBase1.BasePaletteType = Krypton.Toolkit.BasePaletteType.Custom;
+            this.kryptonCustomPaletteBase1.ThemeName = "";
+            this.kryptonCustomPaletteBase1.UseKryptonFileDialogs = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,8 +123,10 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
+            this.Palette = this.kryptonCustomPaletteBase1;
+            this.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -132,6 +144,7 @@
         private System.Windows.Forms.ToolStripMenuItem mFavorite;
         private System.Windows.Forms.ToolStripMenuItem mLogin;
         private System.Windows.Forms.ToolStripMenuItem mLogout;
+        private Krypton.Toolkit.KryptonCustomPaletteBase kryptonCustomPaletteBase1;
     }
 }
 

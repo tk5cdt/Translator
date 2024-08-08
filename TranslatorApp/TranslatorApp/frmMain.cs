@@ -24,6 +24,13 @@ namespace TranslatorApp
         {
             mTranslate.PerformClick();
             updateLoginButton();
+            this.FormClosed += FrmMain_FormClosed;
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Program.mainForm.Close();
+            Application.Exit();
         }
 
         private void updateLoginButton()
