@@ -219,7 +219,7 @@ public class TranslateFragment extends Fragment {
 
                     Language detectLanguage = new Language();
                     detectLanguage.code ="auto";
-                    detectLanguage.name="Detect lanuage";
+                    detectLanguage.name="Detect language";
                     languages.add(detectLanguage);
 
                     for (Language language : response.body()){
@@ -284,7 +284,7 @@ public class TranslateFragment extends Fragment {
         content.setSource(((Language) binding.spOriginalLang.getSelectedItem()).code);
         content.setTarget(((Language) binding.spTranslatedLang.getSelectedItem()).code);
         content.setFormat("text");
-        content.setAlternatives(2);
+        content.setAlternatives(3);
 
         TranslateAPI.translateAPI.sendTranslateContent(content).enqueue(new Callback<TranslateResponse>() {
             @Override
@@ -309,7 +309,7 @@ public class TranslateFragment extends Fragment {
                                 binding.txtConfidence.setText("Confidence: " + response.body().detectedLanguage.getConfidence() + "%");
 
                                 Account account = ((MainActivity) requireActivity()).account;
-                                if (account != null || !binding.tvTranslatedWord.getText().toString().trim().isEmpty()) {
+                                if (account != null) {
                                     HistoryRequest historyRequest = new HistoryRequest();
                                     historyRequest.originalword = q;
                                     if (binding.spOriginalLang.getSelectedItemPosition() == 0) {

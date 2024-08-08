@@ -12,11 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.translatorandroid.Model.Favorite;
 import com.example.translatorandroid.Model.FavoriteRequest;
+import com.example.translatorandroid.Model.History;
+import com.example.translatorandroid.Model.HistoryRequest;
 import com.example.translatorandroid.R;
 import com.example.translatorandroid.Service.ServicesAPI;
 import com.example.translatorandroid.databinding.ItemHistoryBinding;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder> {
     List<Favorite> favoriteList;
@@ -54,6 +60,23 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
                 ServicesAPI.servicesAPI.deleteFavorite(favoriteRequest).enqueue(new retrofit2.Callback<Favorite>() {
                     @Override
                     public void onResponse(retrofit2.Call<Favorite> call, retrofit2.Response<Favorite> response) {
+                        if(favorite.WORDIDHIS != 0) {
+                            HistoryRequest n = new HistoryRequest();
+                            n.wordid = favorite.WORDIDHIS;
+                            n.uid = uid;
+                            n.isfavorite = false;
+                            ServicesAPI.servicesAPI.updateHistory(n).enqueue(new Callback<History>() {
+                                @Override
+                                public void onResponse(Call<History> call, Response<History> response) {
+
+                                }
+
+                                @Override
+                                public void onFailure(Call<History> call, Throwable throwable) {
+
+                                }
+                            });
+                        }
                         favoriteList.remove(position);
                         notifyDataSetChanged();
                     }

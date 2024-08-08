@@ -77,6 +77,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                     historyRequest.uid = uid;
                     historyRequest.isfavorite = false;
                     ServicesAPI.servicesAPI.updateHistory(historyRequest).enqueue(new Callback<History>() {
+                        @SuppressLint("NotifyDataSetChanged")
                         @Override
                         public void onResponse(Call<History> call, Response<History> response) {
                             notifyDataSetChanged();
@@ -134,6 +135,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
                     historyRequest.wordid = history.WORDID;
                     historyRequest.isfavorite = true;
                     ServicesAPI.servicesAPI.updateHistory(historyRequest).enqueue(new Callback<History>() {
+                        @SuppressLint("NotifyDataSetChanged")
                         @Override
                         public void onResponse(Call<History> call, Response<History> response) {
                             notifyDataSetChanged();
@@ -149,6 +151,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         });
 
         binding.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View v) {
                 HistoryRequest historyRequest = new HistoryRequest();
