@@ -29,7 +29,7 @@ let translateText = async (req, res) => {
             source: source || 'auto',
             target: target || 'en',
             format: format || 'text',
-            alternatives: alternatives || 2
+            alternatives: alternatives || 3
         }, {
             headers: {
                 'Content-Type': 'application/json'
