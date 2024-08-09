@@ -276,6 +276,9 @@ public class TranslateFragment extends Fragment {
 
             binding.tvAlternatives.setText(alternativesText.toString().trim());
         }
+        else {
+            binding.tvAlternatives.setText("");
+        }
     }
 
     private void translate(String q){

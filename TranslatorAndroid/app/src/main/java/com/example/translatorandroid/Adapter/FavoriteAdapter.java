@@ -39,7 +39,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FavoriteViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FavoriteViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Favorite favorite = favoriteList.get(position);
         ItemHistoryBinding binding = ItemHistoryBinding.bind(holder.itemView);
         String lang = favorite.FROMLANGUAGE + " -> " + favorite.TOLANGUAGE;
@@ -55,30 +55,29 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
                 FavoriteRequest favoriteRequest = new FavoriteRequest();
                 favoriteRequest.wordid = favorite.WORDID;
                 favoriteRequest.uid = uid;
-                favoriteList.remove(position);
+                if(favorite.WORDIDHIS != 0) {
+                    HistoryRequest n = new HistoryRequest();
+                    n.wordid = favorite.WORDIDHIS;
+                    n.uid = uid;
+                    n.isfavorite = false;
+                    ServicesAPI.servicesAPI.updateHistory(n).enqueue(new Callback<History>() {
+                        @Override
+                        public void onResponse(Call<History> call, Response<History> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<History> call, Throwable throwable) {
+
+                        }
+                    });
+                }
                 notifyDataSetChanged();
                 ServicesAPI.servicesAPI.deleteFavorite(favoriteRequest).enqueue(new retrofit2.Callback<Favorite>() {
                     @Override
                     public void onResponse(retrofit2.Call<Favorite> call, retrofit2.Response<Favorite> response) {
-                        if(favorite.WORDIDHIS != 0) {
-                            HistoryRequest n = new HistoryRequest();
-                            n.wordid = favorite.WORDIDHIS;
-                            n.uid = uid;
-                            n.isfavorite = false;
-                            ServicesAPI.servicesAPI.updateHistory(n).enqueue(new Callback<History>() {
-                                @Override
-                                public void onResponse(Call<History> call, Response<History> response) {
 
-                                }
 
-                                @Override
-                                public void onFailure(Call<History> call, Throwable throwable) {
-
-                                }
-                            });
-                        }
-                        favoriteList.remove(position);
-                        notifyDataSetChanged();
                     }
 
                     @Override
@@ -86,6 +85,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
 
                     }
                 });
+                favoriteList.remove(position);
+                notifyDataSetChanged();
             }
         });
     }

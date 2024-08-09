@@ -139,10 +139,13 @@ namespace TranslatorApp
             try
             {
                 var result = deleteFavorite.DeleteFavoriteContent(wordid, _id);
+                bool isfavorite = false;
                 // Xử lý kết quả lưu thành công
                 if (result != null)
                 {
                     MessageBox.Show("Deleted successful!");
+                    HistoryAPI historyAPI = new HistoryAPI();  
+                    historyAPI.UpdateHistory(isfavorite, wordid, UserSession.Instance.Uid);
                     ShowAsync();
                 }
                 else
